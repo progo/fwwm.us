@@ -1,0 +1,81 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Kopiointia seurannan kanssa - Life at the Room.</title><link href="http://fwwm.us/css/miete.css" rel="stylesheet" type="text/css" /></head><body><div id="sidebar-left"><div id="post-info"><div id="navi"><span class="title">Navigointi</span><ul id="navi-list"><li class="fp"><a href="http://fwwm.us/">Etusivulle</a></li><li><a href="http://fwwm.us/miete/index.html">Mietteet</a></li><li><a href="..">toukokuu</a></li><li><a href="../..">2013</a></li></ul></div><span class="title">Info</span><p class="date">Julkaistu<br />18.05.2013 17:55</p></div><div id="post-tags"><span class="title">Tagit</span><ul id="tags-list"><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/cli/index.html">cli</a></div></div></li></ul></div></div><div id="content"><div class="post-content">
+<h1>Kopiointia seurannan kanssa    </h1>
+<div id="text-2-12" class="outline-text-3">
+
+
+
+
+<p>
+   Jonkin verran manuaalista synkkaamista tehneenä osaa arvostaa
+   kopioinnin tai siirtämisen edistymisen seurantaa. Koska unixien
+   <code>cp</code> ja <code>mv</code> eivät tätä taida omasta takaa, on yleisin peruskikka
+   ollut käyttää yhtä yleistä <code>rsync</code>-ohjelmaa <code>--progress</code>-option
+   kanssa. Se toimii hyvin, mutta kaipasin kanssa graafisista
+   kopiointilomakkeista tuttua kokonaistilanteen kehittymistäkin, jos
+   siis tiedostoja tai hakemistoja on useampi työn alla.
+</p>
+<p>
+   Nopea googlailu paljastaa ensin aika näppäriä vinkkejä <a href="https://bbs.archlinux.org/viewtopic.php?pid=937445#p937445">Arch Linuxin</a>
+   foorumilta asiaan liittyen. Erityisesti ovela on <code>strace</code>-ohjelman
+   yhteenkytkeminen cp:n kanssa ja siitä sitten awk:n kautta
+   ihmislukuisiin tuloksiin. Myös <code>pv</code>:n käyttöä demotaan. Nämä eivät
+   kuitenkaan ole rsync-ratkaisua sen kummoisempia.
+</p>
+<p>
+   <a href="http://www.beatex.org/web/advancedcopy.html">Advanced copy</a> on sitten se ratkaisu, johon päädyin. Vaikka
+   manuaalista työtä onkin luvassa, käännöstä varten on tehty oikein
+   ystävälliset ohjeet, joita noudattamalla jokainen kyllä osaa tehdä
+   omat versiot. Toisin kuin mitä ohjeet suosittelevat, siirsin
+   lopulliset käännökset uusille nimille, enkä korvaa alkuperäisiä
+   ohjelmia. Jos vaikka tulee sössittyä tai jotain.
+</p>
+<p>
+   Koodasin vielä progressbarit aina näkyville ja siirsin
+   henkilökohtaiseen binäärihakemistooni nimille <code>cpprog</code> ja
+   <code>mvprog</code>. Tämä ratkaisu toimii hyvin. Tämä on hyvä.
+</p></div>
+
+</div><div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    // :sb__ stuff is replaced in clojure
+    var disqus_shortname = 'progim';
+    var disqus_identifier = '20130518_1755';
+
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] ||
+         document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a
+href="http://disqus.com/?ref_noscript">comments powered by
+Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by
+<span class="logo-disqus">Disqus</span></a>
+</div></body></html>

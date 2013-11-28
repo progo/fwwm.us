@@ -1,0 +1,184 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Nopeat kirjanmerkit Emacsille - Life at the Room.</title><link href="http://fwwm.us/css/miete.css" rel="stylesheet" type="text/css" /></head><body><div id="sidebar-left"><div id="post-info"><div id="navi"><span class="title">Navigointi</span><ul id="navi-list"><li class="fp"><a href="http://fwwm.us/">Etusivulle</a></li><li><a href="http://fwwm.us/miete/index.html">Mietteet</a></li><li><a href="..">toukokuu</a></li><li><a href="../..">2013</a></li></ul></div><span class="title">Info</span><p class="date">Julkaistu<br />11.05.2013 18:06</p></div><div id="post-tags"><span class="title">Tagit</span><ul id="tags-list"><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div></li><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/elisp/index.html">elisp</a></div></div></li></ul></div></div><div id="content"><div class="post-content">
+<h1>Nopeat kirjanmerkit Emacsille    </h1>
+<div id="text-2-17" class="outline-text-3">
+
+
+
+
+<p>
+   Tänään aamulla minulle syntyi visio Emacs-skriptistä, joka toisi
+   Vimperator-henkiset kirjanmerkit Emacsiin. Panin asiasta merkinnän
+   <code>org</code>-kalenteriini ja jatkoin sitten päivän pakottavammissa
+   askareissa.
+</p>
+<p>
+   Sitten iltapäivästä asia tuli yhä uudestaan ja uudestaan mieleen,
+   ja ei siinä muu auttanut kuin aloittaa koodaaminen. Syntyi
+   tuloksena <a href="https://github.com/progo/progomarks">progomarks</a>-niminen unix-filosofisella näkemyksellä.
+</p>
+<p>
+   Tässä työssä on paljon kaunista. Ehkä sikäli, kun allapiilevä
+   mekanismi on todella yksinkertainen ja toimiva. Erityisesti kaikki
+   näyttää kauniilta, kun tunnun tulleen siihen pisteeseen, että
+   Emacsia voi lähteä laajentamaan ihan noin vain, jos jotain tuntuu
+   puuttuvan. Tähän tilaan pääsy veikin noin 8 kuukautta, mutta kyllä
+   se kannatti.
+</p>
+
+
+</div>
+
+<div class="outline-4" id="outline-container-2-17-1">
+<h2>Perusidea</h2>
+<div id="text-2-17-1" class="outline-text-4">
+
+
+<p>
+    Usein koluttuihin tiedostoihin tahtoisi päästä nopeasti. Emacsin
+    olemassaolevat kirjanmerkkiratkaisut eivät näyttäneet äkkiseltään
+    katsoen sisältävän muuta kuin nuolinäppäimiä ja
+    perusliikkumakomentoja: käytännössä siis suunniteltu isojen
+    kirjanmerkkimäärien hallinnointiin, joista haetaan sitten
+    hakutoiminnoin.
+</p>
+<p>
+    Minulla oli tausta-ajatuksena saada pari kiperässä paikassa
+    lymyävää, mutta usein käytettyä tiedostoa helposti saataville.
+    Tiedostoja tulisi olemaan siis kohtuullisen vähän näkyvillä. Ja
+    niihin pääsee hyppimään nopeasti Vimperatorista tutuilla
+    aakkoslyhenteillä. Ohessa esimerkki ruudulle aukeavasta näkymästä,
+    kun <code>progomarks</code> aktivoidaan:
+</p>
+
+
+
+<pre class="example">Progomarks
+----------
+j SPC               /home/progo/.emacs.d/progomarks
+k SPC               /home/progo/kurssit/nyk/oht/oht-s4.org
+l SPC               /home/progo/LoremIpsum.txt
+f SPC               /home/progo/dokumentit/Runo.txt
+a SPC               /home/progo/koodi/mpyd/DB.py
+kj SPC              /home/progo/koodi/progomarks/progomarks.el
+kk SPC              /home/progo/LoremIpsum.txt
+kl SPC              /home/progo/dokumentit/blog/blog.org
+</pre>
+
+
+<p>
+    Nyt riittää painaa <code>j &lt;SPC&gt;</code>, niin <code>progomarks</code>-tiedosto aukeaa.
+    Jos tämän <code>progomarks</code>-komennon itsensä asettaa nätin
+    näppäinyhdistelmän taakse, niin usein haluttuihin tiedostoihin
+    pääsee hyppimään nopeasti. Minä heitin sen kokeeksi
+    <code>,fb</code>-yhdistelmän taakse. 
+</p>
+<p>
+    Toinen tarvittava "julkinen" funktio on
+    <code>progomarks-mark-current-file</code>, jolla avoinna oleva tiedosto
+    ympätään kirjanmerkkilistan perälle. Itse lista säilyy tiedostossa
+    ja sisältää äärisimppelisti yhden URI:n per rivi. Sitä tiedostoa
+    saa sitten itse editoida ja mukauttaa järjestystä, jos näin
+    tahtoo.
+</p>
+</div>
+
+</div>
+
+<div class="outline-4" id="outline-container-2-17-2">
+<h2>Itse koodi</h2>
+<div id="text-2-17-2" class="outline-text-4">
+
+
+<p>
+    Koodi on <a href="https://github.com/progo/progomarks/blob/master/progomarks.el">Githubissa</a>. Siitä on paha sanoa mitään tässä kohtaa,
+    muuta kuin että se on <i>todennäköisesti</i> melko idiomaattista
+    Elispiä suurimmalti osin. Emacs Wikin Elisp-keittokirjaa
+    pläränneenä ja tämänkin paketin koodanneena olen tehnyt muutamia
+    huomioita:
+</p>
+<ul>
+<li>Elispissä ja Emacsissa ylipäätään kaikenlainen tiedostojen
+      lukeminen ja kirjoittaminen tehdään lukemalla tiedoston sisältö
+      väliaikaisiin (ja käyttäjältä näkymättömiin) puskureihin, joissa
+      sitten käytetään tavallisia Emacs-komentoja editointiin. Lopuksi
+      tallennetaan koko roska takaisin.
+</li>
+<li>Emacs-sovellukset (kuten Viminkin vastaavat) kirjoitetaan
+      luonnollisesti "virtuaalisiksi" puskureiksi, eli puskureiksi,
+      joilla ei ole tiedostoa taustalla. Tässä kohtaa Emacs (ja Vim)
+      todella ovat löytäneet juuri oikean abstraktion. Avonaisten
+      puskurien ei tarvitsekaan kuvata oikeita tiedostoja pohjalla.
+      Riittää vain, että kirjoitellaan tekstiä puskuriin, tehdään
+      sopivat näppäinoikotiet saataville ja paiskataan kaikki
+      käyttäjän naamalle. Kaikki on tekstiä ja temppitiedostoja ei
+      tarvitse pyöritellä systeemissä.
+</li>
+<li>Emacsin paketointisysteemi on kevyt ja toimiva. Ei tarvita
+      turhia alkujulistuksia, vain <code>(provide ...)</code> -lauseke tiedoston
+      (mielellään) lopussa. Paketti ladataan sitten <code>(require ...)</code>
+      -makrolla käyttöön ja Emacs etsii tiedostonimellä
+      latauspoluistaan sopivannimisiä tiedostoja ja lukee niitä.
+</li>
+<li>Lispinä Elisp on toki mukavaa ja ilmaisuvoimaista
+      sellaisenaankin, mutta funktionaalista ei missään tapauksessa.
+      Erilaiset silmukat jylläävät pitäjää ja muuttujia päivitellään
+      tuon tuosta. Jopa sulkeumia minun piti etsiä oikein työtä
+      tehden, ja ne lopulta löytyivät uuden Emacsin kokeellisista
+      lisäosista. No, hyvä että löytyivät kuitenkin.
+</li>
+</ul>
+
+
+<p>
+    Sulkeumia oli kiva käyttää tässä(kin) ongelmassa: kun määränä oli
+    rakentaa lennosta erilaisia näppäinyhdistelmiä bindattavaksi
+    samantapaisiin funktioihin, niin rakensin kullekin yhdistelmälle
+    sulkeuman avulla nolla-argumenttisen funktion, joka avaa juuri
+    halutun tiedoston.
+</p></div>
+</div>
+
+</div><div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    // :sb__ stuff is replaced in clojure
+    var disqus_shortname = 'progim';
+    var disqus_identifier = '20130511_1806';
+
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] ||
+         document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a
+href="http://disqus.com/?ref_noscript">comments powered by
+Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by
+<span class="logo-disqus">Disqus</span></a>
+</div></body></html>

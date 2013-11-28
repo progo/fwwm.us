@@ -1,0 +1,45 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Tag: emacs - Life at the Room.</title></head><body><div id="sidebar-left"><div><span class="title">Navigointi</span><ul id="navi-list"><li><a href="http://fwwm.us/">Etusivulle</a></li></ul><div class="rss-box"><span class="title">RSS</span><ul><li><a href="http://fwwm.us/index.rss">Kaikki</a></li><li><a href="http://fwwm.us/miete/index.rss">Kategoria</a></li></ul></div></div><div class="rss-box"><ul><li><a href="index.rss">RSS: <div class="taggy"><div class="taggy-inner">emacs</div></div></a></li></ul></div></div><div id="content"><h1>Juttuja tagilla <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div></h1><div id="post-list"><ul><li><span><span><b><a href="http://fwwm.us/miete/2013/06/06/emacsin-ido-trumppaa-kirjanmerkit.html">Emacsin IDO trumppaa kirjanmerkit</a></b><span class="postdate">06.06.2013 18:32</span></span><p>
+   Aiemmin <a href="http://fwwm.us/miete/2013/05/11/nopeat-kirjanmerkit-emacsille.html">kirjoittamani kirjanmerkkisysteemi</a> on tavallaan erittäin
+   kiva ja kohtuullisen toimiva, vaan se on yksinkertaisesti tarpeeton
+   omassa Emacs-käytössäni.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/05/11/nopeat-kirjanmerkit-emacsille.html">Nopeat kirjanmerkit Emacsille</a></b><span class="postdate">11.05.2013 18:06</span></span><p>
+   Tänään aamulla minulle syntyi visio Emacs-skriptistä, joka toisi
+   Vimperator-henkiset kirjanmerkit Emacsiin. Panin asiasta merkinnän
+   <code>org</code>-kalenteriini ja jatkoin sitten päivän pakottavammissa
+   askareissa.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/elisp/index.html">elisp</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/03/29/puoli-vuotta-emacsia.html">Puoli vuotta Emacsia</a></b><span class="postdate">29.03.2013 19:36</span></span><p>
+   Emacs on ollut käytössä noin puoli vuotta likipitäen pääeditorina
+   (vakituisena, mutta ei yksinomaan ainoana) ja se on tehnyt oman
+   osansa uuden ajatusmaailman rakentamisessa.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/editorit/index.html">editorit</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/blog/index.html">blog</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/02/06/emacs-rokkaa.html">Emacs rokkaa</a></b><span class="postdate">06.02.2013 18:13</span></span><p>   
+   Emacsin palvelinmalli on mitä erinomaisin lahja liikkuvalle
+   koodaajalle. Asiakasohjelman nopean käynnistymisen johdosta myös
+   perinteisempi hyökkäys komentorivillä on tuhottoman nopeata.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/editorit/index.html">editorit</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2012/10/24/twitteroeintiae-emacsilla.html">Twitteröintiä Emacsilla</a></b><span class="postdate">24.10.2012 16:59</span></span><p>
+Tänään piti viettää kiva päivä käymällä hyvällä luennolla ja sitten
+pakertaa vähän tehtävien kimpussa koululla. Toisin kävi, kun tehtäviä
+ei tullut aamusella näkysälle ja vettäkin satoi. Vietin sitten
+kotipäivän ja miettien itselleni jotain tekemistä. Emacsin Twitter ja
+IRC saivat olla kohteenani.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/twitter/index.html">twitter</a></div></div></span></p></span></li></ul></div></div></body></html>

@@ -1,0 +1,141 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Näytönsäästäjäskriptit - Life at the Room.</title><link href="http://fwwm.us/css/koodi.css" rel="stylesheet" type="text/css" /></head><body><div id="sidebar-left"><div id="post-info"><div id="navi"><span class="title">Navigointi</span><ul id="navi-list"><li class="fp"><a href="http://fwwm.us/">Etusivulle</a></li><li><a href="http://fwwm.us/koodi/index.html">Koodi</a></li><li><a href="..">huhtikuu</a></li><li><a href="../..">2013</a></li></ul></div><span class="title">Info</span><p class="date">Julkaistu<br />27.04.2013 00:49</p></div><div id="post-tags"><span class="title">Tagit</span><ul id="tags-list"><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/bash/index.html">bash</a></div></div></li><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/rauta/index.html">rauta</a></div></div></li></ul></div></div><div id="content"><div class="post-content">
+<h1>Näytönsäästäjäskriptit    </h1>
+<div id="text-3-3" class="outline-text-3">
+
+
+
+
+<p>
+   Tänään (tai eilen) sain uuden korttini ja kaikki on onnellisena ok.
+   Tuunasin illan pimetessä vielä vanhat näytönsäästöskriptini
+   kuntoon. Nyt edes osa wateista säästyy, toivottavasti…
+</p>
+<p>
+   Kaikki alkoi xlock-ohjelmasta ja mustista ruuduista. Siihen tuli
+   sitten hiiren disablointia ja näyttöjen sammuttelua ajan myötä.
+   Uusin haaste on tosiaan se, että uusi Geforce-korttini ei mene
+   idle-virroille, jos on liian monta näyttöä aktiivisena. Koodasin
+   siis lisää tavaraa mukaan.
+</p>
+<p>
+   Pidemmittä jaaritteluitta, tässä on 4-osaisen purkan "pääohjelma":
+</p>
+
+
+
+
+
+
+<p>
+   Aiemmin kaikki oli samassa, mutta nyt refaktoroin <code>xlockC</code>-skriptin
+   kaveriksi ihan erilliset apuskriptit ja laitoin ne alihakemistoon,
+   etteivät turhaan sotke <code>$PATH</code>:ssani.
+</p>
+<p>
+   Kun skripti käynnistetään, ajetaan <code>xlockC_start</code>:
+</p>
+
+
+
+
+
+
+<p>
+   Vastaavasti näytöt ja hiiret pannaan takaisin päälle.
+</p>
+
+
+
+
+
+
+<p>
+   Ja hiiren dynaamisen laitekoodin saa oheinen taidonnäyte:
+</p>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="outline-4" id="outline-container-3-3-1">
+<h2>Testaus</h2>
+<div id="text-3-3-1" class="outline-text-4">
+
+
+<p>    
+   Ja näin. Sopivalla loopilla saatiin testattua myös virransäästön
+   toteutuminen:
+</p>
+
+
+
+<pre class="example">while `true`; do nvidia-settings -tq GPUCurrentPerfLevel ; sleep 1 ; done
+</pre>
+
+
+<p>
+   Luvut painuvat kakkosesta ensin ykköseen ja lopulta nollaan. Ja
+   muuten vain tiedoksi: tällä kortilla tasot menevät näin:
+</p>
+
+
+
+<pre class="example">~ % nvidia-settings -q GPUPerfModes       
+
+Attribute 'GPUPerfModes' (pihlaja:0.0):
+perf=0, nvclock=324, memclock=324
+perf=1, nvclock=540, memclock=810
+perf=2, nvclock=1110, memclock=2500
+</pre>
+
+</div>
+</div>
+</div><div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    // :sb__ stuff is replaced in clojure
+    var disqus_shortname = 'progim';
+    var disqus_identifier = '20130427_0049';
+
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] ||
+         document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a
+href="http://disqus.com/?ref_noscript">comments powered by
+Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by
+<span class="logo-disqus">Disqus</span></a>
+</div></body></html>

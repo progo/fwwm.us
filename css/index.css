@@ -1,0 +1,63 @@
+/* CSS for index.html */
+
+#subtitle,
+#title { 
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+#title {
+    top: 1em;
+    left: 3em;
+    font-size: 50pt;
+    color: yellow;
+}
+
+#subtitle { 
+    top: 1.4em;
+    left: 6em;
+    font-size: 18pt;
+    color: red;
+}
+
+
+#sidebar-left {
+    margin:0;
+    padding-top: 10em;
+}
+
+#contents {
+    margin:0;
+    padding-top: 10em;
+}
+
+.inavi {
+    padding-left: 0em;
+}
+
+.inavi li {
+    list-style-type: none;
+}
+
+dl#post-list { }
+dl#post-list dt {
+    font-size: larger;
+    font-weight: bold;
+    padding: 3px;
+}
+dl#post-list dd {
+    padding: 0.4em;
+    padding-top: 0.5em;
+}
+
+/* in index DT/DD */
+.cat-hint {
+    font-size: smaller;
+    float: right;
+    color: gray;
+}
+
+.postdate {
+    display: none;
+}

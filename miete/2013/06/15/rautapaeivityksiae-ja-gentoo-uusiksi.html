@@ -1,0 +1,133 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Rautapäivityksiä ja Gentoo uusiksi - Life at the Room.</title><link href="http://fwwm.us/css/miete.css" rel="stylesheet" type="text/css" /></head><body><div id="sidebar-left"><div id="post-info"><div id="navi"><span class="title">Navigointi</span><ul id="navi-list"><li class="fp"><a href="http://fwwm.us/">Etusivulle</a></li><li><a href="http://fwwm.us/miete/index.html">Mietteet</a></li><li><a href="..">kesäkuu</a></li><li><a href="../..">2013</a></li></ul></div><span class="title">Info</span><p class="date">Julkaistu<br />15.06.2013 13:10</p></div><div id="post-tags"><span class="title">Tagit</span><ul id="tags-list"><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/rauta/index.html">rauta</a></div></div></li><li><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/gentoo/index.html">gentoo</a></div></div></li></ul></div></div><div id="content"><div class="post-content">
+<h1>Rautapäivityksiä ja Gentoo uusiksi    </h1>
+<div id="text-2-20" class="outline-text-3">
+
+
+
+
+<p>
+   Sain hyvän tilaisuuden vaihtaa AMD-setistäni takaisin Inteliin.
+   Uusi hirviö on tarunhohtoinen <b>Core i5 2500k</b>, josta ihmisillä on
+   vain hyvää sanottavaa. Siihen kaveriksi 8 gigaa muistia ja Asus
+   <a href="http://www.asus.com/Motherboards/P8Z68V/#specifications">P8Z68-V</a>-emolevy. Pitäisi olla kaikki reilassa. AMD-linjalta
+   eroamisen ei pitäisi tuottaa ikävää.
+</p>
+
+</div>
+
+<div class="outline-4" id="outline-container-2-20-1">
+<h2>Kivaa rautaa</h2>
+<div id="text-2-20-1" class="outline-text-4">
+
+
+<p>
+    Intelin tuotteet ovat Sandy Bridgestä lähtien olleet melkoisen
+    ylivertaisia AMD:n tuotteisiin nähden. AMD onkin ilmoittanut
+    luovuttaneensa high end -prosessorien kanssa kilpailun. Moni
+    ongelma vaivaa AMD:tä, ja se näkyy Intelin voittokulussa ja
+    hintalapuissa.
+</p>
+<p>
+    Nykypäivän AMD:n huippumallissa olisi peräti 8 hyvää ydintä ja
+    sikäli kun käytettävät ohjelmat säikeistyisivät tarpeeksi hyvin,
+    saisin nykysettiini noin neljä kertaa paremman suorituskyvyn.
+    Intelin vahvuus on todella hulppeassa per-ydin -suorituskyvyssä,
+    joka tietenkin näkyy erityisesti peleissä ja muissa
+    yksisäikeisissä sovelluksissa. Saan AMD:n prosessorin hinnalla
+    käytetyn ja valmiin setin, jossa on kaikenlaista hyvää. Ja
+    sähköäkin syö vähemmän, ja 2500k kellottuu julmasti.
+</p>
+<p>
+    Emolevykin on mukava parannus entiseen. USB 3 ja toinen 16x
+    PCI-e  -portti auttaa tutkimaan. Intelin piirisarjoissa ei
+    pitäisi olla mitään ongelmia.
+</p>
+<p>
+    Näin se tapahtuu. En ole minkään prosessorileirin kannattaja tai
+    fani, vaan AMD on ollut aiempina vuosina hinta-laatusuhteeltaan
+    niin erinomaista. Suoritinhistoriani (486, Pentium, Athlon XP,
+    Athlon X2, Phenom II X2) saa pompun takaisin Intelin puolelle,
+    mutta jos uutta tavaraa joutuisin ostamaan, tuskin olisin.
+</p>
+</div>
+
+</div>
+
+<div class="outline-4" id="outline-container-2-20-2">
+<h2>Gentoo uusiksi 7 vuoden jälkeen</h2>
+<div id="text-2-20-2" class="outline-text-4">
+
+
+<p>    
+    Koska Intelin mikro-optimoinnit eroavat hieman AMD:n vastaavista
+    ratkaisuista, on viisainta kääntää Gentoo kokonaan uusiksi. Samalla
+    pääsen vaihtamaan 64-bittiseen puoleen. Asia, joka ei ollut kamalan
+    ajankohtainen vuonna 2006, kun asentelin tämän nykyisen
+    Gentooasennukseni. Kamala, kun tämä pysyykin hyvin pystyssä! Ja
+    nyt kaikesta viisastuneena tuleva asennus tulee pysymään entistä
+    pidempään pystyssä. Turhat pelleilyt Gnomen ja KDE:n kanssa jäävät
+    pois. Suoraan Xmonadiin.
+</p>
+<p>
+    "Ja puhtaalta pöydältä kun lähdetään, miksi Gentoo?", kuulen
+    kysyttävän. Kieltämättä, Arch Linux on ollut mielessäni vähän
+    aikaa: heillä on erinomainen ja nykyaikainen ote dokumentointiin
+    ja käyttäjäyhteisöihin. Mutta hyvät, ellei erinomaiset kokemukset
+    Gentoon kanssa pitävät minut täällä leirissä. Oleellisesti Archin
+    ja Gentoon välillä ei ole kuin makuasioiksi luokiteltavia eroja,
+    joten pysyn samassa maussa toistaiseksi.
+</p>
+<p>
+    Koska Gentoo tuntuu pysyvän hyvin pystyssä, aion panostaa tähän
+    puhtaan pöydän asennukseen ja välttelemään olemassaolevia
+    konffeja, ainakin näitä eniten systeemiin vaikuttavia sellaisia.
+    Tulen luultavasti kirjailemaan jonkinlaista asennuslogia ja nyt on
+    paras hetki antaa palautetta ja ehdotuksia asioista, joita
+    haluatte logista lukea. Teillä on noin viikko aikaa.
+</p></div>
+</div>
+
+</div><div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    // :sb__ stuff is replaced in clojure
+    var disqus_shortname = 'progim';
+    var disqus_identifier = '20130615_1310';
+
+    (function() {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] ||
+         document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a
+href="http://disqus.com/?ref_noscript">comments powered by
+Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by
+<span class="logo-disqus">Disqus</span></a>
+</div></body></html>

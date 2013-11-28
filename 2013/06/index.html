@@ -1,0 +1,71 @@
+<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+  */
+MathJax.Extension.myImg2jax = {
+    version: "1.0",
+    PreProcess: function (element) {
+        var images = element.getElementsByTagName("img");
+        for (var i = images.length - 1; i >= 0; i--) {
+            var img = images[i];
+            if (img.className === "dvipng") {
+                var script = document.createElement("script");
+                script.type = "math/tex";
+                var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                if (match[1] === "$$") {script.type += ";mode=display"}
+                MathJax.HTML.setScript(script,match[2]);
+                img.parentNode.replaceChild(script,img);
+            }
+        }
+    }
+};
+MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>TODO - Life at the Room.</title></head><body><div id="sidebar-left"><div><span class="title">Navigointi</span><ul id="navi-list"><li><a href="http://fwwm.us/">Etusivulle</a></li></ul><div class="rss-box"><span class="title">RSS</span><ul><li><a href="http://fwwm.us/index.rss">Kaikki</a></li><li><a href="http://fwwm.us/viihde/index.rss">Kategoria</a></li></ul></div></div></div><div id="content"><div id="post-list"><ul><li><span><span><b><a href="http://fwwm.us/viihde/2013/06/29/happojatsi-ja-acid-jazz.html">Happojatsi ja Acid jazz</a></b><span class="postdate">29.06.2013 19:27</span></span><p>
+   Kaksi termiä, joilla on haasteellisesti kovin samantapaiset nimet.
+   Mutta itse sisällöt ovat kovasti erilaiset. Koska minä olen
+   pääasiallinen <i>happojatsi</i>-termin viljelijä, koen eräänlaista
+   tarvetta antaa selityksen tapahtuneelle.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/musiikki/index.html">musiikki</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/jazz/index.html">jazz</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/koodi/2013/06/27/pelisavetukset-versiohallintaan.html">Pelisavetukset versiohallintaan</a></b><span class="postdate">27.06.2013 19:57</span></span><p>
+   Huolehditko joskus epävakaiden pelien savetuksista? Erityisesti kun
+   savetuksien kanssa voi käydä monenlaista. Joskus vain jää
+   tallentamatta, joskus pelissä esiintyvä bugi pakottaa pelaajan
+   palaamaan reittejään takaisin. Entä jos sekään ei onnistu, ja
+   tallennusta on vain yhtä sorttia? Entä jos peli suoralta kädeltä
+   korruptoi tallennukset hassuissa tilanteissa (Civ 5, Test Drive:
+   Unlimited)?
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/pelit/index.html">pelit</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/bash/index.html">bash</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/fallout/index.html">fallout</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/06/23/hikinen-iltapaeivae--gentoo-uusiksi.html">Hikinen iltapäivä: Gentoo uusiksi</a></b><span class="postdate">23.06.2013 16:37</span></span><p>
+   Tämä on se pienimuotoinen asennuspäiväkirja 7-vuotisen
+   Gentooasennukseni uudelleenasentamiseksi mahdollisimman puhtaalta
+   pöydältä 64-bittiseen Intel-maailmaan. Kirjoitin tästä aiemmin
+   <a href="http://fwwm.us/miete/2013/06/15/rautapaeivityksiae-ja-gentoo-uusiksi.html">muutaman alkusanan</a> ja nyt seuraa puhtaaksi kirjoiteltu näkemys
+   asioista.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/rauta/index.html">rauta</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/gentoo/index.html">gentoo</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/viihde/2013/06/18/fallout.html">Fallout</a></b><span class="postdate">18.06.2013 16:04</span></span><p>
+   Uudet 3D-Falloutit jakavat hieman pelikansaa kahteen osaan, mutta
+   minä olen valmis julistamaan Fallout 3:n parhaaksi pelaamakseni
+   peliksi. Tämä vieläpä konsolilla, jossa kaikki tökki ja jökki. Nyt
+   tilasin Fallout: New Vegasin täyden paketin, eli Ultimate
+   Editionin. Siinä on luonnollisesti kaikki julkaistut lisäosat
+   samassa paketissa. Ja tämä on PC:lle. The way FPS's are meant to be
+   played.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/pelit/index.html">pelit</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/fallout/index.html">fallout</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/viihde/2013/06/15/monday-mornings.html">Monday Mornings</a></b><span class="postdate">15.06.2013 13:24</span></span><p>
+   David E. Kelleyn uusi luomus on lääkärisarja kivalla twistillä.
+   Seuraamme Chelsea Generalin toimintaa Portland, Oregonissa. Tiivis
+   joukko lääkäreitä tekee parhaansa ja vain työtään. Valitettavasti
+   joskus kuitenkin potilaan näkemys hyvästä työstä eroaa lääkärin
+   vastaavasta.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/sarjat/index.html">sarjat</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/david_e_kelley/index.html">david_e_kelley</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/06/15/rautapaeivityksiae-ja-gentoo-uusiksi.html">Rautapäivityksiä ja Gentoo uusiksi</a></b><span class="postdate">15.06.2013 13:10</span></span><p>
+   Sain hyvän tilaisuuden vaihtaa AMD-setistäni takaisin Inteliin.
+   Uusi hirviö on tarunhohtoinen <b>Core i5 2500k</b>, josta ihmisillä on
+   vain hyvää sanottavaa. Siihen kaveriksi 8 gigaa muistia ja Asus
+   <a href="http://www.asus.com/Motherboards/P8Z68V/#specifications">P8Z68-V</a>-emolevy. Pitäisi olla kaikki reilassa. AMD-linjalta
+   eroamisen ei pitäisi tuottaa ikävää.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/rauta/index.html">rauta</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/gentoo/index.html">gentoo</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/06/06/eli-bressert--scipy-and-numpy--o-reilly.html">Eli Bressert: Scipy and Numpy (O'Reilly)</a></b><span class="postdate">06.06.2013 18:52</span></span><p>
+   O'Reillyn blogiohjelmasta ilmaiseksi saamani kirja <b>Scipy and    Numpy</b> (Eli Bressert) kuulosti alkuvaiheessa erinomaiselta
+   kirjalta, erityisesti kun aloitin niin hienosti sillä Wes McKinneyn
+   <a href="http://progo.viuhka.fi/mietteet/597/wes-mckinney-python-for-data-analysis-oreilly">Python for Data Analysis</a> kirjalla aikoinaan. Mutta Scipy and Numpy
+   ei toimi jatko-osana, eikä toisaalta myöskään aloittelijoille
+   sopivana pakettina.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/python/index.html">python</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/kirja/index.html">kirja</a></div></div> <div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/arvostelu/index.html">arvostelu</a></div></div></span></p></span></li><li><span><span><b><a href="http://fwwm.us/miete/2013/06/06/emacsin-ido-trumppaa-kirjanmerkit.html">Emacsin IDO trumppaa kirjanmerkit</a></b><span class="postdate">06.06.2013 18:32</span></span><p>
+   Aiemmin <a href="http://fwwm.us/miete/2013/05/11/nopeat-kirjanmerkit-emacsille.html">kirjoittamani kirjanmerkkisysteemi</a> on tavallaan erittäin
+   kiva ja kohtuullisen toimiva, vaan se on yksinkertaisesti tarpeeton
+   omassa Emacs-käytössäni.
+...<span class="tag-list"><div class="taggy"><div class="taggy-inner"><a href="http://fwwm.us/tag/emacs/index.html">emacs</a></div></div></span></p></span></li></ul></div></div></body></html>

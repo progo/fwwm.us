@@ -1,0 +1,217 @@
+/* General things {{{*/
+
+html {
+    background-color: #1C0000;
+    background-image: url(lodge-curt-1c.jpeg);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    //color: #d6aeae;
+    color: #ffd0a0;
+}
+
+body {
+}
+
+a {
+    color: white;
+}
+
+
+/*}}}*/
+/* Tags {{{*/
+.taggy {
+    display: inline;
+    font-size: smaller;
+
+    border: #f92 2px solid;
+    background-color: #e98b2b;
+}
+
+.taggy-inner {
+    display: inline;
+    margin: 4px;
+    padding: 2px;
+}
+
+.taggy:hover {
+    background-color: yellow;
+}
+
+.taggy a {
+    text-decoration: none;
+    color: #000;
+}
+
+.taggybox {
+    white-space: nowrap;
+}
+
+/*}}}*/
+/* All pages {{{*/
+
+table#post-list #header {
+    font-weight: bold;
+}
+
+table#post-list td {
+    padding: 0.15em;
+}
+
+/*}}}*/
+/* Structure {{{*/
+
+#sidebar-left {
+    float: left;
+    width: 10em;
+    margin: 0;
+}
+
+#content {
+    margin-left: 10em;
+    padding-left: 0;
+    max-width: 35em;
+}
+
+/*}}}*/
+/* Post listings {{{ */
+
+.postdate {
+    float: right;
+    font-size: small;
+    color: lightgray;
+}
+
+div#post-list ul p {
+    // margin-left: 2em;
+}
+div#post-list ul li {
+    // list-style-type: none;
+}
+
+/*}}}*/
+/* Left sidebar {{{*/
+
+#sidebar-left {
+    font-size: smaller;
+}
+
+#sidebar-left .title {
+    border-bottom: #fff28b dashed thin;
+    color: #e6dc40;
+    font-weight: bold;
+}
+
+#tags-list {
+    margin-left: 0;
+    padding-left: 1.5em;
+    /*list-style-type: none;*/
+    list-style-image: url(tag-icon.png);
+}
+
+#tags-list a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.rss-box ul,
+#navi-list {
+    padding-left: 1.5em;
+}
+
+.rss-box ul {
+    list-style-image: url(rss-icon.png);
+}
+
+#navi-list {
+    /* up arrow would be very nice. Make a pic. */
+    list-style-image: url(up-arrow.png); 
+}
+
+.rss-box a,
+#navi-list a {
+    text-decoration: none;
+    color: #fff28b;
+}
+
+
+/*}}}*/
+/* Post contents {{{ */
+
+a:hover {
+    color: #f00;
+}
+
+a {
+    color: #e9512b;
+}
+
+#content h1, h2, h3 {
+    color: red;
+}
+
+#content p,
+#content ul {
+    line-height: 2.15ex;
+}
+
+/* Tables */
+td.left { text-align: left; }
+td.right { text-align: right; }
+
+/* }}} */
+/* Code listings and words {{{ */
+
+code {
+    color: white;
+}
+
+pre.example {
+    color: white;
+}
+
+pre.src {
+    //background-color: #ff6;
+    border-left: 3px dotted red;
+    padding: 3px;
+    padding-left: 5px;
+}
+
+pre.src .code-keyword {
+    font-weight: bold;
+}
+
+pre.src .code-builtin {
+    font-weight: bold;
+}
+
+pre.src .code-variable-name {
+}
+
+pre.src .code-comment-delimiter {
+    color: #d88827;
+}
+
+pre.src .code-comment {
+    color: #d88827;
+    font-style: italic;
+}
+
+/* }}} */
+/* Math {{{*/
+
+img.dvipng {
+    vertical-align: middle;
+}
+
+.MathJax_Display {
+    color: white;
+}
+
+.MathJax {
+    color: white;
+}
+
+/*}}}*/
