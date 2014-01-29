@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Hikinen iltapäivä: Gentoo uusiksi — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">23.06.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">13.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/gentoo.html" class="tag-name">gentoo</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Hikinen iltapäivä: Gentoo uusiksi   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Tämä on se pienimuotoinen asennuspäiväkirja 7-vuotisen
+Gentooasennukseni uudelleenasentamiseksi mahdollisimman puhtaalta
+pöydältä 64-bittiseen Intel-maailmaan. Kirjoitin tästä aiemmin
+<a href="rautapaivityksia-gentoo-uusiksi.html">muutaman alkusanan</a> ja nyt seuraa puhtaaksi kirjoiteltu näkemys
+asioista.
+</p>
+
+<p>
+Tarina on kirjailtu pitkälti sitä mukaa kuin olen asioita tehnyt ja
+jaksanut mounttailla kotiosiot auki. Moni asia paranee
+jälkiviisastuttuaan, joten kirjailen sulkuihin asioita, miten ne
+oikeasti pitäisi tehdä.
+</p>
+
+<p>
+Mitähän alkusanoja tähän keksisi? <a href="http://www.gentoo.org/doc/en/handbook/">Gentoon käsikirja</a> on edelleen
+yhtä priimatasoinen ja aloittelijaystävällinen kuin 7 vuotta
+sitten. Se tosin suosittelee tekemään asennuksen käyttäen Gentoon
+omia livekiekkoja, ja tässä kohtaa mielestäni pitäisi painottaa
+sitä vapautta valita asennusmediansa vapaavalintaisesti. En tiedä
+noista nykyisistä Gentoon livekiekoista (vain vuosimallia 2006
+oleva löytyy hyllystä), mutta Lubuntut sun muut sentään tukevat
+pysyvyyttä ja sallivat apuohjelmien asentelun sulavasti.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Perjantai 21.6. klo 10:21.</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Vielä vanhassa systeemissä sisällä. Kahvia kupissa ja nälkä
+vatsassa. Etukäteen katselin joitain kernelikonffeja Gentoon
+wikistä: Nvidian ajurit esimerkiksi tarvitsevat MTR-tuen. Hyvähän
+se on sitten varmistaa, että tulee käännettyä ensimmäisellä
+kerralla.
+</p>
+
+<p>
+Gentoon uudistettu wiki tuntuu olevan ihan hyvässä kunnossa.
+Tavaran kirjoitan kotihakemistoni juureen (<code>~/LOG.txt</code> ja
+<code>~/KERNEL.txt</code>), koska kotihakemistoni on sentään omana osionaan,
+peräti kovalevynään. Jos ei olisi, kirjoittaisin muistiinpanojani
+sellaiselle osiolle, joka säilyy uudelleenasennusten yli. Jos ei
+sellaistakaan ole, niin luultavasti usb-tikku olisi seuraava
+valinta. Verkkopalvelutkin ovat vähän niin ja näin, jos verkko ei
+ole päällä. Tai X, mutta ssh:n ylitsehän me kaikki teemme.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">klo 10:50</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Boottasin lubuntuun sisälle tekemään joitain tarkastuksia.
+Merkintä itselleni: boottiosio siirtyköön sdb2:sta sda2:ksi
+(sdb3:ksi, toim. huom.) ja swappi sda2:sta sda3:ksi. Nämä tietysti
+kannattaisi koodata fstabiin UUID:n avulla, mutta swapista en
+tiedä, onnistuiko se. Kah, pitäisi onnistua. Fstabissa tavara oli
+jo labeloitu “boot”:ksi ja “swap”:ksi, joten ongelmia ei pitäisi
+tulla. Grub ei tietysti labeleista niin välitä.
+</p>
+
+<p>
+Ja Lubuntu toimii hyvin sutjakasti SSD-USB -levylta.
+</p>
+
+<p>
+Kello alkaa olla pykälässä, eli 11:00. Pizzapaikka aukeaa ja
+toisaalta K-market on viela tunnin ajan auki. Käyn hakemassa
+margariinia kaupasta ja pizzaa pizzapaikasta. Sitten availlaan
+koppaa ja imuroidaan vähän.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">klo 13:40</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Noin kahdentoista aikaan olin saanut ruokani nautittua ja
+aloitettua ruljanssin. Raudan vaihtaminen sujui kivutta, vaikka
+hieman hitaasti teinkin.
+</p>
+
+<p>
+Hieman emmin tuon jäähdyttimen kanssa: vakiojäähy vai OCZ
+Gladiator Max. LGA775-kama taisi mennä hyvin uudempien kantojen kanssa
+yhteen (ei mene). Koska minulla ei ole kuin huonoa tahnaa, en sitten
+valinnut vaihtaa sita jäähyä lennosta. Nyt on kuitenkin lubuntuun
+bootattuani luvut aika korkealla (Asus sanoo 97 astetta ja
+Lubuntu/tuore lm-sensors sanoo 60 astetta)… ehkä tahna on
+huonoa, ehka sensorien kalibrointi ei pelaa. Mistähän saisi oikean
+luvun?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">klo 14:05</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Pakko todeta, etta myyjä on heittänyt huonot tahnat jäähyn väliin.
+lm-sensorin antavat luvut voivat hyvinkin olla oikeita, sillä ne
+nousevat kovasti Kraken-testeissä. Suljetaan ja tarkastellaan.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">klo 15:40</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Aikani tapeltuani jäähyjen kanssa tulin siihen tulokseen, (ja nyt
+myos vahvistan taman googlauksin) että AM2/LGA775-kantaan
+suunniteltu OCZ Gladiator Max ei käy LGA1155:een. Laitoin omat,
+huonot tahnat ja uudelleenkiinnitin vakiojäähyn. Kovin huonohan se
+on kaikin puolin, mutta mita voin tässä vaiheessa tehdä…
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-6">
+<h3 id="sec-1-6">klo 16:07</h3>
+<div id="text-1-6" class="outline-text-3">
+<p>
+Tässä vaiheessa on tullut selväksi, että Gladiator Max vaatii joko
+1155-sopivat kasauspalikat (OCZ ei niita valmista) tai sitten
+pitää ostaa uusi hyvä jäähy. CM Hyper on kuulema hyvä ja ihan
+edullinenkin, ja saastyisi tuolta Intelin ruuvikauhulta.
+</p>
+
+<p>
+Mutta nyt alkakoon Gentoon asennus.
+</p>
+
+<p>
+Roger Watersin “In The Flesh” -kiertueelta koostettu video
+pyörimään ja menoksi. Muita alkuvalmisteluja on tietysti asettaa
+Lubuntuun kaikki näytöt näkysälle ja mapata Caps Lock ESC:ksi.
+Vimistelyä varten. <i>All set, I guess.</i> Muutahan ei tarvita kuin
+sopiva versio Gentoo Handbookista (AMD64 viimein). Asennus
+tapahtuu Lubuntu 13.10:n kautta.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-7">
+<h3 id="sec-1-7">klo 16:30</h3>
+<div id="text-1-7" class="outline-text-3">
+<p>
+Käytännössä aloitetaan homma asennusoppaan luvusta 4 alkaen.
+Kaikki sitä aiempi on livekiekon säätöä ja lievästi miettien aika
+turhaa. Lubuntu tai joku muu helppokäyttöinen perusdistro sopii
+hyvin automaattisten verkkokonffien ja muun tauhkan kaveriksi.
+</p>
+
+<p>
+Levyosiointikin on kunnossa, pitää vain tyhjätä se. Ext4 vai XFS,
+siinäpä se kysymys. Valittakoon ext4. Alustettu ilman mitään
+erityisempiä flageja ja panin wgetin laulamaan uusimman
+stage3-tarballin kanssa.
+</p>
+
+
+<div class="figure">
+<p><img alt="54154565-asennus.png" src="http://paste.nerv.fi/54154565-asennus.png" />
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-8">
+<h3 id="sec-1-8">klo 17:10</h3>
+<div id="text-1-8" class="outline-text-3">
+<p>
+Tarball purettu; oppaan luvussa 5c menossa. Uusi ja tyhjä
+<code>make.conf</code> ammottaa edessäni: mitä ihmettä tähänkin nyt keksisi.
+Taidan lukea ajatuksella tuon oppaan suositteleman
+<code>/usr/share/portage/config/make.conf.example</code>-tiedoston. En
+tainnut lukea sitä silloin 7 vuotta sitten, enkä ainakaan ole sen
+jälkeen!
+</p>
+
+<p>
+No, siellä ei sitten ollut mitään uutta ja mullistavaa.
+<code>ACCEPT_LICENSE</code> perinteiseen tapaan tähdelle ja <code>PORTAGE_NICENESS</code>
+isolle.
+</p>
+
+<p>
+Nyt uskaltaa konsultoida vanhaa make.conffia. Ei mitään uutta ja
+mullistavaa. No, <code>march=native</code> on ainut oleellinen lisä
+oletuksiin.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-9">
+<h3 id="sec-1-9">klo 17:35</h3>
+<div id="text-1-9" class="outline-text-3">
+<p>
+Hitaasti edetään, mutta ei olekaan tarkoitus hoppuilla. Nyt
+mentiin chrootin sisään ja portagen synkkaus meneillänsä. Viisi
+lukematonta uutista odottelee. (Vinkiksi uusille asentajille:
+kirjoittakaa oppaassa käytetyt <code>mount</code>- ja <code>umount</code>-litaniat
+suoraan shell-skripteiksi, sillä kerneli tuskin kääntyy
+täydellisesti ensimmäisellä kerralla. Eikä toisellakaan.)
+</p>
+
+<p>
+Ensimmäinen kääntö ei ollut <code>vi</code>, vaan <code>eix</code>. Sitten <code>gentoolkit</code>
+ja <code>euses</code>. Nyt seuraavana lähti <code>vim</code> tulille.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-10">
+<h3 id="sec-1-10">klo 17:50</h3>
+<div id="text-1-10" class="outline-text-3">
+<p>
+Kerneli 3.8.13 pannaan konffaten ja kääntymään. Olisin mielelläni
+ottanut 3.9-sarjalaista eteen, mutta reboottailla pitää
+lähitulevaisuudessa muutenkin. On siis aikaa päivitellä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-11">
+<h3 id="sec-1-11">klo 18:35</h3>
+<div id="text-1-11" class="outline-text-3">
+<p>
+Kerneli käännetty; luku 8a alkamassa. Vanhan systeemin <code>fstab</code> käy
+vallan hyvin. Pitää toki muistaa vaihtaa xfs-lätkä ext4:ksi. Ja
+sama sitten grubbia asentaessani. Localet varastan vanhasta.
+Toimivat sen verran hyvin siellä. Samoiten lokaalit (suurin osa
+en\<sub>US</sub>-lokaaleita, muutama hassu, kuten paperiasetus, suomeksi).
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-12">
+<h3 id="sec-1-12">klo 18:55</h3>
+<div id="text-1-12" class="outline-text-3">
+<p>
+Oppaan luku 9 menossa: joitain satunnaisia työkaluja systeemiin.
+<code>Syslog-ng</code> on oma valintani loggeriksi. <code>Dcron</code> on temppuillut
+vanhassa omituisesti; ehkä koitan vixietä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-13">
+<h3 id="sec-1-13">klo 19:10</h3>
+<div id="text-1-13" class="outline-text-3">
+<p>
+Oppaan asennusvaiheet on päästy suosiolla loppuun. No, vielä
+toistaiseksi olen skipannut rebootin. Mukavampi käännellä joitakin
+paketteja moninäyttösysteemissä…
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-14">
+<h3 id="sec-1-14">klo 19:50</h3>
+<div id="text-1-14" class="outline-text-3">
+<p>
+Jotain häikkää grubin saadoissa ja kernelissäni. Ensimmäinen
+isompi probleema matkassa.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-15">
+<h3 id="sec-1-15">klo 20:20</h3>
+<div id="text-1-15" class="outline-text-3">
+<p>
+Ext4:n mountprobleemasta varmaan kyse… (Ei ole. <i>Wait for it…</i>)
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-16">
+<h3 id="sec-1-16">klo 22:00</h3>
+<div id="text-1-16" class="outline-text-3">
+<p>
+Viimein asia ratkesi. Kuten tavallista, kyse oli nyyppäongelmasta:
+<code>TMPFS</code>-tukea en ollut kääntänyt mukaan kerneliin. Nyt päästään
+takaisin tavallisiin ongelmiin, kuten puuttuvaan
+verkkokorttiajuriin.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-17">
+<h3 id="sec-1-17">klo 23:00</h3>
+<div id="text-1-17" class="outline-text-3">
+<p>
+Verkkoajurit olivat kylla kunnossa, mutta uusi <code>udev</code> tai jokin
+vastaava on nimennyt sen <code>eno1</code>:ksi vanhan tutun <code>eth0</code>:n sijaan.
+Helppo tottua tahan muutokseen.
+</p>
+
+<p>
+<code>Xorg-x11</code> lahti kääntymään. Koska määrittelin nvidian mukaan jo
+<code>make.conf</code>:issa, kaikki tarpeellinen tulee yhdessä lastissa. Ehkä
+tunnin sisaan. Roger Watersin vetämä The Wall Live pyörii
+telkkarissa.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-18">
+<h3 id="sec-1-18">klo 23:50</h3>
+<div id="text-1-18" class="outline-text-3">
+<p>
+Xorg jo toiminnassa. Hieman mietinnässä, että menenkö vanhalla
+GDM:lla, vai Qingylla, vai vaikka LightDM:lla. Eräät tuntuvat
+olevan startx-linjalla, mutta rohkenen olla asiasta eri mieltä.
+</p>
+
+<p>
+Alkaa olla talta paivaa tarpeeksi kaantelya ilmassa.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-19">
+<h3 id="sec-1-19">Lauantai 22.6.2013, klo 10:27</h3>
+<div id="text-1-19" class="outline-text-3">
+<p>
+Olen hieman häkeltynyt vielä siitä, miten nopeasti nvidian uuden
+<code>xrandr</code>-tuen turvin päästiin moninäyttöiseen X-käyttelyyn. Nyt
+boottasin kuitenkin kaikesta huolimatta Lubuntun puolelle tekemään
+joitain kääntelyitä ja lukemaan LightDM-ohjeita. Olen kahden
+vaiheilla, otanko LightDM:n käyttööni. Qingyn asentaminen vaatii
+framebufferit kerneliin (ei vaadi, jos ei tarvitse silmäkarkkia
+loginiin), mutta olisi sitten aika eliitti.
+</p>
+
+<p>
+Tällä hetkellä on GHC:n asentaminen Xmonadia varten meneillään –
+sitten Firefox luvassa. Ei tässä ole onneksi mihinkään kiire.
+</p>
+
+<p>
+Nyt oleellisinta olisi kirjoittaa asennuslistaa itselleen ja
+keskittyä kuhunkin osakohtaan kerrallaan: muuten tulee vain
+hädissään paiskottua paketteja sisään ja konffit jäävät
+puutteellisiksi.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-20">
+<h3 id="sec-1-20">klo 11:04</h3>
+<div id="text-1-20" class="outline-text-3">
+<p>
+GHC edelleen kääntymässä. Edelleen kaksiportaisen käännöksensä
+ensimmäisessä vaiheessa, joten hengitystään ei kannata pidätellä.
+</p>
+
+<p>
+Päätin siinä ohessa valita Qingyn “loginmanagerikseni”. Se on
+todella kevyt, ei dependenssejä ja saa myös ihan nätiksi
+framebufferien kanssa.
+</p>
+
+<p>
+Oletus-USE-flageilla on päässyt yllättävän pitkälle! Olen nyt
+kirjaillut joitain yhteisiä nimittäjiä ylös, ja niitä ei ole kovin
+montaa. Yhdessä ikkunassa pidät editorissa sekä <code>packages.use</code>-
+että <code>make.conf</code>-tiedostoja ja toisessa pyörittelet <code>emerge -tuvpN
+world</code> -listausta. Omalla kohdallani huomasin, että:
+</p>
+
+<ul class="org-ul">
+<li>X;
+</li>
+<li>jpeg, png, gif, alsa, (mp3, ogg, flac, …);
+</li>
+<li>oletuskonffin suosittelemat mmx, sse, sse2;
+</li>
+<li>(bindist pois ehdottomasti),
+</li>
+<li>(bash-completion, zsh-completion),
+</li>
+</ul>
+
+<p>
+riittävät pitkälle. Jos olet aloitteleva Emacsisti, niin älä laita
+<code>emacs</code>-flagia ainakaan globaaleihin flageihin. Tuntuu vain
+sotkevan, mutta ehkä se olen vain minä. Sen sijaan vimistelijän
+kannattaa asettaa <code>vim</code> globaaleihin. Saa paljon hyvää
+automaattisesti. Esimerkiksi asennat conkyn -&gt; sopiva
+conky-konffin väritys tulee automaattisesti perästä. 
+</p>
+
+<p>
+Useflagit voi toki jakaa useaan palaseen tähän malliin:
+</p>
+
+<pre class="example">
+# general use
+USE="bindist X vim offensive"
+
+# optimizations
+USE="${USE} mmx sse sse2"
+
+# multimedia etc
+USE="${USE} jpeg png gif xft alsa"
+</pre>
+
+<p>
+Näin vältyt massiiviselta kilotavuluokan onelinerilta.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-21">
+<h3 id="sec-1-21">klo 12:20</h3>
+<div id="text-1-21" class="outline-text-3">
+<p>
+Qingy näyttää asentuneen hyvin ja framebufferitkin ovat taas
+pelissä. Xmonad ei lähtenyt nätisti rullaamaan, mutta taisi johtua
+siitä, että /home on mountattu noexecinä. Älä aseta huvin vuoksi
+“user"-flagia /homen mount-optioihin <code>fstabissa</code>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-22">
+<h3 id="sec-1-22">klo 12:35</h3>
+<div id="text-1-22" class="outline-text-3">
+<p>
+Siitä se olikin kiinni. Nyt xmonad lähtee käyntiin, ja xmobarkin.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-23">
+<h3 id="sec-1-23">klo 13:10</h3>
+<div id="text-1-23" class="outline-text-3">
+<p>
+Firefox kääntymään ja meikä lähtee nyt grillailemaan pariksi
+tunniksi veljen tykö.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-24">
+<h3 id="sec-1-24">klo 18:55</h3>
+<div id="text-1-24" class="outline-text-3">
+<p>
+Vierailut on vierailtu. En ajatuksissani hoksannut ottaa
+<code>bindist</code>-useflagia pois. Se on aika kamala flagi, jolla on hyvin
+vähän käyttöä henkilökohtaisissa asennuksissa.
+</p>
+
+<p>
+Nyt on aika säätää musiikki ja ääni kuntoon. MPD ja sen kaverit
+kuntoon. Vanhat konffit taitavat mennä sellaisenaan sisään, mutta
+alsan työkaluja tarvitaan. Millähän nimellä ne taas kulkivatkaan?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-25">
+<h3 id="sec-1-25">klo 19:30</h3>
+<div id="text-1-25" class="outline-text-3">
+<p>
+<i>The music is on.</i> Vanhat ALSA-konffit saavat jatkaa toiminnassa,
+ovathan ne niin erinomaiset. MPD ja kaikki oheissälä on kanssa
+kunnossa. Konffataanpa huvikseen tuo NTP kuntoon. Aiemmin olen
+käyttänyt ntpdate-klienttiä cronissa, mutta jospa nyt asiat
+tehdään oikein.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-26">
+<h3 id="sec-1-26">klo 20:40</h3>
+<div id="text-1-26" class="outline-text-3">
+<p>
+Videot, katselupäiväkirjat ja kirjastotoiminnallisuus testattu kanssa.
+Tänään voisi rentoutua elokuvan parissa. Huominenhan on vielä kokonaan
+konffaamiselle vapaata aikaa!
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-27">
+<h3 id="sec-1-27">Sunnuntai 23.6.2013, klo 10:23</h3>
+<div id="text-1-27" class="outline-text-3">
+<p>
+Uusi asenneltava alkaa olla ns. kiven takana. SSHd ja Fail2ban ovat
+jäljellä muistilistallani, sekä useita henkilökohtaisen kustomoinnin
+asioita. Kursorit esimerkiksi ovat järin oudot.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-28">
+<h3 id="sec-1-28">klo 11:50</h3>
+<div id="text-1-28" class="outline-text-3">
+<p>
+Syslog, sshd ja fail2ban konffattu kuntoon. Olen tavannut laittaa
+<code>messages</code>-tiedoston käyttäjäni luettavaksi. Aiemmin permissioilla
+644, nyt tiukennetusti 640 ja <code>group==progo</code>. Edistystä kai.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-29">
+<h3 id="sec-1-29">klo 12:30</h3>
+<div id="text-1-29" class="outline-text-3">
+<p>
+Salasanalompakko pitää kai uusia. Olinkin kyllästynyt vanhaan
+versioon, joka ei tarjoa paljoa käytettävyyttä. (MyPasswordSafe.)
+Tutkiskelen komentoriviversioita.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-30">
+<h3 id="sec-1-30">klo 14:50</h3>
+<div id="text-1-30" class="outline-text-3">
+<p>
+<a href="http://zx2c4.com/projects/password-store/">Pass</a> vaikuttaa täydellisimmältä minun tarpeisiin. Aito
+salasanamanageri unix-filosofiaan. Salaus GPG:llä, säilytys
+tiedostojärjestelmässä ja valinnaisesti gitissä. Selaaminen
+shellin komentorivitäydennyksellä. Muut varmasti tykästyvät
+KeePassiin. Myös <code>pwsafe</code>-niminen viritys tuli tietoisuuteeni: se
+on vieläpä yhteensopiva MyPasswordSafen kanssa. Vähän on avoinna
+vielä lopullinen valinta.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-31">
+<h3 id="sec-1-31">Loppusanat</h3>
+<div id="text-1-31" class="outline-text-3">
+<p>
+Kaikki sunnuntainen lätinä on käytännössä yhdentekevää itse
+distron asentamisen kannalta.
+</p>
+
+<p>
+Mutta mitä meille jäi käteen tästä? Eroja vanhaan systeemiin olisi
+luultavasti erittäin vähän, jos olisin mennyt täsmälleen samalla
+konfiguraatiolla. Nyt kuitenkin vaihdoin esimerkiksi
+cron-demoniani ja displaymanageriani, mikäli Qingy sellaiseksi
+voidaan edes laskea.
+</p>
+
+<p>
+Muutama ratkaisematon ongelma jäi: Logitech MX518 -hiireni
+peukalotoimiset apunapit eivät suostuneet tunnistautumaan
+<code>xbindkeys</code>-ohjelmalle enää uudessa asennuksessa. Niiden
+oletustoiminnot ovat mennä nettiselaimessa historiassa eteen- ja
+taaksepäin, mutta olen itse käyttänyt mainittua ohjelmaa
+mappaamaan Page Up/Down -toiminnot niihin. No nyt en saanut sitä
+toimimaan. Imwheelin ja Lomocon asentaminen ei auttanut myöskään:
+nyt napeista hävisi kaikki toiminnallisuus. Luultavasti kernelin
+USB-HID -puolelta jäi jokin täppä asettamatta.
+</p>
+
+<p>
+Kursorit ovat hieman vinksinvonksin nyt. Samaa ilmiötä olin nähnyt
+vanhassa systeemissäni, kun kokeilin display managereita GDM:n
+ulkopuolelta. Vain GDM antoi “hyvät” kursorit käyttööni, ja
+hyvillä tarkoitan Xorgin mustia oletuskursoreita <i>poislukien</i>
+ristikkokursori. Tämä asia ei tietenkään ole täysin sidoksissa
+GDM:n toimintaan, se vain asettaa järkevät oletukset
+root-ikkunalle. Näihin asioihin löytyy luultavasti jokin erittäin
+helppo ratkaisu, mutta sopivaa kursorisettiä en ole vielä
+löytänyt.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130623_1637';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

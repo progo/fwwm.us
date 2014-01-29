@@ -1,0 +1,20 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Tehokas reduce [NEW]</title><link>http://fwwm.us/miete/tehokas-reduce.html</link><guid isPermaLink="false">20130216_2012</guid><description>
+Funktionaalisen ohjelmoinnin kolme keskeisintä työkalua ovat
+eittämättä korkeamman asteen funktiot map, reduce ja filter,
+joista kullakin on omanlaisensa tehtävä. Näistä kuitenkin reduce
+voittaa yleisyydessä kevyesti.
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Python on huonompi kieli kuin Clojure [NEW]</title><link>http://fwwm.us/miete/python-vs-clojure.html</link><guid isPermaLink="false">20130518_2028</guid><description>
+Pakko hieman avautua Pythonin puutteista ja miksi Clojure sitten
+voittaa kädenväännössä lopulta. Nämä asiat ovat osittain
+objektiivisia totuuksia, mutta lopputulema on luonnollisesti
+subjektiivinen, oma näkemykseni näiden faktojen kasaantumisesta.
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Java + JavaScript, paras pelialusta? [NEW]</title><link>http://fwwm.us/miete/java-js-pelialustana.html</link><guid isPermaLink="false">20130712_1327</guid><description>
+Nykypäivän web-työkalut tuntuvat johtavan väistämättä tilanteeseen,
+jossa Javascript on riittävän tehokasta moneen tarkoitukseen ja on
+pysyvää: selaimet tukevat jatkossakin. Lisäksi tarjolla on
+kaikenlaista kivaa: on Audio-API:a ja on Websockettia. Peräti
+3D-kiihdyteltyä GL:ää, jos oikein riehaannutaan. Javascript, eikä
+Java sen puoleen, ei ole menossa minnekään, vaan tarjoaisi hyvän
+tavan toimittaa käyttöjärjestelmäriippumattoman pelikokemuksen
+aistikkaasti kaikille ja niin, että peli toimii tulevaisuudessakin.
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item></channel></rss>

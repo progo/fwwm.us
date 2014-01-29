@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>org 8 hajottaa blogin — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">14.11.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">13.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">org 8 hajottaa blogin   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Ei ole tullut kamalan usein päiviteltyä tätä blogia nyt ainakaan,
+kun on ollut aatteena <a href="blogin-refaktorointia.html">uudistaa koko systeemi</a>. Nyt iso ja kenties
+viimeinen pisara on katkaista kamelimme selän, kun org 8:n uusittu
+vientimoottori on uusinut myös ulostulon kokonaan. Hieman
+purkkamaisesti kasattu HTML-&gt;Blog -skriptini ei selviä aivan
+kaikista muutoksista triviaalein säädöksin, sillä uusi org-export
+jättää joitain päivämääriin liittyvää pois.
+</p>
+
+<p>
+Nämä pari tuoretta blogijuttua julkaisin näppärästi
+fallbackkaamalla versioon org-7.8, ja näin voi tehdä hamaan
+tulevaisuuteen saakka. Kaikki toimii tässä kuten ennenkin, joskin
+syntaksivärjäys on oudosti hävinnyt johonkin. Lienee viisainta
+ruveta tosissaan virittelemään kestävämpää ratkaisua. Olen ollut
+hiljan tulessa erinäisten clojure-projektien kanssa, joten ehkä
+samalla kyydillä repäisen tämän kuntoon.
+</p>
+
+<p>
+Kantavana perusideana on ollut tehdä blogista hieman orgaanisempi,
+yksi-postaus-per-tiedosto, ja viritellä git-integraatiota siten,
+että postausten muutoshistoria olisi ainakin päivämäärien osalta
+näkyvillä.
+</p>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20131114_1402';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

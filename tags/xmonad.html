@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Tagi — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+  </ul>
+  <ul id="all-tags-list" class="tag-list"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/fallout.html" class="tag-name">fallout</a></li><li class="tag-1"><a href="/tags/asunto.html" class="tag-name">asunto</a></li><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/editorit.html" class="tag-name">editorit</a></li><li class="tag-0"><a href="/tags/elokuvat.html" class="tag-name">elokuvat</a></li><li class="tag-0"><a href="/tags/bash.html" class="tag-name">bash</a></li><li class="tag-0"><a href="/tags/david_e_kelley.html" class="tag-name">david_e_kelley</a></li><li class="tag-0"><a href="/tags/koodi.html" class="tag-name">koodi</a></li><li class="tag-0"><a href="/tags/hifi.html" class="tag-name">hifi</a></li><li class="tag-0"><a href="/tags/gentoo.html" class="tag-name">gentoo</a></li><li class="tag-0"><a href="/tags/elisp.html" class="tag-name">elisp</a></li><li class="tag-0"><a href="/tags/nethack.html" class="tag-name">nethack</a></li><li class="tag-0"><a href="/tags/musiikki.html" class="tag-name">musiikki</a></li><li class="tag-0"><a href="/tags/ohjelmistot.html" class="tag-name">ohjelmistot</a></li><li class="tag-0"><a href="/tags/vim.html" class="tag-name">vim</a></li><li class="tag-0"><a href="/tags/matikka.html" class="tag-name">matikka</a></li><li class="tag-0"><a href="/tags/xmonad.html" class="tag-name">xmonad</a></li><li class="tag-0"><a href="/tags/jazz.html" class="tag-name">jazz</a></li><li class="tag-0"><a href="/tags/softa.html" class="tag-name">softa</a></li><li class="tag-0"><a href="/tags/haskell.html" class="tag-name">haskell</a></li><li class="tag-0"><a href="/tags/twitter.html" class="tag-name">twitter</a></li><li class="tag-0"><a href="/tags/listat.html" class="tag-name">listat</a></li><li class="tag-0"><a href="/tags/roguelike.html" class="tag-name">roguelike</a></li><li class="tag-0"><a href="/tags/zsh.html" class="tag-name">zsh</a></li><li class="tag-0"><a href="/tags/kirja.html" class="tag-name">kirja</a></li><li class="tag-0"><a href="/tags/fp.html" class="tag-name">fp</a></li><li class="tag-0"><a href="/tags/kirjat.html" class="tag-name">kirjat</a></li><li class="tag-0"><a href="/tags/js.html" class="tag-name">js</a></li><li class="tag-0"><a href="/tags/pelailu.html" class="tag-name">pelailu</a></li><li class="tag-0"><a href="/tags/arvostelu.html" class="tag-name">arvostelu</a></li><li class="tag-0"><a href="/tags/mpd.html" class="tag-name">mpd</a></li><li class="tag-0"><a href="/tags/huumori.html" class="tag-name">huumori</a></li><li class="tag-0"><a href="/tags/cli.html" class="tag-name">cli</a></li></ul>
+</div>
+    <div id="main">
+  <div id="article-list">
+    <h3>
+      Jutut tagilla <span class="tag tag-name">xmonad</span>
+      <a href="xmonad.rss" class="tag-rss">[RSS]</a>
+    </h3>
+    <ul>
+      <li>
+        <!-- päivityspvm -->
+        <span class="post-rev">Päivitetty
+          <span class="post-rev-date">08.12.2013</span>
+        </span>
+        <!-- nimi ja linkki -->
+        <a href="/miete/xmonad.html" class="post-link"><b class="post-name">Xmonad ja dynaamiset työpöydät</b></a>
+        <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/haskell.html" class="tag-name">haskell</a></li><li class="tag-0"><a href="/tags/xmonad.html" class="tag-name">xmonad</a></li></ul>
+        <!-- Introduktio -->
+        <p class="post-taste">
+Xmonadin oletuksena tarjoamat 9-10 työpöytää tulevat nopeasti
+ahtaaksi, kun oikein haluaa railatella. Lisäksi ennalta valitut,
+kiinnitetyt työpöytänimet eivät aina kuvaa koko totuutta.
+Saataisiinko Emacsin <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>-moodia vastaavaa huippukäytettävää
+toiminnallisuutta Xmonadin työpöytiinkin? Voi, kyllä saadaan,
+kiitos tuoreen löydön, <a href="http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-Commands.html">Xmonad.Actions.Commands</a>-kirjaston.
+</p>
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

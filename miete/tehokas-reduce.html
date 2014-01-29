@@ -1,0 +1,360 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Tehokas reduce — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">16.02.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/fp.html" class="tag-name">fp</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Tehokas <code>reduce</code>   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Funktionaalisen ohjelmoinnin kolme keskeisintä työkalua ovat
+eittämättä korkeamman asteen funktiot <code>map</code>, <code>reduce</code> ja <code>filter</code>,
+joista kullakin on omanlaisensa tehtävä. Näistä kuitenkin <code>reduce</code>
+voittaa yleisyydessä kevyesti.
+</p>
+
+<p>
+Esittelen tässä postauksessa funktionaalisten kielten perusteisiin
+kuuluvana asiana kuinka nämä funktiot voitaisiin kirjoittaa ja
+sitten, miten <code>reduce</code> voi korvata sekä <code>map</code>-, että
+<code>filter</code>-funktiot.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1"><code>map</code></h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Funktio <code>map</code> on niin klassinen työväline listojen käsittelyssä,
+että se tuntuu uponneen kertaheitolla kaaliin. Matemaattisesti
+<code>map</code> ei ole paljoa muuta kuin funktion soveltaminen kokonaiseen
+joukkoon, usein kirjoitettuna näin: 
+<img class="dvipng" alt="$$f(A) := \{ f(a) \mid a \in A \}.$$" src="ltxpng/tehokas-reduce_b7181392684ef188e51ec749c313349c222ccbc1.png" /> 
+</p>
+
+<p>
+Funktionaaliset kielet pelaavat jonojen, usein listojen parissa.
+Siispä matemaattinen joukkonotaatio ja joukkojen kanssa
+puljautuminen siirtyy listoiksi. Clojure osaa toki soveltaa
+<code>map</code>-funktiota joukkoihinkin, koska joukot toteuttavat yleisemmän
+jonoabstraktion.
+</p>
+
+<p>
+<code>map</code> ottaa siis tavallisesti kaksi argumenttia; ensin käytettävän
+funktion ja toisena kokoelman alkioita, joihin funktiota
+sovelletaan. Clojuressa kokoelmia saa toimittaa mielivaltaisen
+monta. Tällöin kustakin joukosta poimitaan kerralla yksi
+argumentti annettavaksi funktiolle.
+</p>
+
+<p>
+Funktionaaliseen tapaan kirjoitamme toteutukset rekursiiviseen
+tapaan.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">map</span> [fun coll]
+  (<span class="code-builtin">loop</span> [fun fun, coll (<span class="code-variable-name">seq</span> coll), acc ()]
+    (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
+      (<span class="code-builtin">recur</span> fun
+             (<span class="code-variable-name">rest</span> coll)
+             (<span class="code-variable-name">concat</span> acc (<span class="code-variable-name">list</span> (fun x))))
+      acc)))
+
+(<span class="code-keyword">defn</span> <span class="code-function-name">map</span>' [fun coll]
+  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
+    (<span class="code-variable-name">cons</span> (fun x)
+          (<span class="code-variable-name">map</span>' fun (<span class="code-variable-name">rest</span> coll)))))
+</pre>
+</div>
+
+<p>
+Tässä on kaksi naiivia, perustason esimerkkiä, miten <code>map</code>:n voisi
+toteuttaa. Ensimmäinen käyttää rekursiivisuuteen Clojuren
+toteuttamaa <code>loop-recur</code> -rakennetta, jolla häntärekursio saadaan
+kuriin. Tuloksena on myös hieman rumempaa koodia.
+</p>
+
+<p>
+Toinen tapa on perinteisempi funktionaalinen tapa, jota
+Haskell-ihmiset varmasti muistavat kehua. Rakennamme hyvin
+perinteisellä <code>cons</code>-metodilla saman listan. <code>cons</code> eli
+<i>construct</i> lisää ensimmäisen argumenttinsa toisen argumentin
+alkuun.
+</p>
+
+<p>
+Haskellissa on vastaavanlainen listojen rakennusmenetelmä, eli
+lyhyt oppimäärä: <img class="dvipng" alt="$x : [a, b, c] == [x, a, b, c]$" src="ltxpng/tehokas-reduce_8d795151ce9ce11e3f74502f836c3cea7fbf39ff.png" />. Kaksoispiste
+<code>:</code> toimii konstruktorina. Tästä sitten rekursiivisesti voimme
+sanoa, että <img class="dvipng" alt="$1 : 2 : 3 : []$" src="ltxpng/tehokas-reduce_8ea154391cb9dd7ff6c31ad5a60cc8d70e7ff311.png" /> on sama lista kuin <img class="dvipng" alt="$[1, 2, 3]$" src="ltxpng/tehokas-reduce_f755ddbae5f05eb6064e32bf09be5e82956550ae.png" />.
+Ylimääräiset sulut voimme näet jättää pois tässä yhteydessä.
+</p>
+
+<p>
+Yhtä kaikki, JVM ei tue häntärekursiota, eli jälkimmäinen
+menetelmä kannattaa suosiolla unohtaa. Liian isojen kokoelmien
+kanssa kutsupino kasvaa ylitse. Clojure valitsi eksplisiittisen
+merkinnän, <code>loop--recur</code>, jolla optimoitavissa oleva rekursio
+voidaan ilmaista. Clojuren oikea <code>map</code>-toteutus käyttää laiskoja
+listoja ja niiden kanssa käytettävää makrorakennetta, ja se on
+kokonaan toisennäköinen.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2"><code>filter</code></h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Kokoelman suodatus epäkelvon aineksen pyyhkimiseksi on myös eräs
+hyvin yleinen probleema. <code>filter</code> jättää siis kaikki ne alkiot
+kokoelmasta jäljelle, joille predikaatti antaa toden.
+</p>
+
+<p>
+Ohessa seuraa edellistä <code>map</code>-koodia mukaileva ratkaisu.
+Pilkullinen versio on taasen se naivi esitys matemaattisesta
+ideasta taustalla. Jos alkio täyttää ehdon, otetaan se mukaan ja
+haetaan sitten loput filtteröidyt alkiot uuden kutsun voimin. Eri kätevää.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filter</span> [pred coll]
+  (<span class="code-builtin">loop</span> [pred pred, coll coll, acc ()]
+    (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
+      (<span class="code-builtin">if</span> (pred x)
+        (<span class="code-builtin">recur</span> pred (<span class="code-variable-name">rest</span> coll) (<span class="code-variable-name">concat</span> acc (<span class="code-variable-name">list</span> x)))
+        (<span class="code-builtin">recur</span> pred (<span class="code-variable-name">rest</span> coll) acc))
+      acc)))
+
+(<span class="code-keyword">defn</span> <span class="code-function-name">filter</span>' [pred coll]
+  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
+    (<span class="code-builtin">if</span> (pred x)
+      (<span class="code-variable-name">cons</span> x (<span class="code-variable-name">filter</span>' pred (<span class="code-variable-name">rest</span> coll)))
+      (<span class="code-variable-name">filter</span>' pred (<span class="code-variable-name">rest</span> coll)))))
+</pre>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3"><code>reduce</code></h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Reduktiot kokoelmista yhdeksi skalaariksi. Yleisiä ongelmia.
+Haskellissa <code>foldl</code>, Rubyssä <code>inject</code> ja muissa kielissä <code>reduce</code>
+tekee homman.
+</p>
+
+<p>
+<code>reduce</code> tarvitsee kahden muuttujan funktion, jolle se syöttää
+aina uuden alkion kokoelmasta. Kertymämuuttuja alustetaan yleensä
+funktiolle ominaisen neutraalialkion kanssa: yhteenlaskun
+tapauksessa 0 on luonnollinen, tulon kanssa 1, ja sitä rataa.
+</p>
+
+<p>
+Kun ovelana käytämme alkuarvoa <code>x0</code> myös kertymämuuttujana, saamme
+itse asiassa aikaan kaikkein sievintä koodia:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">reduce</span> [fun x0 coll]
+  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
+    (<span class="code-builtin">recur</span> fun (fun x0 x) (<span class="code-variable-name">rest</span> coll))
+    x0))
+</pre>
+</div>
+
+<p>
+Kaikilla näillä funktioilla on määrittelyssä yhteisiä piirteitä:
+kaikista otetaan ensialkio talteen, ja jos ei saada sellaista niin
+rekursio lopetetaan (joukko <code>coll</code> on selvästi tyhjä siinä
+pisteessä).
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4"><code>reduce</code> voittaa</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Pienellä notkeudella tutkikaamme, miten <code>map</code>- ja
+<code>filter</code>-funktiot voisi toteuttaa <code>reduce</code>:n avulla. Meidän
+tarvitsee vain kirjoittaa sopivanlainen funktio ja alkuarvo
+lähetettäväksi.
+</p>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-4-1">
+<h4 id="sec-1-4-1"><code>map</code> <code>reduce</code>:n avulla</h4>
+<div id="text-1-4-1" class="outline-text-4">
+<p>
+<code>map</code> kuvaa funktiolla joukon toisenlaiseksi joukoksi:
+reduktio-funktiomme voisi olla tämännäköinen:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">mapr</span> [fun coll]
+  (<span class="code-builtin">let</span> [f (<span class="code-keyword">fn</span> [xs x]
+            (<span class="code-variable-name">concat</span> xs (<span class="code-variable-name">list</span> (fun x))))]
+    (<span class="code-variable-name">reduce</span> f () coll)))
+</pre>
+</div>
+
+<p>
+Vaikka <code>reduce</code> toimii idealla “kokoelma yhdeksi skalaariksi”, on
+Clojuressa skalaarin käsite hieman häilyvä. Funktiomme palauttaa
+itse asiassa koko listan <b>plus</b> yhden uuden (ja käsitellyn)
+alkion, täten replikoiden <code>map</code>-funktion toiminnallisuuden.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-4-2">
+<h4 id="sec-1-4-2"><code>filter</code> <code>reduce</code>:n avulla</h4>
+<div id="text-1-4-2" class="outline-text-4">
+<p>
+Samalla menettelyllä kirjoitetaan <code>filter</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filterr</span> [pred coll]
+  (<span class="code-builtin">let</span> [f (<span class="code-keyword">fn</span> [xs x]
+            (<span class="code-builtin">if</span> (pred x)
+              (<span class="code-variable-name">concat</span> xs (<span class="code-variable-name">list</span> x))
+              xs))]
+    (<span class="code-variable-name">reduce</span> f () coll)))
+</pre>
+</div>
+
+<p>
+Syntyy tavallaan jopa alkuperäistä sievempää koodia.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Mitä tästä opimme?</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Että nyt kaikki kirjoittamaan reduktioita? Ei. Yksi asia, missä
+<code>map</code> ja <code>filter</code> eroavat kovasti tosielämän <code>reduce</code>:sta on
+niiden laiskuus. Laiskuutta en tässä voinut demonstroida, mutta
+<code>reduce</code> on määritelmältään epälaiska funktio. Sen on saatava
+evaluoitua kaikki annetut argumenttinsa, jotta se pääsee
+suoriutumaan.
+</p>
+
+<p>
+Tärkeämpää on ottaa opikseen näistä esimerkeistä <code>reduce</code>:n voima.
+Esimerkkinä useiden kuvausten yhdistäminen: ennen tätä oppimäärää
+olisin luultavasti tyytynyt siihen seikkaan, että clojuren oma
+<code>merge</code>-funktio toimii vain kahden kuvauksen kanssa, ja olisin
+kirjoittanut <code>loop-recur</code>-rakenteen yhdistämään mielivaltaisen
+monta kuvausta keskenään. Nyt voin kutsua yksinkertaisemmin:
+<code>(reduce merge my-maps)</code>, ja siirtyä muihin ongelmiin.
+</p>
+
+<p>
+Se, että <code>reduce</code>:a aina opetetaan käyttämällä oikeita skalaareja,
+saattaa hämätä itse kutakin. Kaikki on mahdollista, vaikkapa
+funktiokompositiokin, saada aikaan <code>reduce</code>:n voimin.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130216_2012';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Parhaat palat vim-konffeistani — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">27.04.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/vim.html" class="tag-name">vim</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Parhaat palat vim-konffeistani   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Yksi kirjoitettu sääntö on, että jokaisen blogin tulee jossain
+vaiheessa esitellä ylläpitäjänsä konffifileet tarkkaan läpi. Jotain
+taianomaista siinä kai on. Esittelenpä siis minäkin.  Tässä
+379-rivisessä paukussa on kaikenlaista kivaa. Kertymä on aloitettu
+vuonna 2007, vaikka en voi varmaksi todeta, onko itse tiedosto
+sieltä asti säilynyt.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Pathogen</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Viime vuosien oleellisin Vim-skripti, joka kaikkien tulisi ottaa
+pikimmiten käyttöön, on tpopen kirjoittama <a href="https://github.com/tpope/vim-pathogen">Pathogen</a>. Lopetat
+kertaheitolla kolmansien osapuolien skriptien kanssa häsläämisen,
+kun voit vain git-kloonata repon <code>~/.vim/bundle</code> -hakemistoon ja
+homma on sillä selvä. Tämä riittää silloin konffiin:
+</p>
+
+<pre class="example">
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin indent on
+</pre>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Pehmeät tabit: ainoa oikea valinta</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Kovista tabeista luopuminen aikoinaan oli kova paikka (paljon
+työtä ja turhannäköisiä committeja), mutta on ollut yksi parhaista
+ratkaisuistani ikinä. Kunnollisten säätöjen tekemisen puute on
+luultavasti isoin syy siihen, mikseivät ihmiset ole enemmänkin
+siirtyneet Oikealle Tielle.
+</p>
+
+<pre class="example">
+" Softwidth ja tabstop molemmat sopivan pieniksi
+set tabstop:4
+set sw:4
+
+" Tabit välilyöntilöiksi!
+set expandtab
+set softtabstop:4
+set shiftround
+</pre>
+
+<p>
+Näillä säädöillä tabi tekee 4 väliä ja sen voi kumittaa
+backspacella aivan kuten kovan tabinkin. Ja nyt voi koodata
+joitain WS-sensitiivisiä kieliä aivan uudella tavalla.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Tekstit</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Oikoluku ja tekstin sopiva katkominen kuuluu proosan kirjailuun
+oleellisesti.
+</p>
+
+<pre class="example">
+set spellfile="/home/progo/.vim/myspellfile"
+
+" vimin dokumenteista:
+" tämä aiheuttaa rivien katkomisen
+set textwidth:0
+
+" Laitetaan tämä jotta vim mahduttaa tekstin annetun raamin sisään,
+" toisin sanoen esteettinen ja käytännöllinen 
+set linebreak
+
+" http://www.bioinspired.com/users/ajg112/computing/vim.shtml :
+" Do not automatically insert a comment leader after an enter
+set fo-=r
+</pre>
+
+<p>
+Vimin <code>linebreak</code> on perushuttua kaikille. Tämä on siis sitä
+visuaalista rivienkatkomista, joka ei koske tiedostoihin. Sen
+sijaan <code>textwidth</code>-asetuksen asettaminen asettaa vimin katkomaan
+rivejä. Nollattuna toiminto on luonnollisesti kytketty pois
+päältä. Tekstiä kirjoitellessa sitten nopeasti heitetty <code>set
+tw=78</code> antaa tekstin soljua mukavasti eteenpäin.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Haku</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Tehokkaan tekstinkäsittelyn oleellinen elementti on päästä
+paikasta toiseen.
+</p>
+
+<pre class="example">
+" http://www.stripey.com/vim/vimrc.html
+" make searches case-insensitive, unless they contain upper-case letters:
+set ignorecase
+set smartcase
+
+" very magic searches, easily disabled if needed
+nnoremap / /\v
+nnoremap ? ?\v
+</pre>
+
+<p>
+Ignorecase tietenkin jättää kirjainkoon huomioitta. Smartcase on
+kehittyneempi versio: kirjainkoko jätetään huomioitta vain jos
+koko hakuteksti on pienillä kirjaimilla.
+</p>
+
+<p>
+Sen jälkeen on kaksi erittäin oleellista mappausta, jotka
+paransivat vim-hakujen mukavuutta suunnattomasti. Vimin
+säännölliset lausekkeet ovat nimittäin sekalainen joukko, jotka
+jakautuvat peräti neljään eri luokkaan. (<code>:help pattern</code>) Kullakin
+luokalla on omat vaikutussäännöt ja se tuottaa suunnattomia
+vaikeuksia saada erikoismerkkejä sisältävät hakusanat hakemaan
+oikeata asiaa. Luokista “tiukin” on nimeltään “very magic”, joka
+tulkitsee <i>kaikki</i> erikoismerkit regex-symboleiksi. Mutta koska
+kaikki tulkitaan näin, ei tarvitse minun muistaa erikseen, mikä
+erikoismerkki piti milloinkin eskapettaa: nyt kaikki.
+Verymagic-asetus on siitä kehno, että sitä ei voi asettaa
+globaalisti aktiiviseksi. Yksittäisessä patternissa esiintyvä <code>\v</code>
+kuitenkin aktivoi sen, joten näillä mappauksilla asetan sen
+tavallaan oletukseksi.
+</p>
+
+<p>
+Vim-haut tapaavat oletuksena jättää rumaa merkintää ympäriinsä ja
+se voi joissain tapauksissa jopa vähentää hakemista. Tähän on
+kahdenlaista ratkaisua:
+</p>
+
+<pre class="example">
+" tyhjentää search hilightin
+nnoremap &lt;C-l&gt; :nohl&lt;CR&gt;&lt;C-l&gt;
+
+" vielä parempi: ei highlightia
+" set nohlsearch
+</pre>
+
+<p>
+Nyt <code>C-l</code> hävittää väritykset, kunnes haetaan uudestaan jossain
+vaiheessa. Vaihtoehtoisesti väritykset voi ottaa kokonaan pois,
+mutta joissain koodijutuissa olen havainnut mukavaksi jättää
+hakuja näkyville.
+</p>
+</div>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Bufferit</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Vim hallitsee useita avonaisia puskureita, mutta jostain syystä ne
+pitäisi oletusasetuksilla tallennella aina ennen vaihtoa. Sotii
+nopeatempoista pyörittelyä vastaan. Nämä asetukset tekevät hyvää:
+</p>
+
+<pre class="example">
+" Hidden: älä vaadi puskurien tallentamista 
+set hidden
+
+map &lt;C-j&gt; :bprev&lt;CR&gt;
+map &lt;C-k&gt; :bnext&lt;CR&gt;
+
+" sulje bufferi ilman ikkunan sulkemista
+command! BW :bn|:bd#
+</pre>
+
+<p>
+<code>C-j</code> ja <code>C-k</code> kelaavat nopeasti puskurit lävitse, ja se on
+mahtavaa. Erityisesti kun vimiä kuitenkin käytetään pitkälti
+siten, että kutakin avonaista projektia varten avataan oma vim.
+Ainakin minä siis.
+</p>
+
+<p>
+Useita ikkunoita käyttävänä haluan joskus sulkea turhat puskurit
+pois häiritsemästä, ja sitä varten on toki valmis <code>:bd</code>, eli buf
+delete. Se mokoma sulkee kuitenkin aina avonaisen ikkunankin,
+vaikkei tarvitsisi. Tällä kikalla kirjoitettu uusi komento <code>:BW</code>
+jättää ikkunan rauhaan.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-6">
+<h3 id="sec-1-6">Statusbar</h3>
+<div id="text-1-6" class="outline-text-3">
+<p>
+Jotkut vim-oletuskonffit voivat jättää statusbarin piirtämättä
+tietyissä konteksteissa. Suosin mieluummin sen pitämistä auki
+kaikissa tilanteissa:
+</p>
+
+<pre class="example">
+" statusbar näkymään
+" ja muotoilu: defaultti rivi on tyhjä ja se esittää tiedoston nimen, rivin ja prosentit yms
+set laststatus:2
+
+" syntaksi: help 'statusline'
+" %F: tiedosto
+" "%=": align right
+" http://www.winterdom.com/weblog/CommentView,guid,3372fa1e-966e-4389-b2ba-bb2ce527f52a.aspx
+
+set statusline:%&lt;%F%m%h%r%w\ (%{&amp;ff})\ %=%l,%v\ of\ %L,\ %p%%
+</pre>
+
+
+<p>
+Lisäksi on kiva nähdä, mitä komentoa on vimille antamassa:
+</p>
+
+<pre class="example">
+" Näytä kirjoitettava komento 
+set showcmd
+</pre>
+
+<p>
+Tavallaan statusbaariin liittyvää on myös ikkunan otsikko:
+</p>
+
+<pre class="example">
+set title
+set titlestring=vim:\ %F
+</pre>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-7">
+<h3 id="sec-1-7">Värit ja teemat</h3>
+<div id="text-1-7" class="outline-text-3">
+<p>
+Nämä ovat tietysti makuasioita pitkälti, mutta mutta… Taustat
+ovat terminaalissa aina tummia.
+</p>
+
+<pre class="example">
+" väritys oikein
+set background:dark
+
+" URXVT: railscast lucius zenburn desert256 jellybeans
+colorscheme jellybeans
+
+" Mutta jos ei värejä, vaihdetaan vähävärisemmälle:
+if &amp;t_Co &lt;= 16 
+  colorscheme default
+endif
+</pre>
+
+<p>
+Urxvt:ssä jellybeans vie voiton hillityllä tyylillä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-8">
+<h3 id="sec-1-8">Foldaus</h3>
+<div id="text-1-8" class="outline-text-3">
+<p>
+Vimin foldaus on asia, johon yleensä pitää opetella sisään. Sitten
+kun oppii, ei malta päästää irti.
+</p>
+
+<pre class="example">
+set foldenable
+nnoremap &lt;space&gt; za
+</pre>
+
+<p>
+Välilyönnillä saa jatkossa foldit auki tai kiinni.
+</p>
+</div>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-9">
+<h3 id="sec-1-9">Sekalaista ja huippuhyödyllistä</h3>
+<div id="text-1-9" class="outline-text-3">
+<pre class="example">
+nmap Y y$
+
+let maplocalleader = ","
+
+" hyppää samaan hakemistoon, missä tiedosto on
+command! CD cd %:p:h
+
+" tiedostoja täydentää helpomminkin!
+inoremap &lt;C-f&gt; &lt;C-x&gt;&lt;C-f&gt;
+
+" textmatea
+nnoremap &lt;C-q&gt; gqap
+</pre>
+
+<p>
+Jos <code>C</code> korvaa rivin lopun ja <code>D</code> poistaa rivin lopun, miksi
+oletuksen <code>Y</code> yankkaa koko rivin, ei vain loppua?! Fiksataan.
+</p>
+
+<p>
+Komento <code>:CD</code> vie vimin cwd:n nyt siihen paikkaan, missä bufferin
+osoittama tiedosto on. Kiva, jos pitää editoida vähän
+ympäriltäkin.
+</p>
+
+<p>
+Vähemmän tunnettu lisäystilan täydennysmoottori on <code>C-x C-f</code>, eli
+täydentää tiedostopolkuja ja -nimiä. Heitän tämän suoraan <code>C-f</code>:n
+taakse, ja jo on upeata.
+</p>
+
+<p>
+Ja viimeisenä kappaleen voi muotoilla kivasti kuosiin komentamalla
+<code>C-q</code> sen sisällä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-10">
+<h3 id="sec-1-10">Syntaksi esille</h3>
+<div id="text-1-10" class="outline-text-3">
+<p>
+Erityisesti vim-värityksiä hienosäätäessä on kiva tietää, mitä vim
+tietää kursorin alla olevasta tekstistä. Seuraava mappaus printtaa
+kaikki vimin syntaksivärjäysmoottorin väriluokat annetulle
+tekstille:
+</p>
+
+<pre class="example">
+" Show syntax highlighting groups for word under cursor
+function! &lt;SID&gt;SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nmap &lt;F2&gt; :call &lt;SID&gt;SynStack()&lt;CR&gt;
+</pre>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-11">
+<h3 id="sec-1-11">Joitain poimintoja <code>.vim/bundle</code> -hakemistosta</h3>
+<div id="text-1-11" class="outline-text-3">
+<p>
+Edellä kävin kaiken oleellisen ja ajantasaisen
+<code>.vimrc</code>-tiedostostani. Loppukevennyksenä esittelen joitain
+plugineita, joita olen asentanut.
+</p>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-11-1">
+<h4 id="sec-1-11-1">BufExplorer</h4>
+<div id="text-1-11-1" class="outline-text-4">
+<p>
+BufExplorer on huippukiva tapa koluta aukiolevat puskurit ja
+sulkea joutavat.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-2">
+<h4 id="sec-1-11-2">LocalVimrc</h4>
+<div id="text-1-11-2" class="outline-text-4">
+<p>
+<a href="https://github.com/vim-scripts/localvimrc">LocalVimRc</a> on vähän käytetty, mutta saattaa olla avuksi. Kullekin
+hakemistolle voi kirjoittaa oman <code>.vimrc</code>-tiedoston, joka luetaan.
+Projektikohtaisia vim-säätöjä, siis.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-3">
+<h4 id="sec-1-11-3">Vimwiki</h4>
+<div id="text-1-11-3" class="outline-text-4">
+<p>
+Emacsin MUSE:n (ent. wiki-mode) kilpailija on <a href="http://code.google.com/p/vimwiki/">VimWiki</a> ja se toimii
+yllättävän upeasti verkkotyylisten tiedostojen ja dokumenttien
+ylläpitoon. Musea ainakin käytetään paljon kevyenä CMS-moottorina,
+mikseipä myös Vimwikiä. Minähän tunnetusti koitin saada vimwikistä
+itselleni tietämyskantaa aikaan, mutta lopulta emacsin <a href="http://orgmode.org/">org-mode</a>
+voitti.
+</p>
+
+<p>
+Vimwiki-aiheiset säätöni liittyvät lähinnä hallinnollisiin
+säätöihin. KamelinVarvas-tekstien automaattisen linkifikaation
+pudotin pois ja ääkköset saadaan tunnistautumaan linkeissä
+lisäämällä ne jononjatkoksi.
+</p>
+
+<pre class="example">
+let g:vimwiki_list = [{'path': '~/.vim/wiki/'}]
+let g:vimwiki_browsers = ['firefox']
+let g:vimwiki_camel_case = 0
+let g:vimwiki_upper = "A-ZÄÖ"
+let g:vimwiki_lower = "a-zäö"
+let g:vimwiki_folding = 0
+let g:vimwiki_hl_headers = 0
+let g:vimwiki_use_mouse = 1
+</pre>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-4">
+<h4 id="sec-1-11-4">Conque</h4>
+<div id="text-1-11-4" class="outline-text-4">
+<p>
+Conque on alkeellinen terminaaliemulaattori vimin sisään. Pieni
+palanen emacsia mukaan. Kuvittele kaikkia niitä mahdollisuuksia,
+kun voit heittää vimin värjäyksiä ja pikanäppäimiä projektin
+“konsoliin”.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-5">
+<h4 id="sec-1-11-5">NERDTree</h4>
+<div id="text-1-11-5" class="outline-text-4">
+<p>
+Kyllä, NerdTree löytyy käytöstä, vaikka sillä tekee harvinaisen
+vähän omissa projekteissani. Jos koet tarvitsevasi cwd:n ympärillä
+pyörivää tiedostolistausta ja “nopeata” navigointia, niin NERDTree
+on erinomainen valinta.
+</p>
+
+<pre class="example">
+nmap &lt;left&gt; :NERDTreeToggle&lt;CR&gt;
+</pre>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-6">
+<h4 id="sec-1-11-6">NERDCommenter</h4>
+<div id="text-1-11-6" class="outline-text-4">
+<p>
+Kommentointia varten NERDCommenter on hyvä. Se tunnistaa
+tiedostotyypin ja kommentoi siten oikeanlaisia merkkejä.
+Emacsista tuttu <code>M-;</code> on hyvä valinta näppäinyhdistelmälle.
+</p>
+</div>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-11-7">
+<h4 id="sec-1-11-7">MatchIt</h4>
+<div id="text-1-11-7" class="outline-text-4">
+<p>
+<a href="http://www.catonmat.net/blog/vim-plugins-matchit-vim/">MatchIt</a> laajentaa vimin <code>%</code>-komentoa erityisesti (X)HTML-saralla:
+nyt voit hypätä sulkevaan HTML-tagiin prosentista. Osaa varmasti
+jotain muutakin, mutta yksinään tuon takia kantsi asentaa.
+</p>
+</div>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-11-8">
+<h4 id="sec-1-11-8">SnipMate</h4>
+<div id="text-1-11-8" class="outline-text-4">
+<p>
+TextMatesin snippet-toimintoa replikoi moni snippet-moottori
+vimissä. Ehkä nykyään kannattaa suunnata katse UltiSnips-paketin
+puoleen, mutta minä tulin hyvin toimeen SnipMaten kanssa.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-9">
+<h4 id="sec-1-11-9">Screen.vim</h4>
+<div id="text-1-11-9" class="outline-text-4">
+<p>
+Hassu ja pieni skripti mahdollistaa erillisen, mutta nimetyn
+screen-istunnon käyttämistä “kohteena” vimistä käsin. Luo
+nimellinen screen-sessio ja avaa haluamasi komentokehote siihen.
+Vimissä lataa <code>screen.vim</code> käyttöön ja maalaa tekstiä. Lähetä
+tämä teksti screeniin hakkaamalla <code>C-c C-c</code>. Yksinkertaista ja
+tehokasta. Voi käyttää vaikka bash-skriptien kehityksessä.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-11-10">
+<h4 id="sec-1-11-10">SlimV ja VimClojure</h4>
+<div id="text-1-11-10" class="outline-text-4">
+<p>
+Emacsia sanotaan lisp-kehitysympäristöjen kuninkaaksi, eikä aivan
+perusteetta. Vimilläkin pääsee huisin pitkälle. SlimV on
+kuuluisan SLIME:n Vim-vastine ja sillä voi hoitaa kaikenlaisia
+Swank-palvelun tarjoavia lispejä kotiin. Clojurea varten
+kannattaa katsella VimClojure läpi. Tosin kuluneen vuoden aikana
+tilalle on tainnut tulla enemmän ylläpidetty Fireplace.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130427_1456';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

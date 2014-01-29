@@ -1,22 +1,472 @@
-<html><head><meta content="text/html; charset=utf-8" http-equiv="content-type" /><script type="text/x-mathjax-config">/* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
-  on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
-  */
-MathJax.Extension.myImg2jax = {
-    version: "1.0",
-    PreProcess: function (element) {
-        var images = element.getElementsByTagName("img");
-        for (var i = images.length - 1; i >= 0; i--) {
-            var img = images[i];
-            if (img.className === "dvipng") {
-                var script = document.createElement("script");
-                script.type = "math/tex";
-                var match = img.alt.match(/^(\$\$?)(.*)\1/);
-                if (match[1] === "$$") {script.type += ";mode=display"}
-                MathJax.HTML.setScript(script,match[2]);
-                img.parentNode.replaceChild(script,img);
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
             }
-        }
-    }
-};
-MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
-</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script><link href="http://fwwm.us/css/main.css" rel="stylesheet" type="text/css" /><title>Kaikki jutut - Life at the Room.</title></head><body><div id="sidebar-left"><div><span class="title">Navigointi</span><ul id="navi-list"><li><a href="http://fwwm.us/">Etusivulle</a></li></ul><div class="rss-box"><span class="title">RSS</span><ul><li><a href="http://fwwm.us/index.rss">Kaikki</a></li></ul></div></div></div><div id="content"><div><h1>Kaikki jutut</h1><p>Kaikki jutut julkaisujärjestyksessä.</p><table id="post-list"><tr id="header"><td>Kategoria</td><td>Juttu</td><td>Julkaistu</td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/11/14/org-8-hajottaa-blogin.html">org 8 hajottaa blogin</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/11/index.html">marraskuuta</a> / 14.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/11/14/xmonad-ja-dynaamiset-tyoepoeydaet.html">Xmonad ja dynaamiset työpöydät</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/11/index.html">marraskuuta</a> / 14.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/10/08/taemaen-blogin-refaktorointia.html">Tämän blogin refaktorointia</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/10/index.html">lokakuuta</a> / 8.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/09/11/sennheiser-hd800-ja-akg-k1000.html">Sennheiser HD800 ja AKG K1000</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/09/index.html">syyskuuta</a> / 11.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/09/05/it-s-saturday-night.html">It's Saturday Night!</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/09/index.html">syyskuuta</a> / 5.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/08/15/moary-taeyttaeae-vuoden.html">Moary täyttää vuoden</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/08/index.html">elokuuta</a> / 15.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/07/12/java---javascript--paras-pelialusta-p.html">Java + JavaScript, paras pelialusta?</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/07/index.html">heinäkuuta</a> / 12.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/07/11/xen-virtualisointi-suoravaelitteisellae-raudalla.html">Xen-virtualisointi suoravälitteisellä raudalla</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/07/index.html">heinäkuuta</a> / 11.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/07/09/jos-fallout-olisi-kuten-nethack.html">Jos Fallout olisi kuten Nethack</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/07/index.html">heinäkuuta</a> / 9.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/06/29/happojatsi-ja-acid-jazz.html">Happojatsi ja Acid jazz</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/06/index.html">kesäkuuta</a> / 29.</span></td></tr><tr><td><a href="koodi/index.html">Koodi</a></td><td><a href="http://fwwm.us/koodi/2013/06/27/pelisavetukset-versiohallintaan.html">Pelisavetukset versiohallintaan</a></td><td><span class="post-date"><a href="koodi/2013/index.html">2013</a> / <a href="koodi/2013/06/index.html">kesäkuuta</a> / 27.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/06/23/hikinen-iltapaeivae--gentoo-uusiksi.html">Hikinen iltapäivä: Gentoo uusiksi</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/06/index.html">kesäkuuta</a> / 23.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/06/18/fallout.html">Fallout</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/06/index.html">kesäkuuta</a> / 18.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/06/15/monday-mornings.html">Monday Mornings</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/06/index.html">kesäkuuta</a> / 15.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/06/15/rautapaeivityksiae-ja-gentoo-uusiksi.html">Rautapäivityksiä ja Gentoo uusiksi</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/06/index.html">kesäkuuta</a> / 15.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/06/06/eli-bressert--scipy-and-numpy--o-reilly.html">Eli Bressert: Scipy and Numpy (O'Reilly)</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/06/index.html">kesäkuuta</a> / 6.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/06/06/emacsin-ido-trumppaa-kirjanmerkit.html">Emacsin IDO trumppaa kirjanmerkit</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/06/index.html">kesäkuuta</a> / 6.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/05/28/naapuriongelmat-ratkaistu.html">Naapuriongelmat ratkaistu</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/05/index.html">toukokuuta</a> / 28.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/05/18/python-on-huonompi-kieli-kuin-clojure.html">Python on huonompi kieli kuin Clojure</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/05/index.html">toukokuuta</a> / 18.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/05/18/kopiointia-seurannan-kanssa.html">Kopiointia seurannan kanssa</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/05/index.html">toukokuuta</a> / 18.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/05/17/kaeyttaemaeni-mpd-asiakkaat.html">Käyttämäni MPD-asiakkaat</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/05/index.html">toukokuuta</a> / 17.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/05/11/nopeat-kirjanmerkit-emacsille.html">Nopeat kirjanmerkit Emacsille</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/05/index.html">toukokuuta</a> / 11.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/27/parhaat-palat-vim-konffeistani.html">Parhaat palat vim-konffeistani</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 27.</span></td></tr><tr><td><a href="koodi/index.html">Koodi</a></td><td><a href="http://fwwm.us/koodi/2013/04/27/naeytoensaeaestaejaeskriptit.html">Näytönsäästäjäskriptit</a></td><td><span class="post-date"><a href="koodi/2013/index.html">2013</a> / <a href="koodi/2013/04/index.html">huhtikuuta</a> / 27.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/19/takaisin-kolmeen-naeyttoeoen.html">Takaisin kolmeen näyttöön</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 19.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/04/16/jyrki-kivimaeki-ja-dzoukki-kirjat.html">Jyrki Kivimäki ja Dzoukki-kirjat</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/04/index.html">huhtikuuta</a> / 16.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/08/progon-hifit.html">progon hifit</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 8.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/08/blogin-takana-on-mies.html">Blogin takana on mies</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 8.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/04/07/the-unit.html">The Unit</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/04/index.html">huhtikuuta</a> / 7.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/04/semanttisesta-versioinnista.html">Semanttisesta versioinnista</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 4.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/04/02/faster-than-light-2.html">Faster Than Light 2</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/04/index.html">huhtikuuta</a> / 2.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/04/01/mathematica-9.html">Mathematica 9</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/04/index.html">huhtikuuta</a> / 1.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/03/29/puoli-vuotta-emacsia.html">Puoli vuotta Emacsia</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/03/index.html">maaliskuuta</a> / 29.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/03/29/canto-on-uusi-rss-lukijani.html">Canto on uusi RSS-lukijani</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/03/index.html">maaliskuuta</a> / 29.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/03/28/uusi-blogi-on-nyt-out-live.html">Uusi blogi on nyt out live</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/03/index.html">maaliskuuta</a> / 28.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/03/17/viikonloppu-joensuussa.html">Viikonloppu Joensuussa</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/03/index.html">maaliskuuta</a> / 17.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/03/08/joensuuhun-hinnalla-millae-hyvaensae.html">Joensuuhun hinnalla millä hyvänsä</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/03/index.html">maaliskuuta</a> / 8.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/02/23/zsh-ja-zle.html">Zsh ja ZLE</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/02/index.html">helmikuuta</a> / 23.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/02/22/boston-public.html">Boston Public</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/02/index.html">helmikuuta</a> / 22.</span></td></tr><tr><td><a href="koodi/index.html">Koodi</a></td><td><a href="http://fwwm.us/koodi/2013/02/16/tehokas-reduce.html">Tehokas reduce</a></td><td><span class="post-date"><a href="koodi/2013/index.html">2013</a> / <a href="koodi/2013/02/index.html">helmikuuta</a> / 16.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/02/09/uusi-blogi-kaeyttaeae-javascriptiae.html">Uusi blogi käyttää JavaScriptiä</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/02/index.html">helmikuuta</a> / 9.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/02/07/the-newsroom.html">The Newsroom</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/02/index.html">helmikuuta</a> / 7.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/02/06/house-md.html">House MD</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/02/index.html">helmikuuta</a> / 6.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2013/02/06/emacs-rokkaa.html">Emacs rokkaa</a></td><td><span class="post-date"><a href="miete/2013/index.html">2013</a> / <a href="miete/2013/02/index.html">helmikuuta</a> / 6.</span></td></tr><tr><td><a href="viihde/index.html">Viihde</a></td><td><a href="http://fwwm.us/viihde/2013/02/06/tilkkutaekkielokuvat.html">Tilkkutäkkielokuvat</a></td><td><span class="post-date"><a href="viihde/2013/index.html">2013</a> / <a href="viihde/2013/02/index.html">helmikuuta</a> / 6.</span></td></tr><tr><td><a href="miete/index.html">Mietteet</a></td><td><a href="http://fwwm.us/miete/2012/10/24/twitteroeintiae-emacsilla.html">Twitteröintiä Emacsilla</a></td><td><span class="post-date"><a href="miete/2012/index.html">2012</a> / <a href="miete/2012/10/index.html">lokakuuta</a> / 24.</span></td></tr></table></div></div></body></html>
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Kaikki jutut — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="index.rss">RSS</a></li>
+  </ul>
+</div>
+    <div id="main">
+  <p>
+    Kaikki jutut nätissä listassa, olkaapa hyvät.
+  </p>
+
+  <ul class="all-posts-list">
+    <li>
+      <a href="/progo.html" class="post-link"><b class="post-name">Blogin takana on mies</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">08.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"></ul>
+    </li><li>
+      <a href="/viihde/boston-public.html" class="post-link"><b class="post-name">Boston Public</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">22.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li><li class="tag-0"><a href="/tags/david_e_kelley.html" class="tag-name">david_e_kelley</a></li></ul>
+    </li><li>
+      <a href="/miete/canto.html" class="post-link"><b class="post-name">Canto on uusi RSS-lukijani</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">29.03.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-0"><a href="/tags/softa.html" class="tag-name">softa</a></li></ul>
+    </li><li>
+      <a href="/miete/scipy-and-numpy.html" class="post-link"><b class="post-name">Eli Bressert: Scipy and Numpy (O’Reilly)</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">06.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-0"><a href="/tags/arvostelu.html" class="tag-name">arvostelu</a></li><li class="tag-0"><a href="/tags/kirja.html" class="tag-name">kirja</a></li></ul>
+    </li><li>
+      <a href="/miete/emacs-rokkaa.html" class="post-link"><b class="post-name">Emacs rokkaa</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">06.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li><li class="tag-0"><a href="/tags/editorit.html" class="tag-name">editorit</a></li></ul>
+    </li><li>
+      <a href="/miete/emacsin-ido-voittaa-kirjanmerkit.html" class="post-link"><b class="post-name">Emacsin IDO trumppaa kirjanmerkit</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">06.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li></ul>
+    </li><li>
+      <a href="/viihde/fallout.html" class="post-link"><b class="post-name">Fallout</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">18.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/fallout.html" class="tag-name">fallout</a></li></ul>
+    </li><li>
+      <a href="/viihde/ftl2.html" class="post-link"><b class="post-name">Faster Than Light 2</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">02.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-0"><a href="/tags/roguelike.html" class="tag-name">roguelike</a></li></ul>
+    </li><li>
+      <a href="/viihde/happo-acid-jazz.html" class="post-link"><b class="post-name">Happojatsi ja Acid jazz</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">29.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/jazz.html" class="tag-name">jazz</a></li><li class="tag-0"><a href="/tags/musiikki.html" class="tag-name">musiikki</a></li></ul>
+    </li><li>
+      <a href="/hifi/hifisettini.html" class="post-link"><b class="post-name">Hifisettini</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">08.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/hifi.html" class="tag-name">hifi</a></li></ul>
+    </li><li>
+      <a href="/miete/gentoon-asennus.html" class="post-link"><b class="post-name">Hikinen iltapäivä: Gentoo uusiksi</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">23.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/gentoo.html" class="tag-name">gentoo</a></li></ul>
+    </li><li>
+      <a href="/viihde/house.html" class="post-link"><b class="post-name">House MD</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">06.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li></ul>
+    </li><li>
+      <a href="/viihde/snl.html" class="post-link"><b class="post-name">It’s Saturday Night!</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">05.09.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li></ul>
+    </li><li>
+      <a href="/miete/java-js-pelialustana.html" class="post-link"><b class="post-name">Java + JavaScript, paras pelialusta?</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">12.07.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/koodi.html" class="tag-name">koodi</a></li></ul>
+    </li><li>
+      <a href="/miete/joensuuhun-hinnalla-milla-hyvansa.html" class="post-link"><b class="post-name">Joensuuhun hinnalla millä hyvänsä</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">08.03.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/asunto.html" class="tag-name">asunto</a></li></ul>
+    </li><li>
+      <a href="/viihde/fallout-vs-nethack.html" class="post-link"><b class="post-name">Jos Fallout olisi kuten Nethack</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">09.07.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/fallout.html" class="tag-name">fallout</a></li><li class="tag-0"><a href="/tags/nethack.html" class="tag-name">nethack</a></li></ul>
+    </li><li>
+      <a href="/viihde/dzoukki.html" class="post-link"><b class="post-name">Jyrki Kivimäki ja Dzoukki-kirjat</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">16.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/huumori.html" class="tag-name">huumori</a></li><li class="tag-0"><a href="/tags/kirjat.html" class="tag-name">kirjat</a></li></ul>
+    </li><li>
+      <a href="/miete/kopiointia-seurannalla.html" class="post-link"><b class="post-name">Kopiointia seurannan kanssa</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">18.05.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/cli.html" class="tag-name">cli</a></li></ul>
+    </li><li>
+      <a href="/miete/mpd.html" class="post-link"><b class="post-name">Käyttämäni MPD-asiakkaat</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">17.05.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/mpd.html" class="tag-name">mpd</a></li></ul>
+    </li><li>
+      <a href="/miete/mathematica-9.html" class="post-link"><b class="post-name">Mathematica 9</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">01.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-0"><a href="/tags/matikka.html" class="tag-name">matikka</a></li></ul>
+    </li><li>
+      <a href="/miete/moary-vuoden.html" class="post-link"><b class="post-name">Moary täyttää vuoden</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">15.08.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-0"><a href="/tags/elokuvat.html" class="tag-name">elokuvat</a></li></ul>
+    </li><li>
+      <a href="/viihde/monday-mornings.html" class="post-link"><b class="post-name">Monday Mornings</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">15.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li><li class="tag-0"><a href="/tags/david_e_kelley.html" class="tag-name">david_e_kelley</a></li></ul>
+    </li><li>
+      <a href="/miete/naapuriongelmat-ratkaistu.html" class="post-link"><b class="post-name">Naapuriongelmat ratkaistu</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">28.05.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/asunto.html" class="tag-name">asunto</a></li></ul>
+    </li><li>
+      <a href="/miete/nopeat-kirjanmerkit-emacsilla.html" class="post-link"><b class="post-name">Nopeat kirjanmerkit Emacsille</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">11.05.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li><li class="tag-0"><a href="/tags/elisp.html" class="tag-name">elisp</a></li></ul>
+    </li><li>
+      <a href="/miete/naytonsaastajaskriptit.html" class="post-link"><b class="post-name">Näytönsäästäjäskriptit</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">27.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/bash.html" class="tag-name">bash</a></li></ul>
+    </li><li>
+      <a href="/miete/org8-hajottaa-blogin.html" class="post-link"><b class="post-name">org 8 hajottaa blogin</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">14.11.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li></ul>
+    </li><li>
+      <a href="/miete/vimrc.html" class="post-link"><b class="post-name">Parhaat palat vim-konffeistani</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">27.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/vim.html" class="tag-name">vim</a></li></ul>
+    </li><li>
+      <a href="/miete/pelisavetukset-versiohallintaan.html" class="post-link"><b class="post-name">Pelisavetukset versiohallintaan</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">27.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/fallout.html" class="tag-name">fallout</a></li><li class="tag-0"><a href="/tags/bash.html" class="tag-name">bash</a></li></ul>
+    </li><li>
+      <a href="/miete/puoli-vuotta-emacsia.html" class="post-link"><b class="post-name">Puoli vuotta Emacsia</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">29.03.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li><li class="tag-0"><a href="/tags/editorit.html" class="tag-name">editorit</a></li></ul>
+    </li><li>
+      <a href="/miete/python-vs-clojure.html" class="post-link"><b class="post-name">Python on huonompi kieli kuin Clojure</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">18.05.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/python.html" class="tag-name">python</a></li><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/koodi.html" class="tag-name">koodi</a></li></ul>
+    </li><li>
+      <a href="/miete/rautapaivityksia-gentoo-uusiksi.html" class="post-link"><b class="post-name">Rautapäivityksiä ja Gentoo uusiksi</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">15.06.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/gentoo.html" class="tag-name">gentoo</a></li></ul>
+    </li><li>
+      <a href="/miete/semver.html" class="post-link"><b class="post-name">Semanttisesta versioinnista</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">04.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/ohjelmistot.html" class="tag-name">ohjelmistot</a></li></ul>
+    </li><li>
+      <a href="/hifi/sennheiser-hd800-vs-k1000.html" class="post-link"><b class="post-name">Sennheiser HD800 ja AKG K1000</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">11.09.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/hifi.html" class="tag-name">hifi</a></li></ul>
+    </li><li>
+      <a href="/miete/kolme-nayttoa.html" class="post-link"><b class="post-name">Takaisin kolmeen näyttöön</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">19.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li></ul>
+    </li><li>
+      <a href="/miete/tehokas-reduce.html" class="post-link"><b class="post-name">Tehokas reduce</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">16.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/fp.html" class="tag-name">fp</a></li></ul>
+    </li><li>
+      <a href="/viihde/the-newsroom.html" class="post-link"><b class="post-name">The Newsroom</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">07.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li></ul>
+    </li><li>
+      <a href="/viihde/the-unit.html" class="post-link"><b class="post-name">The Unit</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">07.04.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-2"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li></ul>
+    </li><li>
+      <a href="/viihde/tilkkutaekkielokuvat.html" class="post-link"><b class="post-name">Tilkkutäkkielokuvat</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">06.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/elokuvat.html" class="tag-name">elokuvat</a></li><li class="tag-0"><a href="/tags/listat.html" class="tag-name">listat</a></li></ul>
+    </li><li>
+      <a href="/miete/twitter-emacsilla.html" class="post-link"><b class="post-name">Twitteröintiä Emacsilla</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">24.10.2012</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/emacs.html" class="tag-name">emacs</a></li><li class="tag-0"><a href="/tags/twitter.html" class="tag-name">twitter</a></li></ul>
+    </li><li>
+      <a href="/miete/blogin-refaktorointia.html" class="post-link"><b class="post-name">Tämän blogin refaktorointia</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">08.10.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li></ul>
+    </li><li>
+      <a href="/miete/uusi-blogi-js.html" class="post-link"><b class="post-name">Uusi blogi käyttää JavaScriptiä</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">09.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li><li class="tag-0"><a href="/tags/js.html" class="tag-name">js</a></li></ul>
+    </li><li>
+      <a href="/miete/uusi-blogi-on-out.html" class="post-link"><b class="post-name">Uusi blogi on nyt out live</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">28.03.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li></ul>
+    </li><li>
+      <a href="/miete/viikonloppu-joensuussa.html" class="post-link"><b class="post-name">Viikonloppu Joensuussa</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">17.03.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/asunto.html" class="tag-name">asunto</a></li></ul>
+    </li><li>
+      <a href="/miete/xen.html" class="post-link"><b class="post-name">Xen-virtualisointi suoravälitteisellä raudalla</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">11.07.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/pelailu.html" class="tag-name">pelailu</a></li></ul>
+    </li><li>
+      <a href="/miete/xmonad.html" class="post-link"><b class="post-name">Xmonad ja dynaamiset työpöydät</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">14.11.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/haskell.html" class="tag-name">haskell</a></li><li class="tag-0"><a href="/tags/xmonad.html" class="tag-name">xmonad</a></li></ul>
+    </li><li>
+      <a href="/miete/zsh-zle.html" class="post-link"><b class="post-name">Zsh ja ZLE</b></a>
+      <span class="post-rev">
+        <!-- Luotu: <span class="post-rev-date">2.1.2014</span> -->
+      </span>
+      <span class="post-created">
+        Muutettu: <span class="post-created-date">23.02.2013</span>
+      </span>
+      <ul class="tag-list-oneline"><li class="tag-0"><a href="/tags/zsh.html" class="tag-name">zsh</a></li></ul>
+    </li>
+  </ul>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>
