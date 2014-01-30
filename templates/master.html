@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<title>master</title>
+<!-- 2014-01-30 Thu 18:42 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">master</h1>
+<p>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=utf-8" /&gt;
+    &lt;script type="text/x-mathjax-config"&gt;
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. <a href="http://stackoverflow.com/a/14631703/308668">http://stackoverflow.com/a/14631703/308668</a>
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i &gt;= 0; i&#x2013;) {
+                    var img = images[i];
+                    if (img.className <code>=</code> "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(<i>^(\\(\\)?)(.*)\1</i>);
+                        if (match<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> <code>=</code> "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    &lt;/script&gt;
+    &lt;script type="text/javascript"
+            src="<a href="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML</a>"&gt;
+    &lt;/script&gt;
+    &lt;link rel="stylesheet" type="text/css" media="screen" href="/templates/main.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="header"&gt;
+      &lt;h1 id="site-title"&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div id="sidebar"&gt;&lt;/div&gt;
+    &lt;div id="main"&gt;&lt;/div&gt;
+    &lt;div id="footer"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Alaviitteet: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div></div>
+</body>
+</html>

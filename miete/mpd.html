@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Käyttämäni MPD-asiakkaat — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">17.05.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">29.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/mpd.html" class="tag-name">mpd</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Käyttämäni MPD-asiakkaat   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Kerron, mitä MPD-asiakasohjelmia käytän. Tässä ne tulevat
+käyttöjärjestyksessä, ja sitten elaboroin, jos näen tarvetta.
+</p>
+
+<ol class="org-ol">
+<li><a href="http://pms.sourceforge.net/">PMS</a>, eli Practical Music Search
+</li>
+<li><a href="https://github.com/progo/jazz_up"><code>jazz_up</code></a> on omakirjoittamani bash-kikkare
+</li>
+<li><a href="http://www.musicpd.org/clients/mpc/">MPC</a> loppuihin kikkailuihin
+</li>
+<li>(mpp: C-kikkare, joka tulostaa soittolistan terminaaliin)
+</li>
+<li>(<code>mpp_length.sh</code>: awk-kikkare, jolla katson soittolistan
+kokonaispituuden)
+</li>
+</ol>
+
+<p>
+Kunniamaininta annetaan <a href="http://mpd.wikia.com/wiki/Client:Mpdscribble">MPDScribblelle</a>, joka on myös klientti ja
+teknisesti ottaen täten eniten käyttämäni klientti. MPDScribble
+siirtää kuunteluni last.fm -palveluun.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">PMS on simppeli ja tehokas</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+PMS on ncurses-pohjainen MPD-klientti, jonka filosofiana on puskea
+kaikki tietokannan musiikki yhteen ja samaan listaan, jossa
+tehdään pinnallisia ja joustavia hakuja. Näppäimet ja toiminta on
+hyvin vi-henkistä: <code>/</code> aloittaa haun ja <code>b</code>-näppäimellä siirretään
+kursorin alla olevan kappaleen koko albumi soittolistalle. Iso <code>B</code>
+vastaavasti lisää albumin ja aloittaa soittamisen siitä
+välittömästi. En ole osannut kaivata ylimääräistä joustavuutta,
+joten PMS:stä tuli vähitellen pääasiallinen klienttini.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Jazz_up nopeita arvontoja varten</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Jazz_up ottaa argumenttinaan minuuttilukeman ja mpd-soittolistan
+nimen. Sieltä se sitten alkeellisesti arpoo listalta sellaisia
+kappaleita listalle, että minuuttilukema tulee suurinpiirtein
+täyteen. Toimii, kun haluaa nopeasti syödä nuudelinsa jonkun
+päivällisjazzin kanssa, tai odottelee hiusten kuivamista.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">MPC</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+MPC on niin yleinen, ettei siitä kamalasti mitään keksi. Käytän
+sitä joskus skripteissäni, mutta en kamalasti. Eniten käytetty
+kutsu lienee <code>mpc toggle</code>, jota ei sitäkään kamalan usein tapahdu.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Tulevaisuus?</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Ehkä MPyD kypsyy ja otan sen käyttöön. Ehkä se toimii hyvin, mutta
+en sitten innostukaan omasta keksinnöstäni. Se on varma, että en
+aio toteuttaa kaikkea "tarpeellista" MPyD:iin ihan sillä
+periaatteella, että PMS, MPC ja muut ovat olemassa ja voivat elää
+samanaikaisesti käytössä.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130517_1429';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Näytönsäästäjäskriptit — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">27.04.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">29.01.2014</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-1"><a href="/tags/koodi.html" class="tag-name">koodi</a></li><li class="tag-0"><a href="/tags/bash.html" class="tag-name">bash</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Näytönsäästäjäskriptit   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Tänään (tai eilen) sain uuden korttini ja kaikki on onnellisena ok.
+Tuunasin illan pimetessä vielä vanhat näytönsäästöskriptini
+kuntoon. Nyt edes osa wateista säästyy, toivottavasti…
+</p>
+
+<p>
+Kaikki alkoi xlock-ohjelmasta ja mustista ruuduista. Siihen tuli
+sitten hiiren disablointia ja näyttöjen sammuttelua ajan myötä.
+Uusin haaste on tosiaan se, että uusi Geforce-korttini ei mene
+idle-virroille, jos on liian monta näyttöä aktiivisena. Koodasin
+siis lisää tavaraa mukaan.
+</p>
+
+<p>
+Pidemmittä jaaritteluitta, tässä on 4-osaisen purkan "pääohjelma":
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-comment-delimiter">#</span><span class="code-comment">!/bin/</span><span class="code-keyword">sh</span>
+<span class="code-variable-name">BIN</span>=/home/progo/pika/xlockC.d
+
+xlock -startCmd <span class="code-string">"$BIN/xlockC_start"</span> -endCmd <span class="code-string">"$BIN/xlockC_stop"</span> -mode blank <span class="code-sh-escaped-newline">\</span>
+    -echokeys -timeelapsed +usefirst
+</pre>
+</div>
+
+<p>
+Aiemmin kaikki oli samassa, mutta nyt refaktoroin <code>xlockC</code>-skriptin
+kaveriksi ihan erilliset apuskriptit ja laitoin ne alihakemistoon,
+etteivät turhaan sotke <code>$PATH</code>:ssani.
+</p>
+
+<p>
+Kun skripti käynnistetään, ajetaan <code>xlockC_start</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-comment-delimiter">#</span><span class="code-comment">!/bin/</span><span class="code-keyword">bash</span>
+<span class="code-comment-delimiter"># </span><span class="code-comment">Suorita toimet, kun näytöt pannaan nukkumaan.</span>
+
+<span class="code-comment-delimiter">### </span><span class="code-comment">Hiiri pois käytöstä</span>
+<span class="code-variable-name">mouseid</span>=$($(dirname $<span class="code-variable-name">0</span>)/xlockC_mouseid.sh)
+xinput --set-prop <span class="code-string">"$mouseid"</span> <span class="code-string">"Device Enabled"</span> <span class="code-string">"0"</span>
+
+<span class="code-comment-delimiter"># </span><span class="code-comment">näytöt pois virransäästösyistä.</span>
+xrandr --output DVI-D-1 --off
+xrandr --output DVI-D-0 --off
+
+<span class="code-comment-delimiter"># </span><span class="code-comment">loput näytöt nukkumaan</span>
+xset dpms force off
+</pre>
+</div>
+
+<p>
+Vastaavasti näytöt ja hiiret pannaan takaisin päälle.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-comment-delimiter">#</span><span class="code-comment">!/bin/</span><span class="code-keyword">bash</span>
+<span class="code-comment-delimiter"># </span><span class="code-comment">Suorita toimet, kun näytöt herätetään.</span>
+
+<span class="code-comment-delimiter"># </span><span class="code-comment">Hiiren herätys.</span>
+<span class="code-variable-name">mouseid</span>=$($(dirname $<span class="code-variable-name">0</span>)/xlockC_mouseid.sh)
+xinput --set-prop <span class="code-string">"$mouseid"</span> <span class="code-string">"Device Enabled"</span> <span class="code-string">"1"</span>
+
+<span class="code-comment-delimiter"># </span><span class="code-comment">Näytöt ylös.</span>
+xrandr --output DVI-D-0 --auto --left-of VGA-0
+xrandr --output DVI-D-1 --auto --left-of DVI-D-0
+</pre>
+</div>
+
+<p>
+Ja hiiren dynaamisen laitekoodin saa oheinen taidonnäyte:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-comment-delimiter">#</span><span class="code-comment">!/bin/</span><span class="code-keyword">bash</span>
+<span class="code-comment-delimiter"># </span><span class="code-comment">hae hiiren ID</span>
+
+<span class="code-variable-name">awkscript</span>=<span class="code-string">'/Mouse/ {</span>
+<span class="code-string">for(i=0; i&lt;=NF; i++) {</span>
+<span class="code-string">    split($i, ar, "=");</span>
+<span class="code-string">    if (ar[1] == "id")</span>
+<span class="code-string">        print ar[2];</span>
+<span class="code-string">}}'</span>
+<span class="code-variable-name">mouseid</span>=<span class="code-sh-quoted-exec">`xinput list | awk "$awkscript"`</span>
+<span class="code-builtin">echo</span> $<span class="code-variable-name">mouseid</span>
+</pre>
+</div>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Testaus</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Ja näin. Sopivalla loopilla saatiin testattua myös virransäästön
+toteutuminen:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-keyword">while</span> <span class="code-sh-quoted-exec">`true`</span>; <span class="code-keyword">do</span> nvidia-settings -tq GPUCurrentPerfLevel ; sleep 1 ; <span class="code-keyword">done</span>
+</pre>
+</div>
+
+<p>
+Luvut painuvat kakkosesta ensin ykköseen ja lopulta nollaan. Ja
+muuten vain tiedoksi: tällä kortilla tasot menevät näin:
+</p>
+
+<pre class="example">
+~ % nvidia-settings -q GPUPerfModes       
+
+Attribute 'GPUPerfModes' (pihlaja:0.0):
+perf=0, nvclock=324, memclock=324
+perf=1, nvclock=540, memclock=810
+perf=2, nvclock=1110, memclock=2500
+</pre>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130427_0049';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

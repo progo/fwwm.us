@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Xmonad ja dynaamiset työpöydät — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">14.11.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/haskell.html" class="tag-name">haskell</a></li><li class="tag-0"><a href="/tags/xmonad.html" class="tag-name">xmonad</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Xmonad ja dynaamiset työpöydät   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Xmonadin oletuksena tarjoamat 9-10 työpöytää tulevat nopeasti
+ahtaaksi, kun oikein haluaa railatella. Lisäksi ennalta valitut,
+kiinnitetyt työpöytänimet eivät aina kuvaa koko totuutta.
+Saataisiinko Emacsin <a href="http://www.emacswiki.org/emacs/InteractivelyDoThings">IDO</a>-moodia vastaavaa huippukäytettävää
+toiminnallisuutta Xmonadin työpöytiinkin? Voi, kyllä saadaan,
+kiitos tuoreen löydön, <a href="http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-Commands.html">Xmonad.Actions.Commands</a>-kirjaston.
+</p>
+
+<p>
+Tuli tässä virikettä säätää Xmonadia eteenpäin, kun kuulin
+tyylikkäästä <a href="http://xmonad.org/xmonad-docs/xmonad-contrib/XMonad-Actions-Commands.html">X.A.Commands</a>-kirjastosta. Kyseinen kirjasto tarjoaa
+<a href="http://tools.suckless.org/dmenu/">dmenu</a>-rajapinnan erilaisten Xmonad-komentojen (eli tietyntyyppisten
+Haskell-funktioiden) suorittamiseen. Dmenulle tarjoillaan lista
+erilaisia merkkijonoja ja käyttäjä valkkaa sopivan listalta. Xmonad
+suorittaa sitten. Suurin ilo irtoaa sitten, kun muistaa erään
+<a href="http://lists.suckless.org/dev/1209/12505.html">sumean haun toiminnallisuuden tuovan pätsin</a> olemassaolon dmenun
+versiolle 4.5.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Dmenu 4.5 ja <code>dmenu-4.5-fuzzy.diff</code></h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Tavallinen dmenu ottaa listan merkkijonoja vastaan, esittää ne
+graafisena listalla näytön ylä- tai alareunassa, ja antaa
+käyttäjän näppäillä listaa lyhyemmäksi, kunnes voi valita
+mieleisensä näppäimistöltä käsin. Dmenu palauttaa valinnan
+<i>stdouttiin</i>.
+</p>
+
+<p>
+Tämä on kiva ja muutama käyttöympäristö käyttää dmenua
+ohjelmakäynnistimenä. Tämä on kiva ilman sumeatakin hakua. Mutta
+jos oikein halutaan kaikki irti tuosta Xmonadin
+X.A.Commands-kirjastosta, on sumeus aikalailla <i>must</i>.
+</p>
+
+<p>
+Gentoon portagessa ei dmenulle moista pätsiä tarjoilla, enkä
+viitsinyt taiteilla portagen ebuild-patch-overlayn kanssa, joten
+latasin, pätsäsin ja käänsin kotihakemistoni onkaloihin. Kirjoitin
+pienen launcherin sumean haun aktivoimiseksi ja kaikki on
+reilassa.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-keyword">exec</span> /home/progo/.dmenu/bin/dmenu -i -z <span class="code-string">"$@"</span>
+</pre>
+</div>
+
+<p>
+Erillinen <code>dmenu_launch</code> on erikseen, ja siinä tuo sumeuden
+aktivoiva flagi <code>-z</code> on poissa. Näin on hyvä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Työpöytävalinta uuden Dmenun avulla</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Ensin tietysti kokeiltiin tätä vanhan konffin kanssa. Vielä eilen
+kovassa käytössä oli 10-ympäristöinen systeemini, jossa työpöytiä
+vaihtavat vain näppäinyhdistelmät <code>Win-d</code>, <img class="dvipng" alt="$d = 1, ..., 0$" src="ltxpng/xmonad_0f0fe991fad77c48cd2199381b98a841756b4fc4.png" />. Tähän
+skeemaan olisikin ollut hankala lisätä uusia työpöytiä, ja
+muutenkin ideana olisi saada kestävämpi ratkaisu.
+</p>
+
+<p>
+X.A.Commands sisältää muutamia valmiiksimääriteltyjä
+"komentolistoja", joista yksi on <code>defaultCommands</code> ja toinen on
+<code>workspaceCommands</code>. Triviaali pikakokeilu osoittaa kaikki ideat
+toimiviksi; mapataan kokeeksi näppäin <code>Win-x</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">((modm,               xK_x), defaultCommands <span class="code-variable-name">&gt;&gt;=</span> runCommand)
+</pre>
+</div>
+
+<p>
+(Tämä pitää ujuttaa sinne Xmonad-konffin <code>keys</code>-listan jatkeeksi.
+Tavalla tai toisella, niitä on niin monia…)
+</p>
+
+<p>
+Tämä toimii upeasti. Entä pelkästään työpöytien <i>vaihtamiseen</i>
+liittyviä komentoja? Tämä on nyysitty/mukailtu X.A.Commandsien
+lähdekoodista. Tai saattoi olla oletuskonffin näppäinyhdisteistä.
+Joka tapauksessa tämä tuottaa listan pelkästään työpöytiin
+vaihtavia komentoja ja niille merkkijonoja.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span class="code-function-name">viewWorkspaceCommands</span> <span class="code-variable-name">::</span> <span class="code-type">X</span> [(<span class="code-type">String</span>, <span class="code-type">X</span> <span class="code-type">()</span>)]
+<span class="code-function-name">viewWorkspaceCommands</span> <span class="code-variable-name">=</span> asks (workspaces <span class="code-variable-name">.</span> config) <span class="code-variable-name">&gt;&gt;=</span> <span class="code-variable-name">\</span>spaces <span class="code-variable-name">-&gt;</span> return
+                            [((m <span class="code-variable-name">++</span> <span class="code-string">" "</span> <span class="code-variable-name">++</span> show i), windows <span class="code-variable-name">$</span> f i)
+                                <span class="code-variable-name">|</span> i <span class="code-variable-name">&lt;-</span> spaces
+                                , (f, m) <span class="code-variable-name">&lt;-</span> [(<span class="code-type">W</span><span class="code-variable-name">.</span>greedyView, <span class="code-string">"view"</span>)] ]
+</pre>
+</div>
+
+<p>
+Vastaavasti purkkasin ikkunoita siirtävän version. Vaihdetaan vain
+funktio <code>W.greedyView</code> funktioksi <code>W.shift</code>. Ja nämä mappasin näppäimelle
+<code>Win-f</code> ja <code>Win-S-f</code> nyt toistaiseksi:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell">((modm,               xK_f), viewWorkspaceCommands <span class="code-variable-name">&gt;&gt;=</span> runCommand)
+((modm <span class="code-variable-name">.|.</span> shiftMask, xK_f), moveWorkspaceCommands <span class="code-variable-name">&gt;&gt;=</span> runCommand)
+</pre>
+</div>
+
+<p>
+Ja yllätyksekseni toimii moitteetta! Nyt homma toimii siis
+kiinteän työpöytälistauksen kanssa, eli kamalasti etua ei vielä
+tässä ole. Mutta odotapas kun työpöytiä on kymmenen sijasta 100…
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Dynaamiset työpöydät Xmonadissa</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Xmonadin dynaamiset työpöydät on tehtävissä monella, monella
+tavalla. Minä tein nyt sillä tavalla, että hyödynnän työpöytiä
+uudelleennimeävää kirjastoa, <a href="http://hackage.haskell.org/package/xmonad-contrib-bluetilebranch-0.9.1.4/docs/XMonad-Actions-WorkspaceNames.html">X.A.WorkspaceNames</a>:ia.
+</p>
+
+<p>
+Luon nyt oletuksena 99 työpöytää triviaalilla nimeämisellä.
+Luulisipa riittävän!
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span class="code-function-name">myWorkspaces</span> <span class="code-variable-name">=</span> map show [1 <span class="code-variable-name">..</span> 99 <span class="code-variable-name">::</span> <span class="code-type">Int</span>]
+</pre>
+</div>
+
+<p>
+Tietysti tämä ei ole teknisesti ottaen dynaamista nähnytkään,
+koska kaikki työpöydät on luotu Xmonadin käynnistyessä. Idea on
+kuitenkin ihan kelpo.
+</p>
+
+<p>
+Sitten meidän pitää saada nimetä työpöytiä haluamaksemme. Se
+WorkspaceNames-kirjasto tulee tässä apuun. Siihen ei tarvitse
+muuta kuin seurata kirjaston dokumentaation ohjeita ja tehdä
+sopiva näppäimistömappaus <code>renameWorkspace</code>-funktiolle. Laitoin
+omassa konffissani sen nyt <code>Win-s</code>:n taakse.
+</p>
+
+<p>
+Nyt uudet työpöydät näkyvät oikein statuspalkissa (Xmobar
+minulla), mutta eivät pirskattilainen näy tuoreelti
+konffaamassamme dmenussa. Tarvitaan hieman voitelua ja
+WorkspaceNamesiin kuuluvaa funktiota <code>getWorkspaceNames</code>.
+Kirjoitetaan aiemmin määritelty <code>viewWorkspaceCommands</code> uudestaan:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span class="code-keyword">type</span> <span class="code-type">NamedAction</span> <span class="code-variable-name">=</span> <span class="code-type">String</span> <span class="code-variable-name">-&gt;</span> <span class="code-type">WindowSet</span> <span class="code-variable-name">-&gt;</span> <span class="code-type">WindowSet</span>
+
+<span class="code-function-name">doWSCommands</span> <span class="code-variable-name">::</span> <span class="code-type">NamedAction</span> <span class="code-variable-name">-&gt;</span> <span class="code-type">String</span> <span class="code-variable-name">-&gt;</span> <span class="code-type">X</span> [(<span class="code-type">String</span>, <span class="code-type">X</span> <span class="code-type">()</span>)]
+<span class="code-function-name">doWSCommands</span> action string <span class="code-variable-name">=</span> <span class="code-keyword">do</span>
+  spaces <span class="code-variable-name">&lt;-</span> asks (workspaces <span class="code-variable-name">.</span> config)
+  wsNames <span class="code-variable-name">&lt;-</span> getWorkspaceNames                            <span class="code-comment-delimiter">-- </span><span class="code-comment">(1)</span>
+  return [((m <span class="code-variable-name">++</span> <span class="code-string">" "</span> <span class="code-variable-name">++</span> show (wsNames i)), windows <span class="code-variable-name">$</span> f i)
+         <span class="code-variable-name">|</span> i <span class="code-variable-name">&lt;-</span> spaces
+         , (f, m) <span class="code-variable-name">&lt;-</span> [(action, string)] ]
+
+<span class="code-function-name">viewWorkspaceCommands</span> <span class="code-variable-name">=</span> doWSCommands <span class="code-type">W</span><span class="code-variable-name">.</span>greedyView <span class="code-string">"view"</span>
+<span class="code-function-name">moveWorkspaceCommands</span> <span class="code-variable-name">=</span> doWSCommands <span class="code-type">W</span><span class="code-variable-name">.</span>shift      <span class="code-string">"move"</span>
+</pre>
+</div>
+
+<p>
+Taikasana on <code>(1)</code>:llä merkitty monadisovellus, joka tuottaa
+meille sopivan funktion työpöytäolioista niiden "dynaamisiin"
+nimiin.
+</p>
+
+<p>
+Ja kaikki tuntuu upeasti toimivan. Nyt minulla on kymmenen
+ensimmäistä työpöytää edelleen nopeiden pikanäppien takana ja
+loputkin ovat saatavilla dmenun kautta. Ilmeisesti nimet säilyvät
+myös Xmonadin uudelleenkäynnistysten yli, vaikka se ei ollut
+prioriteetti. Olen yllättynyt erityisesti omista
+hakkailutaidoistani. Ilmeisesti Clojuren kautta alkaa viimein
+tarttua jotain oikeata funktionaalista osaamista.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Jatkokehittelyä</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Tämä on siis nykytilanne. Mitä parannuksia systeemi saattaisi
+vaatia?
+</p>
+
+<ul class="org-ul">
+<li>Työpöytien swappaus, eli kaikkien ikkunoiden siirtäminen
+kerralla työtilasta toiseen voisi olla paikallaan, jos haluan
+varata jonkun "nopean" pöydän (numero alle 10) jollekin
+tuoreelle projektille.
+
+<p>
+WorkspaceNames saattoi tarjota jotain sellaista, mutta pitää nyt
+tutkia.
+</p>
+</li>
+<li>Dmenun listauksessa on nyt aina 99 työpöytää, oli niillä nimi
+tai täytettä tai ei. Numero niillä on aina, mutta vähän rumalta
+voi näyttää. Voisikohan niitä piilottaa jollain ehdolla siten,
+että niihin pääsisi kyllä tarvittaessa käsiksi, mutta ei
+tarvitsisi pikavalinnassa näkyä.
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Versiohallinta voittoon</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Tämä on ollut lisäksi hyvä showcase gitille. Muutamia
+kuukausia/vuosia sitten kun ensimmäistä kertaa tarkastelin
+dynaamisia pöytiä, laitoin <code>xmonad.hs</code>:n git-repoksi ja kokeilin
+toisessa haarassa noita juttuja. Eihän niistä tullut oikein
+mitään. Onneksi toimiva peruskonffi oli vain haaranvaihdon takana.
+</p>
+
+<p>
+Nyt sitten oli mukava palata vanhaan haaraan, yhdistää päähaarassa
+tapahtuneet pikkumuutokset ja siistimiset ja konffata viimein koko
+roska kuntoon. Ehkäpä haara <code>dynamicws</code> saa nyt siirtyä laitumille
+ja mergaan koko toiminnallisuuden <code>masteriin</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20131114_1253';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

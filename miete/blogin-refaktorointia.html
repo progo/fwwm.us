@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Tämän blogin refaktorointia — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">08.10.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/blog.html" class="tag-name">blog</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Tämän blogin refaktorointia   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Eilen sängyssä pyöriessäni eräs asia valkeni minulle: vaikka
+koodasin tämän blogin perinteiseen blogimalliin, niin en itse
+kirjoita kuitenkaan blogia perinteiseen blogimalliin. Tämän
+epäkohdan korjaaminen saattaa tapahtua jossain vaiheessa.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Blogimalli, perinteinen</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Blogien tunnistettava ominaispiirre on olla joukko kirjoituksia
+tai muuta hengentuotetta sekä hakemistolistaus, indeksi
+mainituille hengentuotteille. Lisäksi yleinen lisäoptio on tarjota
+RSS-feedi kanavoimaan muutoksia.
+</p>
+
+<p>
+Perinteisessä mallissa hengentuotteet on sidottu kirjoittamis-
+tai julkistamisajankohtaan ja sitten jälkikäteen viesteihin, jos
+on ollut tarvetta, on lisätty metatietoa. Blogi, jossa ajankohta
+on oleellinen, kuten vaikka kontemporaari matkablogi, tarvitsee
+tätä tietoa. 
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Blogimalli, kaavailtu</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Sen sijaan, että postausten ensisijainen metatieto on olla
+listana julkaisuajan funktiona jossain, niin miksei vain
+kirjoittaa näitä viestejä ja artikkeleita jaoteltuna ei ajan,
+vaan kantavan idean mukaan.
+</p>
+
+<p>
+Follow-up. Foorumeilla on se kiva systeemi, että kukin ketju on
+tavallaan sidottu yhteen aiheeseen, ja kutakin aihetta voi
+päivittää toisia häiritsemättä vapaasti. Vastaavaa ajattelua
+haluan tuoda blogeihin. Se kun tuntuu palvelevan ajatusmaailmaani
+parhaiten.
+</p>
+
+<p>
+RSS-feedit saisivat tavaraa kirjoittajalta itseltään sen mukaan
+kun tarinassa on oikeasti jotain kehitystä. Pikkumuutokset eivät
+siis näkyisi feedeissä. Itse asiassa tähän ajattelin
+versiohallinnoista tuttua mallia, eräänlaista commit-viestiä.
+Tämänlainen viesti näkyisi sitten asiaankuuluvien osoitteiden
+kanssa RSS:ssä.
+</p>
+
+<p>
+Uusi malli ei ole millään keinoin uusi, mutta sen äkillinen tarve
+minulle on uutta. Samaa koittaa tarjota jokainen wikiin pohjautuva
+blogimoottori (esimerkiksi Emacsin MUSE tai Vimin VimWiki), joista
+olen ollut tietoinen hyvinkin pitkiä aikoja. Lisäksi moni bloggaa
+ihan MediaWikiä tai vastaavaa käyttäen. Pikkumuutokset voi merkitä
+"minoreiksi", jolloin eivät välttämättä näy historiassa. 
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Teknisiä yksityiskohtia</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Minulla on tähän single-file -malliin eräänlainen
+viha-rakkaussuhde, Tukholman syndrooma. Tämän systeemin piti
+tarjota niin paljon mukavia ominaisuuksia ja helppoa greppailua
+systeemistä (ikään kuin <code>grep pat *</code> olisi sen vaikeampaa), vaan
+toisin tuntui käyneen.
+</p>
+
+<p>
+Uusi systeemi tulee olemaan osittainen uudelleenkirjoitus. Ehkä
+peräti hylkään org-moden Markdownin tieltä ja ehkäpä
+unix-henkisesti käytän hakemistoja ja alihakemistoja merkitsemään
+kategorisointeja. Vielä unix-henkisempää olisi käyttää
+symlinkkejä tagailuun.
+</p>
+
+<p>
+Blogin tietämyksen kaapiminen offlinenä onnistuu helposti
+tuunatun <code>ack</code>-skriptin tai hienonnetun greppailun avulla.
+</p>
+
+<p>
+Ja kun aiemmin puhuin versiohallinnan tapaisesta
+commit-meiningistä niin samapa tuo on sitten oikeasti toteuttaa
+niin, siis oikea historia gitin avulla. Skriptein tätä historiaa
+saa sitten näkyville kotisivulle ja sittenpä se on sama puskea
+koko paska vaikka githubiinkin.
+</p>
+
+<p>
+Kertokaahan vähän tästä ideasta. Minusta tämä on askel sitä
+kaavailemaani "follow-up" -systeemiä ja että tämä tulee olemaan se
+oikea tapa tehdä asia. [Hassua. Olin varma, että olin kirjoittanut
+kyseisestä follow-up -systeemistä jotain tähän blogiin. Mutta
+näemmä en. Siispä laajensin postaustani tuonne ylemmäksi.]
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20131008_2028';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Zsh ja ZLE — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">23.02.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/zsh.html" class="tag-name">zsh</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Zsh ja ZLE   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Suuri ja pelottava <a href="http://zsh.sourceforge.net/">zsh</a> on suurilta osin niin lähellä de-facto
+-standardia, <code>bashia</code>, että päällisin puolin eroja ei tunnu olevan.
+Mutta kun asiat etenevät, on zsh tarpeen tullen paljon notkeampi ja
+tässä viestissä kerron esimerkin viimeaikaisista keksimisistäni.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Readline</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Kuten me kaikki tiedämmekin, bashin salaisuus on aina ollut upea
+komentorivikokemus. Se irrotettiinkin myöhemmin omaksi
+<code>readline</code>-kirjastokseen kaikkien saataville. Readline osaa
+useimpien terminaalien näppärät kikat ja lukee näppäinyhdistelmiä
+hyvin. Tukeepa jopa vi-näppäimiä, vaikka oletuksena käytössä olevat
+emacs-näppäimet ovat yhdellä rivillä pujotellessa usein riittävät.
+</p>
+
+<p>
+Readlineen tietenkin kirjoitettu ja jätetty auki mahdollisuus
+lisätä uusia näppäinyhdistelmiä toiminnoille ja tabitäydennystä
+varten voi sille antaa <i>callback</i>-funktion, jolla esimerkiksi
+saadaan omat älykkäät tabitäydennykset kuntoon.
+</p>
+
+<p>
+Mutta siihenpä readlinen toiminnot vain riittävätkin. Muutamia
+puutteita, joita olen vuosien saatossa havainnut:
+</p>
+
+<ul class="org-ul">
+<li>Readline ei esimerkiksi anna kirjoittaa uusia funktioita
+interaktiiviseen käyttöön.
+</li>
+<li>Vi-moodissa hyödyllistä moodi-indikaattoria lisäystilan ja
+normaalin tilan välillä saa mitenkään aikaan, koska se vaatisi
+readlinen ja bashin välistä ylimääräistä kommunikointia.
+</li>
+<li>Komentorivin väritys ei tule kysymykseenkään.
+</li>
+</ul>
+
+<p>
+Toisin kuin valtaosa shelleistä bashin lisäksi, zsh ei käytä
+readlinea käyttäjäinputin lukemiseen, vaan sillä on aivan oma
+lukija, ZLE: Zsh (Command) Line Editor. Ja ZLE osaa kaikki
+edellämainituista toivomuksista puhtain paperein.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">ZLE</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+(Tänne saatan lisätä hyperlinkit detaljeja sisältäviin
+postauksiin, jahka kirjoitan tai backporttaan ne vanhasta
+blogista. Nyt saatte mennä summariikeilla.)
+</p>
+
+<p>
+Se oli luultavasti tuo Vi-moodi-indikaattori, josta ylipäätään
+tein hypyn zsh:aan. Olin ymmärtänyt, että päällisin puolin ja
+peruskäytössä bashin ja zsh:n välillä ei ole <i>mitään</i> eroa. Ja
+ymmärsin aivan oikein.
+</p>
+
+<p>
+Ensin otin vi-moodi-indikaattorin tuunauksen alle; lopulta päädyin
+värilliseen kehotteeseen siten, että vihreä kehote viitaa
+lisäysmoodiin ja tumma kehote viittaa normaalitilaan.
+Komentorivillä ei kamalan paljoa ylipäätään tarvitse
+normaalitilaan siirryskelläkään, eikä ne siirtymät normaalitilaan
+edes aina kestä niin pitkään, että kehotteen väri ehtisi pieneltä
+viiveeltään vaihtua. Mutta onpahan kiva, jos joskus jää
+normaalitila päälle. Tiedän varoa.
+</p>
+
+<p>
+Sitten luin syntaksivärjäyksestä komentoriville, ja se idea
+natsasi oitis: vaadimmehan me kaikki syntaksivärjäystä
+koodieditoreissammekin. Miksei sitten tuossa interaktiivisessa
+shell-skriptiä syövässä editorissamme? ZLE:n ansiosta näen
+punaisella komennot, joita zsh ei löydä polulta, vaalealla ne
+komennot, jotka ovatkin oikeasti shell-aliaksia tai -funktioita ja
+tärkeämpänä ryhmittelevät sulut ja alishellit. Kaikki tämmöinen
+onnistuu ja auttaa kirjoittamaan oikeita komentorimpsuja.
+Koodinvärjäys ei ole pelkkää karkkia tyyliin: "hei, tuossa on <code>if</code>
+ja tuossa <code>echo</code>", vaan tällä värjäyksellä voi esimerkiksi laittaa
+lainattu teksti todella erottumaan muista komennoista: suunnaton
+etu kun näkee välittömästi, mitä se shell aikoo muuttujalaajentaa
+ja mitä ei.
+</p>
+
+<p>
+Ja kolmantena nuo omat funktiot tai <i>widgetit</i>, kuten
+ZLE-terminologiassa puhutaan. Jos olet yhtään readlinea tai zle:tä
+konffannut käyttäjänä niin tämmöinen funktio tai widget on jollain
+tavalla interaktiivinen rutiini, jolla käyttäjä toimii
+komentorivillä. Esimerkiksi funktio <code>end-of-line</code> on sekä
+readlinen että ZLE:n widget, joka vie kursorin rivin loppuun ja on
+oletuksena kytketty <code>C-e</code> -näppäinyhdistelmään.
+</p>
+
+<p>
+Ja nyt opiskelin hieman, miten kirjoitetaan oma widget ZLE:lle.
+Taustalle sellainen juttu, että kirjoitettuani alkuperäisen
+thinktank-systeemini loin luonnollisesti komentoriville sopivan
+<code>think</code>-aliaksen. Alias siksi, jotta voin käyttää asteriskeja ja
+kysymysmerkkejä ilman shellin vinkumista.
+</p>
+
+<p>
+Lisäsin sille vielä pikanäppäimen, koska olen sellainen ihminen.
+Tuloksena seuraa tämäntapaista koodia <code>.zshrc</code>-tiedostoon:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-builtin">alias</span> <span class="code-variable-name">think</span>=<span class="code-string">'noglob org_capture.sh '</span>
+
+<span class="code-builtin">bindkey</span> -s <span class="code-string">"^t"</span> <span class="code-string">"think "</span>
+</pre>
+</div>
+
+<p>
+Kätevää ja tehokasta. Think-systeemini kehittyi hiljalleen ja
+orgin toimiessa taustalla olisi mukavaa saada TODO-leima
+välittömästi mukaan toimia vaativaan ajatukseen. Tämän voisi
+kirjoittaa aina manuaalisesti <code>think</code>-komennon perään, mutta onpa
+se työlästä. Ja oma alias todo-jutulle tuntuu aika kovalta.
+</p>
+
+<p>
+Paras ratkaisu, ainakin mielestäni, olisi saada samasta
+näppäimestä ensin paljas <code>think</code> ja sitten toisella kerralla
+TODO:llinen <code>think</code>. Pieni googlaus, muutama greppaus zsh:n
+manpageilta ja pari senttilitraa kylmää hikeä tuotti seuraavan
+widgetin:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-keyword">function</span> <span class="code-function-name">_-thinktodo</span>()
+{
+    <span class="code-keyword">if</span> [[ <span class="code-string">"$BUFFER"</span> == <span class="code-string">""</span> ]] ;<span class="code-keyword">then</span>
+        <span class="code-variable-name">BUFFER</span>=<span class="code-string">"think "</span>
+    <span class="code-keyword">elif</span>
+        [[ <span class="code-string">"$BUFFER"</span> == <span class="code-string">"think "</span> ]] ;<span class="code-keyword">then</span>
+        <span class="code-variable-name">BUFFER</span>=<span class="code-string">"think TODO "</span>
+    <span class="code-keyword">fi</span>
+    end-of-line
+}
+<span class="code-comment-delimiter"># </span><span class="code-comment">new widget</span>
+zle -N thinktodo _-thinktodo
+<span class="code-builtin">bindkey</span> <span class="code-string">"^t"</span> thinktodo
+</pre>
+</div>
+
+<p>
+Zsh:n dokumentaatio on referenssinä hyvää, mutta siihen on vaikea
+päästä sisään ulkopuolisen. Onneksi tässä asiassa tuli vastaan
+onnekas esimerkki monimutkaisemmasta widgetistä, ja nähdessäni
+<code>$BUFFER</code>-nimisen muuttujan kävi sisäinen päättelyni toimiin.
+Manpagelta greppaamalla varmistuin kyseisen muuttujan käytöstä.
+</p>
+
+<p>
+Uusi funktio pitää esitellä widgetiksi sisäänrakennetun
+<code>zle</code>-kutsun kanssa ja sitten se onkin valmis bindattavaksi. Ja
+toimii yllättävän hienosti. Huomattavissa on, että widgettien
+määrittely ja toiminnallisuus on kovasti samannäköistä kuin
+Emacsin interaktiivisten funktioiden kanssa.
+</p>
+
+<p>
+Nämä widgetit voivat olla kovinkin hienoja: StackOverflow'ssa
+esiteltiin emacs-henkinen, interaktiivinen search-replace
+-widgetti. Kysyy siis ensin etsittävää patternia ja sitten
+korvaajaa. Ja tavallisina funktioita widgetit voi vaikka tehdä
+googlauksen curlin avulla tuossa välissä.
+</p>
+
+<p>
+Tälle on tulossa toivottavasti isoa käyttöä pian.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Pari muuta esimerkkiä ZLE:lle</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+<a href="http://stackoverflow.com/questions/171563/whats-in-your-zshrc">StackOverflow</a>'ssa on tietenkin kysymys (nyt lukittu) zsh-kikoista.
+Monella on esitellä näppäriä zle-widgettejä.
+</p>
+
+<p>
+Esimerkiksi <b>alamar</b> on keksinyt kirjoittaa jotain pientä
+<code>sudo</code>-komenteluihin; <code>M-s</code> lisää sudo-tekstin komentorivin alkuun.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="code-function-name">insert_sudo</span> () { zle beginning-of-line; zle -U <span class="code-string">"sudo "</span> }
+zle -N insert-sudo insert_sudo
+<span class="code-builtin">bindkey</span> <span class="code-string">"^[s"</span> insert-sudo
+</pre>
+</div>
+
+<p>
+Kysymyksen paras vastaus on <b>Frew</b>'n massiivinen konffi.
+Tuollainen määrä aliaksia ei kyllä tee mielestäni hyvää
+muistikuormalle tai muutenkaan. Olen pohtimassa jonkin sortin
+snippet- tai abbr-moodia zsh:lle ja laajennettavat aliakset
+voisivat olla kova sana.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130223_2042';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>

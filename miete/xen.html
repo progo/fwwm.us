@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Xen-virtualisointi suoravälitteisellä raudalla — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="header">
+      <h1 id="site-title">Foobarly adventures</h1>
+    </div>
+    <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">11.07.2013</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.12.2013</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+  </ul>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/rauta.html" class="tag-name">rauta</a></li><li class="tag-0"><a href="/tags/pelailu.html" class="tag-name">pelailu</a></li></ul>
+</div>
+    <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Xen-virtualisointi suoravälitteisellä raudalla   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+Jostain se vain tuli mieleeni, ja ajattelin irkissä ääneen:
+"Olisipa se hienoa, jos jonain päivänä virtualisointisovellukset
+osaisivat antaa vieraskoneelle suorat yhteydet isäntäkoneen
+rautaan, niin pääsisi pelaamaan sammuttamatta linux-isäntää". Ja
+yhtä nopeasti tuli vastaus: "se on mahdollista; hyvin, hyvin
+mahdollista."
+</p>
+
+<p>
+Xen ja PCI-passthrough on taikasanasto, jolla tämä tavoiteltu tila
+saavutetaan. <a href="http://www.youtube.com/watch?v=L_g7ZBMWoLk">Youtubessa</a> on hyvin vakuuttavia esitelmiä aiheesta.
+Valitettavasti myös raudalta vaaditaan joitain vähemmän tuettuja
+kikkoja; Intel on esimerkiksi hyvin ilkeästi jättänyt
+markkinapoliittisista syistä tarvittavan <i>VT-d</i> -tuen pois
+tehokäyttäjille myytävistä prosessoreista. VT-d -tuki siis maksaa
+oleellisesti helpon kellotettavuuden, mutta eihän se loppupeleissä
+iso menetys ole. Myös emolevyltä vaaditaan jotain, joten molemmat
+uusista komponenteistani menevät Xen-päivityksien myötä vaihtoon.
+Ei tapahdu tosin aivan heti: kesää ja työtä on jäljellä vain reilun
+kuukauden ajan, joten tässä pisteessä on turha enää innostua. Nämä
+ideat ajattelin haudutella ja ottaa vuoden päästä kesällä käyttöön,
+jahka gradu on valmistumaan päin. Tai jotain.
+</p>
+
+<p>
+Tämä Xen-vaihtoehto oikein toimiessaan takaisi kaiken halutun
+Windows/Linux -toiminnallisuuden, josta olen haaveillut aina
+pelaillessani enemmän. Dualboottaus on työlästä ja nostaa kynnystä
+niin paljon, että sitä ei tulisi harrastettua kovin usein. Wine on
+wine: toimii silloin kun toimii. Vaikka tulokset ovat hyviä
+esimerkiksi Civilization V:n ja Falloutin kanssa, en halua käyttää
+viihteeseen tarkoitettuja tunteja epävakaaseen pelattavuuteen tai
+puutteelliseen kokemukseen. Kaikenlainen häslääminen Steamien ja
+wineprefixien kanssa jää pois, kun alla on oikea Windows.
+</p>
+
+<p>
+Suurin kysymys taitaakin olla: onko Xen-vieraana toimiva Windows
+sitten oikeasti vakaa ja luotettava peli? Voin ottaa pienet hitit
+tehokkuudessa, jos vakaus ja yhtenäinen pelikokemus säilyy. Entä
+isäntäkäyttis? Ottaako Gentoonikin Xenin myötä teho-osuman
+silloinkin, kun vieraat ovat nukkumassa?
+</p>
+
+<p>
+Edelleen kaunein ajatus olisi hankkia dedikoitu pelitietokone,
+mutta mikä kamala rahanhukka sekin on. Koska haluan myös
+linux-käyttöni sujuvan sulavasti. Puhumattakaan ylläpidon määrästä
+ja niin poispäin. Olin vanhassa blogissani pohtinut sitä ajatusta
+dualbootista ja erillisestä työpalvelimesta, mutta se ei koskaan
+ottanut tuulta alleen. Se karsiutui erityisesti huonohkoon koppaan,
+jonka onnistuin ostamaan. Voisin päästä tässä kaikessa voitolle
+monella tavalla, ja kenties "fiksuin" tapa olisi jättää Xen omaan
+arvoonsa: Xen voi tarjota 99-prosenttisen Windows-kokemuksen
+virtualisoituna, mutta voinko ikinä pelin tiltatessa luottaa
+siihen, että Xen ei aiheuttanut kaatumista.
+</p>
+
+<p>
+Sanotaanko näin, että jos saan siirrettyä tietokoneeni
+keskusyksikön vaatekaappiin hurisemaan, niin potentiaali
+kunnollisen palvelimen hankkimiselle kasvaa sitten rajusti.
+Lähiverkkoisen SSH:n yli tehtävällä X-hurjastelulla saa aika paljon
+aikaan pysyvyyden ja sen sellaisen kanssa. Luultavasti hyötyisin
+näin eniten. Toisaalta Xen toisi kaiken niin hyvässä paketissa, jos
+vain uskoo tuon PCI-läpiviennin toimivuuteen. Ja pitäisihän siihen
+hittolainen uskoa. Xen on iso nimi virtuaalimarkkinoilla ja tuo
+PCI-läpivientikin on vuosia vanha tekniikka.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Uusia mietteitä hautomosta (kaksi päivää myöhemmin)</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Ensimmäiset ajatukset Xenistä tietysti liikkuivat siellä "liian
+hyvää ollakseen totta" -linjalla. Dualbootissa on silti se mahtava
+määrä ongelmia ja sitä rataa. Jos noihin youtubettajiin on mitään
+luottoa, niin Xen on riittävän vakaa, kunhan raudan valitsee
+oikein.
+</p>
+
+<p>
+Xenissä on sekin hyvä puoli, että voi hyvillä mielillä panna vähän
+potkua rautaan. Isompi koppa ja tilaa työskennellä. Uudet 3770-
+tai 4770-prosessorit tulille ja ehkä näyttikseksikin jotain
+komeata. Työstä riippuen jopa Extreme-mallit [käytettynä] voisivat
+olla listalla. Viimeisen päälle kovantasoinen Xen-setti koostuisi
+kahdesta näytönohjaimesta, jolloin minulla voisi olla
+samanaikaisesti linuxia ja windowsia ruuduilla. Ei mahdotonta, kun
+monissa näytöissä on hyvät lähdevalitsimet.
+</p>
+
+<p>
+Mutta nämä asiat jäävät toistaiseksi vain hautomoasteelle. Ennen
+kuin tulee kunnollisia töitä ilmoille, jään vain hiljalleen
+vahtimaan hyviä diilejä 3770-prosessoreista ja vastaavista.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20130711_1614';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+    <div id="footer"></div>
+  </body>
+
+</html>
