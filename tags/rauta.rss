@@ -1,10 +1,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Xen-virtualisointi suoravälitteisellä raudalla [NEW]</title><link>http://fwwm.us/miete/xen.html</link><guid isPermaLink="false">20130711_1614</guid><description>
 Jostain se vain tuli mieleeni, ja ajattelin irkissä ääneen:
-“Olisipa se hienoa, jos jonain päivänä virtualisointisovellukset
+"Olisipa se hienoa, jos jonain päivänä virtualisointisovellukset
 osaisivat antaa vieraskoneelle suorat yhteydet isäntäkoneen
-rautaan, niin pääsisi pelaamaan sammuttamatta linux-isäntää”. Ja
-yhtä nopeasti tuli vastaus: “se on mahdollista; hyvin, hyvin
-mahdollista.”
+rautaan, niin pääsisi pelaamaan sammuttamatta linux-isäntää". Ja
+yhtä nopeasti tuli vastaus: "se on mahdollista; hyvin, hyvin
+mahdollista."
 </description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Rautapäivityksiä ja Gentoo uusiksi [NEW]</title><link>http://fwwm.us/miete/rautapaivityksia-gentoo-uusiksi.html</link><guid isPermaLink="false">20130615_1310</guid><description>
 Sain hyvän tilaisuuden vaihtaa AMD-setistäni takaisin Inteliin.
 Uusi hirviö on tarunhohtoinen Core i5 2500k, josta ihmisillä on
