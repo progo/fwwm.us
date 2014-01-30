@@ -1,9 +1,0 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Kopiointia seurannan kanssa [NEW]</title><link>http://fwwm.us/miete/kopiointia-seurannalla.html</link><guid isPermaLink="false">20130518_1755</guid><description>
-Jonkin verran manuaalista synkkaamista tehneenä osaa arvostaa
-kopioinnin tai siirtämisen edistymisen seurantaa. Koska unixien
-cp ja mv eivät tätä taida omasta takaa, on yleisin peruskikka
-ollut käyttää yhtä yleistä rsync-ohjelmaa --progress-option
-kanssa. Se toimii hyvin, mutta kaipasin kanssa graafisista
-kopiointilomakkeista tuttua kokonaistilanteen kehittymistäkin, jos
-siis tiedostoja tai hakemistoja on useampi työn alla.
-</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item></channel></rss>

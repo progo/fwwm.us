@@ -1,9 +1,0 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Canto on uusi RSS-lukijani [NEW]</title><link>http://fwwm.us/miete/canto.html</link><guid isPermaLink="false">20130329_1220</guid><description>
-Kun Google hieman odottamatta ilmoitti vetävänsä Readerin pois
-valikoimastaan, alkoi verkkainen etsintä uudelle RSS-aggregaatille.
-Vaikka Reader on käytettävyydeltään ihan kohtuullinen, oli
-pääasiallisena tavoitteena saada jonkinlainen ncurses-ratkaisu
-kuntoon säädettävyyden ja etäkäytön takia. (Huomio: tämä juttu ja
-konffausvinkit koskevat vain vanhentunutta Canto 0.7.10 -versiota.
-Suosittelen kokeilemaan uudempaa 0.8-sarjaa omiin kokeiluihinne.)
-</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item></channel></rss>
