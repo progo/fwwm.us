@@ -21,16 +21,20 @@
 /*** BODY + main things **/
 
 body {
-    background-image: url(/templates/curtain.png), url(/templates/up-band.png);;
-    background-repeat: no-repeat, repeat-x;
-    background-position: right top;
-
+    background: url(/templates/floor_isometric.png) left bottom no-repeat fixed;
     background-color: #501111;
     color: #ffdfbb;
-
     margin: 0;
     width: 100%;
 }
+
+/** Need a separate div for other backgrounds */
+#backgrounds {
+    background: url(/templates/up-band.png) repeat-x,
+                url(/templates/curtain2.png) right top no-repeat;
+}
+
+
 
 #main {
     margin-right: 40%;
@@ -185,6 +189,16 @@ pre.src .code-sh-escaped-newline { }
     text-transform: uppercase;
 }
 
+#related-posts-title {
+    width: 70%;
+    text-align: right;
+    font-size: smaller;
+}
+
+#related-posts > * {
+    background-color: #720000;
+}
+
 
 /*** Tag lists ***/
 
@@ -218,7 +232,7 @@ pre.src .code-sh-escaped-newline { }
 
 #sidebar li > * {
     display: block;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     padding-left: .7em;
     padding-right: .5em;
@@ -261,8 +275,9 @@ li.tag-3 > * { background-color: #d04a00; }
     }
 }
 
-@media screen and (min-width: 1600px) {
-    #main {
-        width: 33%;
+@media screen and (min-width: 1416px) {
+    body {
+        /** This is cool */
+        background-size: 100%;
     }
 }
