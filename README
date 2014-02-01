@@ -1,0 +1,5 @@
+The static HTML content of my site at fwwm.us is hosted by Github. The files
+lie in 'gh-pages' branch. The content is generated programmatically from Emacs
+org files in [1].
+
+[1] https://github.com/progo/fwwmus---org
