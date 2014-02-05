@@ -1,0 +1,821 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Kirjanpidosta: Ledger — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">Foobarly adventures</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">05.02.2014</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">05.02.2014</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/master/miete/ledger.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/editorit.html" class="tag-name">editorit</a></li><li class="tag-0"><a href="/tags/ohjelmistot.html" class="tag-name">ohjelmistot</a></li><li class="tag-0"><a href="/tags/cli.html" class="tag-name">cli</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/kopiointia-seurannalla.html" class="rp-url">
+        <span class="rp-title">Kopiointia seurannan kanssa</span>
+      </a>
+    </li><li>
+      <a href="/miete/emacs-rokkaa.html" class="rp-url">
+        <span class="rp-title">Emacs rokkaa</span>
+      </a>
+    </li><li>
+      <a href="/miete/semver.html" class="rp-url">
+        <span class="rp-title">Semanttisesta versioinnista</span>
+      </a>
+    </li><li>
+      <a href="/miete/puoli-vuotta-emacsia.html" class="rp-url">
+        <span class="rp-title">Puoli vuotta Emacsia</span>
+      </a>
+    </li><li>
+      <a href="/progo.html" class="rp-url">
+        <span class="rp-title">Mikael 'progo' Puhakka, tiivistetty haastattelu</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+
+<div class="outline-2" id="outline-container-sec-1">
+<h2 id="sec-1">Ledger ja kirjanpito   </h2>
+<div id="text-1" class="outline-text-2">
+
+<p>
+<a href="http://www.ledger-cli.org/">Ledger</a> on John Wiegleyn visioima ja toteuttama kahdenkertainen
+talouskirjanpitosovellus komentoriviympäristöihin. Koska Ledger toimii
+kääntäjämallisesti pelkän puhtaan tekstin kanssa, voi sitä täydennellä
+ja käsitellä millä tahansa editorilla haluaa. Ja sai viimein minutkin
+pitämään kirjaa. Tässä jutussa kerron hieman Ledgeristä ja omasta
+kirjanpidostani, jos vaikka joku innostuu mukaan.
+</p>
+
+<p>
+Huomio ja disklaimeri: opiskelin taloustaitoa ja kirjanpitoa viimeksi
+yläkoulussa. Vaikka osasin tehdä koulukioskiprojektimme
+kahdenkertaisen kirjanpidon suurinpiirtein oikein, niin kirjanpidossa
+vakiintuneita käytäntöjä en muista juuri lainkaan, enkä myöskään
+erityisesti kirjanpitosanaston suomennoksiakaan. Eli joskus puhun
+asioista joillain termeillä, jotka tuskin esiintyvät sellaisenaan alan
+oppikirjoissa. Ehkä minunkin pitäisi joskus käydä kirjastossa.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Kirjanpidon peruskäsitteitä</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Kahdenkertainen kirjanpito hämää ihmisiä, eikä ihan syyttä. En väitä
+osaavani kaikkia sopukoita superhyvin, joten tässä tulee pedagogisesti
+puutteellinen esitelmä asiasta.
+</p>
+
+<p>
+Kahdenkertaisessa kirjanpidossa (siis siinä kirjanpidossa, josta
+puhumme tässä nyt) jokaisella tapahtumalla on "vastatapahtuma" siten,
+että kaikki summat menevät aina lopuksi nollaan. Jos ostan kympillä
+perunoita, niin lompakostani <b>hävisi</b> kymppi, mutta perunakuluihin
+tuli kymppi <b>lisää</b>.
+</p>
+
+<p>
+Kahdenkertaisessa kirjanpidossa on kaikki kiinni niinsanotuissa
+tileissä. Nämä tilit eivät ole sama asia kuin pankkitilisi, vaan
+kirjanpidollisia tilejä voi tehdä lennosta sitä mukaan kun syntyy
+tarvetta. Kirjanpitotilit ovat vain nimettyjä "lokeroita", joihin
+erilaiset tulot ja menot on luonteva järjestellä. Ja mikä on luontevaa
+kullekin, sen saa aivan itse päättää. Tilejä on viittä erilaista
+tyyppiä ja kunkin tyypin alle saa nimetä uusia alatilejä. Viisi
+perustiliä ovat:
+</p>
+
+<dl class="org-dl">
+<dt> Equity (Pääoma) </dt><dd>Lähtötilanne, eli oikeiden tilien ja velkojen
+määrät siinä vaiheessa kun kirjanpito aloitetaan. Ei tarvita
+muuhun kuin alkunumeroihin.
+</dd>
+<dt> Income (Tulot) </dt><dd>Kaikki raha, joka tulee systeemiin, <b>otetaan pois</b>
+tulotileiltä.
+</dd>
+<dt> Expenses (Menot) </dt><dd>Kaikki raha, joka lähtee systeemistä, <b>lisätään</b>
+menotileille.
+</dd>
+<dt> Liabilities (Velat) </dt><dd>Jos raha tulee siten, että se pitää joskus
+kuitata (esimerkiksi luottokortit ja lainat), se tulee pois
+velkatileiltä.
+</dd>
+<dt> Assets (Omaisuus) </dt><dd>Ostat jotain omistaaksesi, omaisuustili on
+oikea paikka. Myös käteisvarat (kuten oikein pankkitilien saldot)
+ja osakkeet ja sen sellainen on hyvä pitää täällä.
+</dd>
+</dl>
+
+<p>
+Onko riittävän epäselvää nyt? Tehdään konkreettinen <a href="#Esimerkki">esimerkki</a> kun
+ensiksi tutustutaan Ledgerin käyttämään merkintätapaan.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Ledgerin tilikirjojen merkkaus</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Ledger on siis arkkitehtuuriltaan <a href="http://www.catb.org/esr/writings/taoup/html/ch11s06.html#id2958199">kääntäjä</a>, vaikka mitään
+binäärimössöä se ei tuotakaan ulos. Tai filtteri, jos halutaan tulkita
+ESR:n määritelmiä edelläolevasta toisin. Ledger lukee tilikirjan
+annetusta tiedostosta muistiin ja parsii siitä kaikenlaista pientä
+informaatiota. Sitten käyttäjä tekee kyselyitä tästä informaatiosta,
+kuten vaikka tilinsä saldon. Ledgeriä voi käyttää eräajossa suoraan
+komentoriviltä, tai sen voi käynnistää omassa tulkissaan, jolloin
+samalla syötteiden parsimisella voi tehdä monet kyselyt.
+</p>
+
+<p>
+Ja tämä tilikirjaformaatti, jota Ledger lukee, on tosiaan hyvin
+yksinkertainen tekstimuotoinen formaatti, kuten odottaa saattaisi.
+Ohessa on mukailtu esimerkki ohjelman <a href="http://www.ledger-cli.org/">sivuilta</a>. Tässä on siis pätkä
+tekstitiedostosta, joita kutsun tilikirjoiksi nyt tässä artikkelissa:
+</p>
+
+<pre class="example">
+2006-10-15 Exxon
+    Expenses:Auto:Gas         $10.00
+    Liabilities:MasterCard   $-10.00
+</pre>
+
+<p>
+On siis ostettu bensaa 15.10.2006 ja tälle tapahtumalle on annettu
+<i>kuvaus</i> (ledgerin jargonissa <i>note</i> tai <i>description</i>) "Exxon".
+Sitten sisennettynä on lista eri <i>tileistä</i> ja muutoksista niille
+tileille. Tilille <code>Expenses:Auto:Gas</code> on tullut kympin verran lisää
+rahaa ja vastaavasti <code>Liabilities:MasterCard</code> -nimiseltä tililtä on
+hävinnyt samaisen kympin verran. Tilien nimet ovat täysin
+vapaavalintaisia ja niissä koulutusta saaneet käyttävät tietynnimisiä
+etunimiä ihan perinnesyistä. Niistä oli edellisessä kohdassa.
+</p>
+
+<p>
+Nyt tämän esimerkkitiedoston luettuaan Ledger osaa sanoa, että bensaan
+on mennyt kymppi ja että MasterCardin luottoa on vingutettu kympillä.
+Parempi maksaa jossain vaiheessa pois. Ledger osaa myös tarvittaessa
+laskea yhteen puuttuvat numerot, jos yhdestä tapahtuman tileistä
+puuttuu rahamäärä. 
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Kattavahko esimerkki</h3>
+<div id="text-1-3" class="outline-text-3">
+
+
+<p>
+Tehdään nyt toivottavasti selkeyttävä esimerkki tähän kaikkeen. Olkoon
+meillä avattuna Nordeassa yksi käyttötili ja yksi säästötili. Ja
+tileillä on vaikka 1204,45 euroa ja 930 euroa vastaavasti. Ja Nordeaan
+avatulla Visa Credit -kortilla on pari kymppiä ostoksia. Ja tällä
+skenaariolla aloitamme kahdenkertaisen kirjanpidon ledgerissä.
+</p>
+
+<p>
+Tilinavaus tapahtuu pääomatiliä käyttämällä ja lähinnä siitä syystä,
+että kahdenkertaisuuden tasapaino säilyy.
+</p>
+
+<pre class="example">
+2014-01-01 Kirjanpidon aloittaminen
+        Assets:Tilit:Nordea             1204,45 €
+        Assets:Tilit:Säästötili         930 €
+        Liabilities:Visa                -32,40 €
+        Equity:Tilit
+</pre>
+
+<p>
+Nyt tämä meidän kuvitteellinen tili <code>Equity:Tilit</code> on pahasti
+pakkasella, mutta se saakin olla. Sen kuuluukin olla. Nyt meillä on
+kirjat kunnossa. <code>Liabilities:Visa</code> on pakkasella kanssa, ja senkin
+kuuluu olla näin. Kuten fysiikassa meillä on jokaiselle voimalle
+vastavoima, niin taloustieteessä kullekin tilitapahtumalle on
+vastatapahtuma.
+</p>
+
+<p>
+Jotta asia valottuu paremmin, päätämmekin vaikka lyhentää tämän
+visalaskun oitis nollille. Kun on nettipankissa tehty asianmukainen
+siirto, niin kirjataan heti ylös, ettei unohdu:
+</p>
+
+<pre class="example">
+2014-01-01 Visan lyhennys
+        Assets:Tilit:Nordea             -32,40 €
+        Liabilities:Visa                32,40 €
+</pre>
+
+<p>
+Eli kuten oikeassakin maailmassa tapahtuu, velan lyhentämiseen menee
+perhana oikeata käteistä rahaa. Nyt ledger tietää sanoa, että tili
+<code>Liabilities:Visa</code> on nollilla, mikä on hyvä asia. Ledger
+todennäköisesti jättää tämmöisen nollatun tilin ylipäänsä näyttämättä.
+</p>
+
+<p>
+Jos käydään kaupassa ja maksetaan Visan Debit-puolella (vähennetään
+suoraan korttiin kytketyltä tililtä), niin tapahtuma näyttäisi vaikka
+tältä:
+</p>
+
+<pre class="example">
+2014-01-05 Ruokaa
+        Assets:Tilit:Nordea             -59,30 €
+        Expenses:Ruokamenot
+</pre>
+
+<p>
+Meillä ei ollut tyhjässä tilissä mitään "ruokamenot"-tiliä, mutta
+ledger luo kaikenlaiset tilit aina tyhjästä, jos samannimistä ei ole
+aiemmin tiedostossa lukenut. Meillä on kaikki valta nimetä asioita
+kuten haluamme. Eikä ole pakko kirjoitella puolienglanniksi, minä vain
+tapaan tehdä asiat noin. Kaksoispisteet ovat tavallaan kyllä
+pakollisia, mutta vain jos haluat että ledger laskeskelee alatilien
+saldoja yhteen puolestasi. Asialla ei ole muuta kuin informatiivista
+merkitystä. Näkisit esimerkiksi suoraan kaikkien eri tiliesi
+kokonaisrahamäärän.
+</p>
+
+<p>
+Huomataan myös, että nyt jätin kirjoittamatta vastatapahtuman numerot
+ylös. Ledger on sen verran taitava poika, että se laittaa oikean luvun
+tuohon puuttuvaan kohtaan. Yhdessä transaktiossa voi olla muutoksia
+useampaankin kuin kahteen tiliin, mutta vain yhdestä tilistä saa
+jättää numerot pois. Ledger ei osaa tällöin päätellä, mistä ja miten
+paljon pitäisi siirtää. Se myös kielii siitä, että Ledgerillä ei voi
+tehdä yhdenkertaista kirjanpitoa, vaikka haluaisi. Vain yksinkertaiset
+käyttävät yhdenkertaista kirjanpitoa, ja siihen välttää Excelin
+tapaiset kikkareet!
+</p>
+
+<p>
+Tämä ruokaostos on myös kirjattu menoihin sen takia, että sitä rahaa
+ei tulla näkemään uudestaan noin vain. Raha on lähtenyt systeemistä.
+Kulutustavarat, kuten ruoka ja polttoaine ja netflix-kuukausimaksut
+laitetaan menoihin. Sen sijaan jos ostat kultaa tai bitcoineja tai
+jotain arvonsa säilyttävää, kuten asunnon tai auton, ne yleensä
+merkitään omaisuudeksi.
+</p>
+
+<p>
+Tässä vastineeksi yleinen tapaus, jossa rahaa tulee systeemiin:
+</p>
+
+<pre class="example">
+2014-01-16 Palkka
+        Assets:Tilit:Nordea             1890,90 €
+        Income:Palkka
+</pre>
+
+<p>
+Raha tulee kirjanpitoon ikään kuin tyhjästä, joten merkitsemme rahan
+lähtevän tuloista. Tulotilit ovat <i>aina miinuksella</i>, menotilit <i>aina
+plussalla</i>. Velat aina miinuksella. Omaisuustilit toivottavasti aina
+plussalla ja pääomatilit alkutilanteen omaisuuden mukaan joko
+miinuksella (hyvä tapaus) tai plussalla.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Ledgerin peruskäyttö</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Hyödynnetään edellisessä luvussa kehiteltyjä tapahtumia ja tutkitaan,
+mitä itse ohjelmalla voi nyt tehdä. Jahka Ledger on asennettu tavalla
+tai toisella, niin sitä voi lähteä kokeilemaan ylläolevien tapahtumien
+avulla. Summa summarum, olkoon tässä koosteena tiedosto <code>~/tilit</code>:
+</p>
+
+<pre class="example">
+2014-01-01 Kirjanpidon aloittaminen
+        Assets:Tilit:Nordea             1204,45 €
+        Assets:Tilit:Säästötili         930 €
+        Liabilities:Visa                -32,40 €
+        Equity:Tilit
+2014-01-05 Ruokaa
+        Assets:Tilit:Nordea             -59,30 €
+        Expenses:Ruokamenot
+2014-01-01 Visan lyhennys
+        Assets:Tilit:Nordea             -32,40 €
+        Liabilities:Visa                32,40 €
+2014-01-16 Palkka
+        Assets:Tilit:Nordea             1890,90 €
+        Income:Palkka
+</pre>
+
+<p>
+Sekoitin hieman tapahtumien järjestystä, sillä Ledger ei välitä muusta
+kuin päivämääristä.
+</p>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-4-1">
+<h4 id="sec-1-4-1">Saldot</h4>
+<div id="text-1-4-1" class="outline-text-4">
+<p>
+Katsoaksemme saldot voimme komentaa Ledgerille <code>balance</code> tai lyhyesti
+<code>bal</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit balance
+</pre>
+</div>
+
+<pre class="example">
+           3933,65 €  Assets:Tilit
+           3003,65 €    Nordea
+            930,00 €    Säästötili
+          -2102,05 €  Equity:Tilit
+             59,30 €  Expenses:Ruokamenot
+          -1890,90 €  Income:Palkka
+--------------------
+                   0
+</pre>
+
+<p>
+Ledgerin mielestä tilit on siis tasapainotettu oikein, koska viivan
+alle jää nolla, summa on siis nolla. Tässä nähdään myös paremmin, mikä
+on näiden tilien ja alitilien merkitys. <code>Assets</code> on tili kyllä, mutta
+siihen summataan kaikkien samalla alulla nimetyt muut tilit omaksi
+tiedoksemme. Sama käy tilille <code>Assets:Tilit</code>. Tästä on helppo lukea,
+että erilaisilla pankkitileillämme on 3933 euroa ja että ruokaan on
+mennyt kaikkinensa melkein 60 euroa.
+</p>
+
+<p>
+Kun kirjanpitoa on tehnyt vähän aikaa, voi erilaisia tilejä olla
+helposti satakunta erilaista, ja koko saldolistaus voi olla aika
+pitkä. Komennolla <code>bal</code> voi antaa tarkentavan lisämääreen
+tarkasteltavista tileistä:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit bal Assets:Tilit
+</pre>
+</div>
+
+<pre class="example">
+           3933,65 €  Assets:Tilit
+           3003,65 €    Nordea
+            930,00 €    Säästötili
+--------------------
+           3933,65 €
+</pre>
+
+<p>
+Kun laitat laskuja maksuun, niiden eräpäivän voi pitää siellä
+tulevaisuudessa ihan piruuttaan. Kirjanpidossa tapahtuman päivämäärä
+laitetaan tulevaisuuteen, siihen eräpäivään. Valitettavasti se näkyy
+Ledgerissä saldoissa kuitenkin jo oitis. Käyttämällä optiota
+<code>--current</code> tai lyhyemmin <code>-c</code> voidaan Ledger kuitenkin laittaa
+laskemaan vain <i>jo tapahtuneita</i> tapahtumia (tämä päivä mukaanlukien).
+Tilinsä tilannetta voi täten vähän ennakoida vertaamalla saldoja
+c-option kanssa (pitäisi olla sama lukema kuin mitä nettipankki
+ilmoittaa) ja ilman (mitä oikean saldon pitäisi olla, jahka
+viimeinenkin lasku on mennyt veloitukseen).
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-4-2">
+<h4 id="sec-1-4-2">Tapahtumat</h4>
+<div id="text-1-4-2" class="outline-text-4">
+<p>
+Saldot ovat toki usein käytetty toiminto, mutta toinen tärkeä Ledgerin
+komento on <code>register</code> tai lyhennettynä <code>reg</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit reg
+</pre>
+</div>
+
+<pre class="example">
+14-Jan-01 Kirjanpidon aloitta.. Assets:Tilit:Nordea       1204,45 €    1204,45 €
+                                Asset:Tilit:Säästötili     930,00 €    2134,45 €
+                                Liabilities:Visa           -32,40 €    2102,05 €
+                                Equity:Tilit             -2102,05 €            0
+14-Jan-05 Ruokaa                Assets:Tilit:Nordea        -59,30 €     -59,30 €
+                                Expenses:Ruokamenot         59,30 €            0
+14-Jan-01 Visan lyhennys        Assets:Tilit:Nordea        -32,40 €     -32,40 €
+                                Liabilities:Visa            32,40 €            0
+14-Jan-16 Palkka                Assets:Tilit:Nordea       1890,90 €    1890,90 €
+                                Income:Palkka            -1890,90 €            0
+</pre>
+
+<p>
+Tämä ei nyt kamalasti hyödytä näin pienen tilikirjan kanssa, mutta
+edut alkavat tulla esille, kun tapahtumia on satoja ja pitäisi tutkia
+vain viimeisimmän kuukauden juttuja. Tai jos vaikka haluaa katsoa
+päivämäärän mukaan lajiteltuna näitä:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit reg --sort date
+</pre>
+</div>
+
+<p>
+Tapahtumia voi myös suodattaa sopivasti, jos olet etsimässä vain
+tiettyjä tapahtumia. Esimerkiksi tapahtuman kuvauksella tai
+tapahtumaan liittyvillä tileillä voi rajata vaikka tutkiaksesi vain
+ruokaostoksia. Näistä löytyy enemmän ledgerin <a href="http://www.ledger-cli.org/3.0/doc/ledger3.html">manuaalista</a>.
+</p>
+
+<p>
+Yhden tärkeän voisin ottaa tähän, eli päivämäärien mukaan tehtäviä
+rajoitelmia. Optiot <code>--begin</code> ja <code>--end</code> rajoittavat tapahtumat
+annettujen päivämäärien väliin päätepisteet mukaanluettuna. Tässä on
+esimerkkinä tapahtumakysely vuoden ensimmäiseltä viikolta. Palkka ei
+ole ehtinyt tulla:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit --begin 2014-01-01 --end 2014-01-07 reg
+</pre>
+</div>
+
+<p>
+Muutama erikoistermikin löytyy, jolla säästyy vähän naputtelua.
+Nykyisen kalenterikuukauden aikana (eli ensimmäisestä päivästä alkaen)
+tehdyt tapahtumat:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit --begin <span class="code-string">'this month'</span> reg
+</pre>
+</div>
+
+<p>
+Ja viimeisimmän kuukauden eli 30 päivän tapahtumat:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">ledger -f ~/tilit --begin <span class="code-string">'last month'</span> reg
+</pre>
+</div>
+
+<p>
+Mainitut asetukset käyvät kaikki niin saldoihin kuin
+tapahtumakyselyihin. Erityisesti edellä mainitut <code>--current</code> ja
+<code>--begin</code> ja <code>--end</code> -optiot toimivat hyvin.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-4-3">
+<h4 id="sec-1-4-3">Ledger on täynnä toimintoja</h4>
+<div id="text-1-4-3" class="outline-text-4">
+<p>
+<a href="http://www.ledger-cli.org/3.0/doc/ledger3.html">Ledgerin dokumentaatio</a> on iso ja kattava pakkaus kaikenlaista, ja
+onneksi kaikkea ei tarvitse osata heti. Nämä ovat asioita, joilla
+pääsee alkuun ja ainoa vaikeus Ledgerin käytössä on etsiä oikeat
+komentoriviliput saadakseen haluamaansa tietoa ulos haluamassaan
+muodossa. Esimerkiksi riittävästi kikkailemalla <code>-W</code>- tai
+<code>-M</code>-optioiden kanssa tapahtumakyselyistä saa ulos sopivaa dataa,
+josta voi tehdä vaikka Excelillä kuukausikäppyröitä.
+</p>
+
+<p>
+Ledger on täysin valuutta-agnostinen. Se ei välitä, lukeeko
+rahasummien lopussa tai alussa $, €, USD, BTC tai vaikka <b>orava</b>.
+Yksiköiden on täsmättävä kyllä keskenään, jotta tileiltä tehtävät
+vähennykset ja lisäykset menevät oikein. Mutta samalla tilillä voi
+olla vaikka euroja ja dollareita, Ledger ei sitä estä. Ja mikä tahansa
+kvantifioitavissa oleva asia voi olla kirjoilla Ledgerissä. Oikein
+tarkan markan mies pitää vaikka jääkaappinsa sisältöä kirjanpidossa.
+Seuraava rivi on täysin laillinen Ledger-merkintä:
+</p>
+
+<pre class="example">
+2014-02-05 Välipala
+        Jääkaappi                       -1 omena
+        Jääkaappi:Maito                 -2 dl
+        Syönnit
+</pre>
+
+<p>
+Jos samassa tapahtumassa yhdeltä tililtä vähennetään yhtä valuuttaa ja
+toiselle tulee toista, Ledger ymmärtää välissä tapahtuneen
+valuutanvaihdon ja että käyttäjä on antanut oikeat numerot tiedostoon.
+Samalla systeemillä onnistuisi vaikka tuntikirjanpitokin!
+</p>
+
+<p>
+Ledger osaa myös tehdä kuukausittaisia automaattitapahtumia ja
+budjetointia, mutta niihin en ole lainkaan paneutunut. Ledger tuntee
+myös erilaisia maksajaliitteitä ja muuta metatietoa, jos haluaa olla
+oikein tarkka asioiden kanssa. Monet näistä hienouksista voi myös
+tehdä pelkillä alitileillä.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Omia käytäntöjäni ja niksejä</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Nyt kun kahdenkertainen kirjanpito ja Ledger on jotenkuten selvillä,
+on aika hävittää hieman epäselvyyksiä kertoilemalla omia käytäntöjäni
+parin vuoden säännöllisen kirjanpidon jälkeen.
+</p>
+</div>
+
+<div class="outline-4" id="outline-container-sec-1-5-1">
+<h4 id="sec-1-5-1">Lompakon käteinen</h4>
+<div id="text-1-5-1" class="outline-text-4">
+<p>
+Kirjanpitohan on vaivalloista! Aina kun heitän 50-senttisen
+keräyslippaaseen tai ostan pullakahvit yliopistolla, joudun tekemään
+monta riviä tekstiä tiedostoon.
+</p>
+
+<p>
+No ei ihan. Kannattaa vetää itselleen joku raja johonkin, jonka ali
+kirjanpitoa ei tehdä. Fyysinen käteinen on yksi hyvä nyrkkisääntö: se
+fyysinen käteinen, mitä sinulla on lompakossa tai sukanvarressa on
+sellaista, että ei tarvitse pitää kirjaa. Toisin sanoen minä <b>pidän
+kirjaa vain niistä rahoista, jotka joskus näkyvät nettipankissani</b>.
+</p>
+
+<p>
+Jos nostan käteistä automaatilta, niin kirjaan sen tilille
+<code>Expenses:Siirrot</code> eli tavallaan siirrän tililtä käteen. Vastaavasti
+jos käyn pankissa tekemässä talletuksen, niin se tulee tililtä
+<code>Income:Siirrot</code>.
+</p>
+
+<p>
+Tällä systeemillä on myös se sivuvaikutus, että lompakossa lojuvat
+pikkurahat käytän huolettomammin, tietäen että niistä ei synny
+henkistä krapulaa viimeistään siinä vaiheessa kun naputtelen tilit
+tasalle. Ehkä jonkinlainen "roskatili" myös huolettomille
+korttiostoksille voi sopia jonkun tyyliin.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-5-2">
+<h4 id="sec-1-5-2">Ison kauppakuitin pilkkominen</h4>
+<div id="text-1-5-2" class="outline-text-4">
+<p>
+Ruokakaupassakin käydessä harvemmin ostetaan pelkkää ruokaa. Joskus on
+joku pesuaine tai deodorantti loppunut, joten sekin menee samalla
+matkalla. Ja kotona kädessäsi on yksi kuitti, jossa on yksi
+loppusumma. Tämän voi jakaa yhden tapahtuman sisällä erilaisiin
+tilisiirtoihin:
+</p>
+
+<pre class="example">
+2014-02-05 Ruokaa ja muuta
+        Assets:Tilit:OP                 -15 €
+        Expenses:Ruoka                  12 €
+        Expenses:Koti                   3 €
+</pre>
+
+<p>
+Ja näin on tili taas tasattuna, eikä ruokaostokset hämärry liiaksi
+muista ostoksista. Jos tämmöinen nirhaaminen ei kiinnosta, niin tilin
+nimeksi voi harkita jotain yleisempää, vaikka "Elintarvike".
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-5-3">
+<h4 id="sec-1-5-3">Tilien avulla voi tehdä mikrotilastointia</h4>
+<div id="text-1-5-3" class="outline-text-4">
+<p>
+Riippuen vapaa-ajan määrästä ja viettämisestä voi olla "kiinnostavaa"
+vaikka erotella kahvi- tai alkoholiostokset erilleen kaikesta ruoasta.
+Näin näkee sitten vuosien saatossa, missä suhteessa tulee mitäkin
+ostettua, ja kuinka usein! Alitilejä voi rakennella niin listauksista
+saa aina ulos myös kokonaiset summat. Minulla on esimerkiksi tämmöisiä
+tilejä omassa kirjanpidossani:
+</p>
+
+<pre class="example">
+Expenses:Ruoka
+Expenses:Ruoka:Kahvi
+Expenses:Ruoka:Makeiset
+Expenses:Ruokailut
+</pre>
+
+<p>
+Huomaa ero ruokaostosten ja ruokailujen maksamisten välillä.
+<code>Ruoka</code>-tilille merkitsen elintarvikeostokset ja <code>Ruokailut</code>-tili on
+sitten sitä kun syödään tai juodaan "ulkona".
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-5-4">
+<h4 id="sec-1-5-4">Tilikirjan muokkaaminen editorilla</h4>
+<div id="text-1-5-4" class="outline-text-4">
+<p>
+Koska tilikirja on puhdasta tekstiä, on kaikki mahdollista. Isoin syy
+ylipäänsä käyttää Ledgeriä jonkun graafisen ja "helppokäyttöisen"
+kirjanpidon, kuten GnuCashin, sijaan.
+</p>
+
+<p>
+Ledger lukee aina kaikki kirjat alusta loppuun joka käynnistyksellä.
+Se ei siis jää muistelemaan virheitä edellisajokerralta tai mitään
+sellaista. Voit surutta korjailla ja muokkailla kirjoja (sikäli kun
+nyt puhutaan yksityishenkilöistä, jotka tekevät kirjanpitoa
+jo-verotetuista hyödykkeistä) suosikkieditorisi "search-and-replace"
+-toiminnolla.
+</p>
+
+<p>
+Voit tehdä valmiita tapahtumapohjia (TextMaten snippet-toiminto, Vimin
+snipMate tai Emacsin yasnippet ja niin edelleen) tai voit vain pitää
+toisessa tiedostossa valmiita pätkiä valmiina kopioitavaksi ja
+liitettäväksi. Ledgerillä on myös oma <code>xact</code>-komento, johon kannattaa
+tutustua tehosyistä. Kaikki on mahdollista. Ja jos ei editorimakrot,
+niin vaikka pienet shell-skriptit tai Python-ohjelma, joka parsii
+jotain tietoa ulos. Myös Ledgerin ulostulosta saa paljon iloa irti.
+Minulla on esimerkiksi pieni ohjelmantynkä, joka hakee käyttötilini
+saldot ja pitää ne työpöydällä ajantasaisesti näkyvillä. Se kannustaa
+pitämään kirjat kunnossa.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-sec-1-5-5">
+<h4 id="sec-1-5-5">Omaisuutta vai menoja?</h4>
+<div id="text-1-5-5" class="outline-text-4">
+<p>
+Kun ostat ruokaa, niin se on aika selvästi menoja. Tai jos tilaat
+kahvilassa kahvin. Niitä rahoja ei saa enää takaisin. Helppoja
+päätöksiä. Vastaavasti jos ostaa osakkeita tai kultaa, niin ne on
+helppo merkitä omaisuudeksi. Joskus ne voi taas realisoida euroiksi
+— toivottavasti voitolla.
+</p>
+
+<p>
+Mutta miten pitäisi toimia, kun ostat CD-levyjä? Uuden näppäimistön
+tietokoneeseesi? Nopeasti arvonsa menettävän keskitason älypuhelimen?
+Auton? Ovatko nämä menoja vai omaisuutta?
+</p>
+
+<p>
+Tähän varmasti kaikkein alkeellisin taloustieteen ykköskurssin
+oppikirja ottaa hyvin kantaa, mutta minä lähdin siitä liikkeelle, että
+kaikki, joka on jollain tavalla jälleenmyytävissä, on omaisuutta.
+<i>Paitsi että</i> avaamattomat ruokajutut voivat vaikka mennä kaverille
+pikkurahalla ja että älypuhelimesta ei saa parin vuoden päästä kuin
+murto-osan hinnasta takaisin. Eli tämä on vahvasti sellaista oman maun
+mukaan tehtävää rajanvetoa. Ehkä viisainta olisi pitää omaisuustilit
+mahdollisimman tyhjinä, pitää vain pankkitilit ja mahdolliset osakkeet
+siellä.
+</p>
+
+<p>
+Jos sattuu myymään jotain, joka ei ole omaisuudessa, niin sen voi
+merkitä itselleen tuloksi. Jos myy jotain omaisuudesta pois, niin se
+pitää tietysti vähentää omaisuudesta. Tässäkin tulee pieni dilemma
+eteen:
+</p>
+
+<pre class="example">
+2010-02-05 Corolla
+        Assets:Tilit:OP                 -956 €
+        Assets:Auto
+; ...
+2012-01-05 Corolla myyty
+        Assets:Tilit:OP                 700 €
+        Assets:Auto
+</pre>
+
+<p>
+Onko meillä nyt olevinaan vielä 250 euron edestä autoa jossain
+tallessa? Ei, jotenkin <code>Auto</code>-tili pitää nollata. Tämä on about paras
+ratkaisu, jonka olen itse löytänyt:
+</p>
+
+<pre class="example">
+2012-01-05 Corolla myyty oikein
+        Assets:Tilit:OP                 700 €
+        Assets:Auto                     -956 €
+        Expenses:Auto
+</pre>
+
+<p>
+Tässä on se ongelma, että myydessä jotain pitäisi olla tiedossa se
+vanha ostohinta, mahdollisesti postikulut vähennettynä. Eikä ole
+todellakaan aina mahdollista, kuten kirjanpidon alussa tehtävästä
+pääomajutusta tiedämme.
+</p>
+
+<p>
+Joten jos joku tietää paremmin oikean tavan tai keksii muuten vain
+jotain, niin please, ehdotelkaa. Muuten joudun jonain vuonna vielä
+käymään kirjastossa tutustumassa aiheeseen ja sitten muokkailla
+vanhoja tapahtumia päivätolkulla.
+</p>
+
+<p>
+Ehkä se oikea tapa on vain merkitä kaikki ostettu irtain menoiksi ja
+olla sitten autuaan tietämätön hifisettinsä "arvosta".
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20140205_1256';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>

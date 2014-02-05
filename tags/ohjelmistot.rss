@@ -1,4 +1,11 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Semanttisesta versioinnista [NEW]</title><link>http://fwwm.us/miete/semver.html</link><guid isPermaLink="false">20130404_1749</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Kirjanpidosta: Ledger [NEW]</title><link>http://fwwm.us/miete/ledger.html</link><guid isPermaLink="false">20140205_1256</guid><description>
+Ledger on John Wiegleyn visioima ja toteuttama kahdenkertainen
+talouskirjanpitosovellus komentoriviympäristöihin. Koska Ledger toimii
+kääntäjämallisesti pelkän puhtaan tekstin kanssa, voi sitä täydennellä
+ja käsitellä millä tahansa editorilla haluaa. Ja sai viimein minutkin
+pitämään kirjaa. Tässä jutussa kerron hieman Ledgeristä ja omasta
+kirjanpidostani, jos vaikka joku innostuu mukaan.
+</description><pubDate>Tue, 04 Feb 2014 18:18:01 +0000</pubDate></item><item><title>Semanttisesta versioinnista [NEW]</title><link>http://fwwm.us/miete/semver.html</link><guid isPermaLink="false">20130404_1749</guid><description>
 Versionumerointi tuntuu monella olevan hakusessa. Onneksi maailmalla
 on useita de-facto -standardeja, joista Semantic Versioning, tai
 lyhyesti vain Semver, on hyväksytyin. Mutta ihmiset panevat silti
