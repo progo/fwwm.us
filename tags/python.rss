@@ -1,25 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Mathematica 9 [NEW]</title><link>http://fwwm.us/miete/mathematica-9.html</link><guid isPermaLink="false">20130401_0011</guid><description>
-Latasin Mathematica 9:n kokeiluversion käyttööni kuolattuani
-jostain syystä paljon tätä pientä suurta ohjelmistoa. Minulla ei
-ole juuri lainkaan mitään käyttöä CAS-systeemeille, mutta
-kiinnostaa niin kovasti, ja tekisi mieli peräti ostaakin. Ja miksi
-kaikista CAS-systeemeistä pitäisi valita maksullinen sellainen?!
-</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Eli Bressert: Scipy and Numpy (O'Reilly) [NEW]</title><link>http://fwwm.us/miete/scipy-and-numpy.html</link><guid isPermaLink="false">20130606_1852</guid><description>
-O'Reillyn blogiohjelmasta ilmaiseksi saamani kirja Scipy and
-Numpy (Eli Bressert) kuulosti alkuvaiheessa erinomaiselta
-kirjalta, erityisesti kun aloitin niin hienosti sillä Wes McKinneyn
-Python for Data Analysis kirjalla aikoinaan. Mutta Scipy and Numpy
-ei toimi jatko-osana, eikä toisaalta myöskään aloittelijoille
-sopivana pakettina.
-</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Canto on uusi RSS-lukijani [NEW]</title><link>http://fwwm.us/miete/canto.html</link><guid isPermaLink="false">20130329_1220</guid><description>
-Kun Google hieman odottamatta ilmoitti vetävänsä Readerin pois
-valikoimastaan, alkoi verkkainen etsintä uudelle RSS-aggregaatille.
-Vaikka Reader on käytettävyydeltään ihan kohtuullinen, oli
-pääasiallisena tavoitteena saada jonkinlainen ncurses-ratkaisu
-kuntoon säädettävyyden ja etäkäytön takia. (Huomio: tämä juttu ja
-konffausvinkit koskevat vain vanhentunutta Canto 0.7.10 -versiota.
-Suosittelen kokeilemaan uudempaa 0.8-sarjaa omiin kokeiluihinne.)
-</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Python on huonompi kieli kuin Clojure [NEW]</title><link>http://fwwm.us/miete/python-vs-clojure.html</link><guid isPermaLink="false">20130518_2028</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Python on huonompi kieli kuin Clojure [NEW]</title><link>http://fwwm.us/miete/python-vs-clojure.html</link><guid isPermaLink="false">20130518_2028</guid><description>
 Pakko hieman avautua Pythonin puutteista ja miksi Clojure sitten
 voittaa kädenväännössä lopulta. Nämä asiat ovat osittain
 objektiivisia totuuksia, mutta lopputulema on luonnollisesti
@@ -30,4 +9,25 @@ näin kylmää vuosi sitten. Mistäkö muistan? Tasan vuosi sitten
 tänään elokuvapäivyrini Moary aloitti vakituisen toiminnan
 katselemieni elokuvien kirjaamiseen. Se oli helteistä aikaa saada
 elokuvat nautittua ilman paikkojen sotkemista.
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Eli Bressert: Scipy and Numpy (O'Reilly) [NEW]</title><link>http://fwwm.us/miete/scipy-and-numpy.html</link><guid isPermaLink="false">20130606_1852</guid><description>
+O'Reillyn blogiohjelmasta ilmaiseksi saamani kirja Scipy and
+Numpy (Eli Bressert) kuulosti alkuvaiheessa erinomaiselta
+kirjalta, erityisesti kun aloitin niin hienosti sillä Wes McKinneyn
+Python for Data Analysis kirjalla aikoinaan. Mutta Scipy and Numpy
+ei toimi jatko-osana, eikä toisaalta myöskään aloittelijoille
+sopivana pakettina.
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Mathematica 9 [NEW]</title><link>http://fwwm.us/miete/mathematica-9.html</link><guid isPermaLink="false">20130401_0011</guid><description>
+Latasin Mathematica 9:n kokeiluversion käyttööni kuolattuani
+jostain syystä paljon tätä pientä suurta ohjelmistoa. Minulla ei
+ole juuri lainkaan mitään käyttöä CAS-systeemeille, mutta
+kiinnostaa niin kovasti, ja tekisi mieli peräti ostaakin. Ja miksi
+kaikista CAS-systeemeistä pitäisi valita maksullinen sellainen?!
+</description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item><item><title>Canto on uusi RSS-lukijani [NEW]</title><link>http://fwwm.us/miete/canto.html</link><guid isPermaLink="false">20130329_1220</guid><description>
+Kun Google hieman odottamatta ilmoitti vetävänsä Readerin pois
+valikoimastaan, alkoi verkkainen etsintä uudelle RSS-aggregaatille.
+Vaikka Reader on käytettävyydeltään ihan kohtuullinen, oli
+pääasiallisena tavoitteena saada jonkinlainen ncurses-ratkaisu
+kuntoon säädettävyyden ja etäkäytön takia. (Huomio: tämä juttu ja
+konffausvinkit koskevat vain vanhentunutta Canto 0.7.10 -versiota.
+Suosittelen kokeilemaan uudempaa 0.8-sarjaa omiin kokeiluihinne.)
 </description><pubDate>Wed, 04 Dec 2013 18:16:19 +0000</pubDate></item></channel></rss>
