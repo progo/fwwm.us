@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Lisp-kirjoja — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">Foobarly adventures</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">21.04.2014</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">21.04.2014</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/master/miete/lisp-kirjat.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/koodi.html" class="tag-name">koodi</a></li><li class="tag-1"><a href="/tags/clojure.html" class="tag-name">clojure</a></li><li class="tag-0"><a href="/tags/arvostelu.html" class="tag-name">arvostelu</a></li><li class="tag-0"><a href="/tags/kirja.html" class="tag-name">kirja</a></li><li class="tag-0"><a href="/tags/lisp.html" class="tag-name">lisp</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/scipy-and-numpy.html" class="rp-url">
+        <span class="rp-title">Eli Bressert: Scipy and Numpy (O'Reilly)</span>
+      </a>
+    </li><li>
+      <a href="/miete/java-js-pelialustana.html" class="rp-url">
+        <span class="rp-title">Java + JavaScript, paras pelialusta?</span>
+      </a>
+    </li><li>
+      <a href="/miete/python-vs-clojure.html" class="rp-url">
+        <span class="rp-title">Python on huonompi kieli kuin Clojure</span>
+      </a>
+    </li><li>
+      <a href="/miete/pelisavetukset-versiohallintaan.html" class="rp-url">
+        <span class="rp-title">Pelisavetukset versiohallintaan</span>
+      </a>
+    </li><li>
+      <a href="/miete/naytonsaastajaskriptit.html" class="rp-url">
+        <span class="rp-title">Näytönsäästäjäskriptit</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Lisp-kirjoja</h1>
+<div id="table-of-contents">
+<h2>Sisällysluettelo</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Lisp-kirjoja   </a>
+<ul>
+<li><a href="#sec-1-1">Michael Fogus, Chris Houser: The Joy of Clojure (2011)</a></li>
+<li><a href="#sec-1-2">Amit Rathore: Clojure in Action (2011)</a></li>
+<li><a href="#sec-1-3">Chas Emerick et al: Clojure Programming (2012)</a></li>
+<li><a href="#sec-1-4">Peter Seibel: Practical Common Lisp (2005)</a></li>
+<li><a href="#sec-1-5">Conrad Barski: Land of Lisp (2010)</a></li>
+<li><a href="#sec-1-6">Mitä muuta tulossa?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Michael Fogus, Chris Houser: The Joy of Clojure (2011)</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Vaikka tämä ei olekaan yleinen konsensus, <i>Joy of Clojure</i> sopii hyvin
+kielen oikkujen oppimiseen. Etenkin jos Clojuresta on jo pientä
+kokemusta web-tutoriaalien pohjalta. JoC on kirjoitettu osittain
+teoreettisesta näkökulmasta ja osittain käytännönläheisestä
+Clojure-hakkailusta. Totisesti, tässä kirjassa on laaja paketti
+erilaisia sovelluksia, ja antaa hyvät maistiaiset siihen, mitä
+lisp-kielellä voi oikein tehdä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Amit Rathore: Clojure in Action (2011)</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Rathoren Clojure-kirja saattoi olla vuonna 2011 hyvä katsaus Clojuren
+käytännöllisempään puoleen, mutta kirjoitustyyli ja koodi oli hieman
+puuduttavaa omaan makuuni. Emerickin <i>Clojure Programming</i> kuittaa
+likipitäen tämän kirjan kokonaan.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Chas Emerick et al: Clojure Programming (2012)</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Tämä kirja on taasen vahva yleisteos, suorastaan referenssi kaikkiin
+Clojure-asioihin. Python-maailmassa Lutzin <i>Programming Python</i> toimii
+vastaavana järkäleenä. Referenssi, joka toimii ihan taidokkaasti
+kirjoitettuna oppikirjana. Paljon asiaa on kyllä, joten kaikkea ei
+ehdi nauttia yhden lukukerran aikana.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Peter Seibel: Practical Common Lisp (2005)</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Common Lisp tuntuu Clojuren jälkeen hieman vanhalta, ja onhan se
+tietysti sitäkin. Ainakin pari vuotta sitten vielä kuitenkin
+keskusteltiin paljon siitä, onko Clojuren säkissä yhtäkään oikeasti
+uutta ideaa, jota ei CL:ssä olisi ainakin joskus nähty. Siitä syystä
+nyt aloitin hiljan tutustumisen CL:n maailmaan. Seibelin kirja on
+<a href="http://gigamonkeys.com/book/">ilmaisessa verkkojakelussa</a>, ja ainakin suosittelen ensipuoliskoa
+yleistason CL-kirjoitteluun. Luvun 9 nopea, funktionaalinen
+testiympäristö on erinomainen tapa näyttää makrojen taika.
+</p>
+
+<p>
+Jälkimmäisellä puolella Seibel kuitenkin siirtyy enemmän ja enemmän
+oliopohjaisiin ajatuksiin. Introduktio Common Lispin
+olio-ominaisuuksiin (CLOS) on toisaalta erittäin tervetullut, ja
+valaisevakin. Kaikki ideat, mitä Alan Kay teki oikein Smalltalkissa ja
+mitkä tehtiin Javassa ja C#:ssa väärin, ovat esillä. Common Lisp antaa
+vapaat kädet tehdä likipitäen sitä, mitä haluaa olioiden kanssa.
+</p>
+
+<p>
+Mutta loput esimerkit ovat sitten liiaksi oliokeskeisiä. Tämä tietysti
+käy niille, ketkä nauttivat olioista. Funktionaalista ohjelmointia PCL
+ei opeta, eikä sen tarvitsekaan. Onhan Common Lisp enemmän
+moniparadigmainen kuin funktionaalinen kieli.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Conrad Barski: Land of Lisp (2010)</h3>
+<div id="text-1-5" class="outline-text-3">
+<p>
+Barskin LoL on vähiten akateeminen kirja näistä kaikista, ja muutamia
+pieniä virheitä tai epätäsmällisyyksiäkin olen huomannut. Tämä kirja
+on todella hulvaton, kuitenkin, ja opastaa nätisti Common Lispin
+saloihin satunnaisten peliprojektien ja teoriaosuuksien lomitellessa
+toisiaan.
+</p>
+
+<p>
+Land of Lisp on tuore tapaus Common Lisp -kirjallisuuden maailmassa,
+ja ihan taidokas työ. Makrot ja kaikki sellainen käydään riittävällä
+tasolla ja selkeästi havainnollistettuna. Seibelin kirjaan nähden
+Barski ottaa funktionaalisen lähestymistavan kirjan loppupuolella
+käyttöön, ja tekee sillä ihan mukavia teknisiä algoritmeja.
+Minimax-algoritmeja ja α-β-pruunausta. Barski esittelee myös
+muita Common Lisp -idiomeja, ja kirja on ollut kaikkinensa oiva
+luenta. Tulikin ahmittua aikamoista vauhtia.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-6">
+<h3 id="sec-1-6">Mitä muuta tulossa?</h3>
+<div id="text-1-6" class="outline-text-3">
+<p>
+Näillä näkymin CL saa riittää, mutta Paul Grahamin <a href="http://www.paulgraham.com/onlisp.html">On Lisp</a> (vapaasti
+luettavissa tämäkin) kiinnostaisi lukea. Kyseessä on nimestään
+huolimatta vahvasti makropainotteinen paketti, ja makroilla tekee
+kaikissa lispeissä jotain. DSL-maailma riippuu makroista.
+</p>
+
+<p>
+Clojure-puolella on ainakin Hallowayn "Programming Clojure" ja sitten
+on Stuart Sierran "Practical Clojure", joita en ole lukenut/silmäillyt
+kannesta kanteen. En välttämättä luekaan, koska ovat aika vanhoja
+kirjoja ja vähän on kuultu mitään kehujakaan.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20140421_1228';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
