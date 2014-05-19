@@ -149,17 +149,17 @@ tapaan.
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">map</span> [fun coll]
-  (<span class="code-builtin">loop</span> [fun fun, coll (<span class="code-variable-name">seq</span> coll), acc ()]
-    (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
-      (<span class="code-builtin">recur</span> fun
-             (<span class="code-variable-name">rest</span> coll)
-             (<span class="code-variable-name">concat</span> acc (<span class="code-variable-name">list</span> (fun x))))
+  (<span class="code-keyword">loop</span> [fun fun, coll (<span class="code-builtin">seq</span> coll), acc ()]
+    (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+      (<span class="code-keyword">recur</span> fun
+             (<span class="code-builtin">rest</span> coll)
+             (<span class="code-builtin">concat</span> acc (<span class="code-builtin">list</span> (fun x))))
       acc)))
 
 (<span class="code-keyword">defn</span> <span class="code-function-name">map</span>' [fun coll]
-  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
-    (<span class="code-variable-name">cons</span> (fun x)
-          (<span class="code-variable-name">map</span>' fun (<span class="code-variable-name">rest</span> coll)))))
+  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+    (<span class="code-builtin">cons</span> (fun x)
+          (<span class="code-builtin">map</span>' fun (<span class="code-builtin">rest</span> coll)))))
 </pre>
 </div>
 
@@ -216,18 +216,18 @@ haetaan sitten loput filtteröidyt alkiot uuden kutsun voimin. Eri kätevää.
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filter</span> [pred coll]
-  (<span class="code-builtin">loop</span> [pred pred, coll coll, acc ()]
-    (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
-      (<span class="code-builtin">if</span> (pred x)
-        (<span class="code-builtin">recur</span> pred (<span class="code-variable-name">rest</span> coll) (<span class="code-variable-name">concat</span> acc (<span class="code-variable-name">list</span> x)))
-        (<span class="code-builtin">recur</span> pred (<span class="code-variable-name">rest</span> coll) acc))
+  (<span class="code-keyword">loop</span> [pred pred, coll coll, acc ()]
+    (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+      (<span class="code-keyword">if</span> (pred x)
+        (<span class="code-keyword">recur</span> pred (<span class="code-builtin">rest</span> coll) (<span class="code-builtin">concat</span> acc (<span class="code-builtin">list</span> x)))
+        (<span class="code-keyword">recur</span> pred (<span class="code-builtin">rest</span> coll) acc))
       acc)))
 
 (<span class="code-keyword">defn</span> <span class="code-function-name">filter</span>' [pred coll]
-  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
-    (<span class="code-builtin">if</span> (pred x)
-      (<span class="code-variable-name">cons</span> x (<span class="code-variable-name">filter</span>' pred (<span class="code-variable-name">rest</span> coll)))
-      (<span class="code-variable-name">filter</span>' pred (<span class="code-variable-name">rest</span> coll)))))
+  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+    (<span class="code-keyword">if</span> (pred x)
+      (<span class="code-builtin">cons</span> x (<span class="code-builtin">filter</span>' pred (<span class="code-builtin">rest</span> coll)))
+      (<span class="code-builtin">filter</span>' pred (<span class="code-builtin">rest</span> coll)))))
 </pre>
 </div>
 </div>
@@ -256,8 +256,8 @@ itse asiassa aikaan kaikkein sievintä koodia:
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">reduce</span> [fun x0 coll]
-  (<span class="code-builtin">if-let</span> [x (<span class="code-variable-name">first</span> coll)]
-    (<span class="code-builtin">recur</span> fun (fun x0 x) (<span class="code-variable-name">rest</span> coll))
+  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+    (<span class="code-keyword">recur</span> fun (fun x0 x) (<span class="code-builtin">rest</span> coll))
     x0))
 </pre>
 </div>
@@ -292,9 +292,9 @@ reduktio-funktiomme voisi olla tämännäköinen:
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">mapr</span> [fun coll]
-  (<span class="code-builtin">let</span> [f (<span class="code-keyword">fn</span> [xs x]
-            (<span class="code-variable-name">concat</span> xs (<span class="code-variable-name">list</span> (fun x))))]
-    (<span class="code-variable-name">reduce</span> f () coll)))
+  (<span class="code-keyword">let</span> [f (<span class="code-keyword">fn</span> [xs x]
+            (<span class="code-builtin">concat</span> xs (<span class="code-builtin">list</span> (fun x))))]
+    (<span class="code-builtin">reduce</span> f () coll)))
 </pre>
 </div>
 
@@ -316,11 +316,11 @@ Samalla menettelyllä kirjoitetaan <code>filter</code>.
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filterr</span> [pred coll]
-  (<span class="code-builtin">let</span> [f (<span class="code-keyword">fn</span> [xs x]
-            (<span class="code-builtin">if</span> (pred x)
-              (<span class="code-variable-name">concat</span> xs (<span class="code-variable-name">list</span> x))
+  (<span class="code-keyword">let</span> [f (<span class="code-keyword">fn</span> [xs x]
+            (<span class="code-keyword">if</span> (pred x)
+              (<span class="code-builtin">concat</span> xs (<span class="code-builtin">list</span> x))
               xs))]
-    (<span class="code-variable-name">reduce</span> f () coll)))
+    (<span class="code-builtin">reduce</span> f () coll)))
 </pre>
 </div>
 

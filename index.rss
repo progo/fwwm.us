@@ -1,4 +1,8 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures</title><link>http://fwwm.us/</link><description></description><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures</title><link>http://fwwm.us/</link><description></description><item><title>Thinking in Text [NEW]</title><link>http://fwwm.us/oppaat/unix.html</link><guid isPermaLink="false">20140519_1718</guid><description>
+Unix-käytön perusteita ihmisille, jotka haluavat shell-yhteyksistään
+irssiä enemmän irti. Kirjoitin tämän joskus. Oletettavasti vuonna 2009
+valmistui. Nauttikaa.
+</description><pubDate>Mon, 19 May 2014 14:19:12 +0000</pubDate></item><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
 Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
 </description><pubDate>Sat, 03 May 2014 11:32:40 +0000</pubDate></item><item><title>Parks &amp; Recreation [NEW]</title><link>http://fwwm.us/viihde/parks-n-rec.html</link><guid isPermaLink="false">20140417_1754</guid><description>
 Pienen indianalaiskaupungin kunnallinen puisto-osasto suunnittelee
@@ -73,11 +77,4 @@ Alla on täysimääräinen minun haastatteluni, joka tehtiin kolmen
 ihmisen voimin IRC-kanavalla joulukuussa 2013 parina iltana yhteensä
 neljän tunnin aikana. Ehdittiin jakaa yksi jos toinenkin ajatus! Lue
 subjektiivinen (itsekoostamani) lyhytversio, jos ei aika riitä tähän.
-</description><pubDate>Thu, 30 Jan 2014 09:22:52 +0000</pubDate></item><item><title>Fallout [UPDATE]</title><link>http://fwwm.us/viihde/fallout.html</link><guid isPermaLink="false">20130618_1604</guid><description>
-Uudet 3D-Falloutit jakavat hieman pelikansaa kahteen osaan, mutta minä
-olen valmis julistamaan Fallout 3:n parhaaksi pelaamakseni peliksi.
-Tämä vieläpä konsolilla, jossa kaikki tökki ja jökki. Nyt tilasin
-Fallout: New Vegasin täyden paketin, eli Ultimate Editionin. Siinä on
-luonnollisesti kaikki julkaistut lisäosat samassa paketissa. Ja tämä
-on PC:lle. The way FPS's are meant to be played.
-</description><pubDate>Wed, 29 Jan 2014 16:53:39 +0000</pubDate></item></channel></rss>
+</description><pubDate>Thu, 30 Jan 2014 09:22:52 +0000</pubDate></item></channel></rss>
