@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Pelit ja elokuvat — Foobarly adventures</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">Foobarly adventures</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">02.06.2014</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">02.06.2014</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/master/viihde/pelit-vs-elokuvat.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-3"><a href="/tags/sarjat.html" class="tag-name">sarjat</a></li><li class="tag-2"><a href="/tags/pelit.html" class="tag-name">pelit</a></li><li class="tag-1"><a href="/tags/fallout.html" class="tag-name">fallout</a></li><li class="tag-1"><a href="/tags/elokuvat.html" class="tag-name">elokuvat</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/pelisavetukset-versiohallintaan.html" class="rp-url">
+        <span class="rp-title">Pelisavetukset versiohallintaan</span>
+      </a>
+    </li><li>
+      <a href="/viihde/fallout.html" class="rp-url">
+        <span class="rp-title">Fallout</span>
+      </a>
+    </li><li>
+      <a href="/viihde/fallout-vs-nethack.html" class="rp-url">
+        <span class="rp-title">Jos Fallout olisi kuten Nethack</span>
+      </a>
+    </li><li>
+      <a href="/miete/zsh-zle.html" class="rp-url">
+        <span class="rp-title">Zsh ja ZLE</span>
+      </a>
+    </li><li>
+      <a href="/miete/moary-vuoden.html" class="rp-url">
+        <span class="rp-title">Moary täyttää vuoden</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Pelit ja elokuvat</h1>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+Pelejä on aktiivisena ajanvietteenä pidetty passiivista TV:tä ja
+elokuvia parempana tapana kuluttaa aikaansa. "TV:tä" yleisesti vastaan
+varmasti, mutta en allekirjoita varauksitta pelien paremmuutta
+parempaa viihdettä vasten.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Määritelmiä</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Muutamia selvennyksiä on hyvä tehdä:
+</p>
+
+<dl class="org-dl">
+<dt> TV </dt><dd>TV:llä minä tarkoitan ennaltaohjelmoituja videolähetyksiä,
+joihin kuuluu mm. mainoksia, elokuvia, sarjoja ja uutisia.
+Katsoja antautuu budjettisyistä ennaltapäätettyyn sisältöön,
+joka on ajallisesti sidottua.
+</dd>
+<dt> TV-sarjat </dt><dd>TV-sarjat tai lyhyesti <i>sarjat</i> ovat TV:tä varten
+tehtyjä sarjoja. (Vertaa käsitteeseen <i>TV-elokuva</i>.)
+TV-sarjan seuraaminen ei implikoi TV:n katsomista
+lainkaan.
+</dd>
+</dl>
+
+<p>
+Vastaavasti elokuvat käsittävät sekä TV-elokuvat että hopeakankaalle
+tarkoitetut tuotannot. Pelit ovat tässä yhteydessä videopelejä, vaikka
+luen mukaan myös sellaiset tekstiseikkailupelit, joissa on
+puhesyntetisoinnin mahdollisuus sokeita varten. Näiden pelien
+pääasiallinen yleisö pelaa kuitenkin pelejä vähintään visuaalisesti.
+</p>
+
+<p>
+Puhun taiteellisuudesta ja epätaiteellisuudesta, mutta en osaa sitä
+nyt sen paremmin määritellä ilman sen kummempaa
+kirjallisuustuntemusta. Tämän epäkohdan saa ottaa esille kommenteissa.
+Kun puhun "hyvin kirjoitetusta" pelistä, niin puhun omasta mielestäni
+taiteellisia ansioita omaavasta tekstistä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Pelit eivät välttämättä ole sarjoja tai elokuvia parempi tapa kuluttaa viihdettä</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Kaikki mainitut tyypit voidaan luokitella taiteeksi, mutta pelit ovat
+vähemmän taiteellisia kuin sarjat ja elokuvat. Sarjoilla ja elokuvilla
+on ehtaa käsikirjoitusta ja ehtaa ohjausta taustalla.
+</p>
+
+<p>
+Se on totta, että kaikissa tapauksissa taustalla on "käsikirjoitus" ja
+taiteellinen ohjaaja. Pienten pelien tapauksessa pääkoodari tekee nämä
+suhteessa pienet päätökset itse ja isoissa pelituotannoissa
+taiteellinen hierarkia on kuin suoraan Hollywoodista. Ja tämäkin
+kaikki riippuu kovasti pelityypistä. Modernit seikkailu- ja
+toimintapelit ovat hyvin elokuvamaisia myös hyvässä, taiteellisessa
+mielessä. Toisaalta jotkut kohtuuisotkin pelituotannot ovat aika
+hataria. Se on totta, että mitä enemmän pelaajalle annetaan
+pelivapautta, sen vaikeampi kaikkea on ohjata kehittäjien mielensä
+mukaan.
+</p>
+
+<p>
+Tämähän on hyvä, jopa tavoiteltu asia. Ja samalla se syö töiden
+"taiteellisia ansioita". Tässähän ei siis ole mitään vikaa. On kunkin
+oma makuasia, kuinka parhaiten nauttii vapaa-ajastaan. Taiteellisten
+tekijöiden sijaan peleissä voidaan parhaan mukaan panostaa tunnelmaan
+ja tunnelmiin. Esimerkiksi kolmiulotteisissa <a href="fallout.html">Fallouteissa</a> on päästy
+varsin uskomattomiin suorituksiin aina välistä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Onko tilanne korjattavissa?</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Ehkä kysymys kuuluukin: onko tässä mitään ongelmaa? Jos meillä on
+juonettomia räiskintäelokuvia ja meillä on älykkäästi kirjoitettuja
+seikkailupelejä, niin mistä kuristaa?
+</p>
+
+<p>
+Pelit ovat määritelmällisesti pelaajan kontrolloitavissa, joten
+formaatti vaatii mukautumista. Peleissä hyvin kirjoitettua tarinaa
+viedään eteenpäin palasissa, jonka ympärillä on Hitchcockin sanojen
+mukaan niitä "tylsiä palasia". Sama pätee sekä putkijuoksuissa
+(esimerkiksi Portalin mainiosti kirjoitettu pienieleinen tarina) että
+avoimissa pelimaailmoissa (<i>main quest</i> -menetelmä).
+</p>
+
+<p>
+Tätä asiaa ei voi korjata mitenkään. Tuloksena olisi … elokuva.
+Pystyisikö edes resursseja lisäämällä tuomaan riittävästi
+vaihtoehtoisia ratkaisuja kaikille toimille, että vaikutelma olisi
+riittävän hyvä? Teoriassa ei, käytännössä… ei. En ole ainakaan vielä
+törmännyt niin hyvään työhön.
+</p>
+
+<p>
+Olisi ehkä myös mahdollista, jonkin nerokkaan pelimekaanisen keksinnön
+avulla, kirjoittaa ja toteuttaa sellainen putkijuoksentelu, joka
+toimii tiiviisti hyvin kirjoitetun juonen kanssa, mutta ei ole suoraan
+elokuvamainen. Jonkinlainen juonellinen peli, jossa "tylsät palat"
+voidaan leikata pois ja silti saada kaikki tavalliset pelielementit
+kasaan nätisti.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20140602_1330';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
