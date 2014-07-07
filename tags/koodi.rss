@@ -1,4 +1,8 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Korkokertymiä [NEW]</title><link>http://fwwm.us/miete/korkokertymae.html</link><guid isPermaLink="false">20140707_1725</guid><description>
+Jos voittaisi lotossa yhden miljoonan, miten hyvin sillä eläisi
+perushyvää elämää? Lyhyt vertailu Pythonin ja Clojuren välisistä
+ratkaisumalleista.
+</description><pubDate>Mon, 07 Jul 2014 14:26:17 +0000</pubDate></item><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
 Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
 </description><pubDate>Sat, 03 May 2014 11:32:40 +0000</pubDate></item><item><title>Python on huonompi kieli kuin Clojure [NEW]</title><link>http://fwwm.us/miete/python-vs-clojure.html</link><guid isPermaLink="false">20130518_2028</guid><description>
 Pakko hieman avautua Pythonin puutteista ja miksi Clojure sitten
