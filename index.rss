@@ -1,4 +1,9 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures</title><link>http://fwwm.us/</link><description></description><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures</title><link>http://fwwm.us/</link><description></description><item><title>Idylli, realiteetit ja Sätös [NEW]</title><link>http://fwwm.us/miete/idylli-realiteetit-satos.html</link><guid isPermaLink="false">20140809_2124</guid><description>
+Idyllinen paikka, eli kirjallisessa mielessä "ihanteellinen,
+tunnelmallinen, viehättävä tila tai paikka", on ehkä kansantajuisesti
+ajateltavissa paikkana, missä sitä tahtoisi asua ja elää.
+Itse ainakin miellän asian näin.
+</description><pubDate>Sat, 09 Aug 2014 18:24:22 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
 Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
 olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
 Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla
@@ -74,10 +79,4 @@ graduajankäyttöön.
 Alan Ballin luoma Six Feet Under on todellinen merkkiteos ja uniikisti
 eniten HBO:n tuotantoja karakterisoinut sarja. Mikään muu TV:ssä ei
 ole samanlaista kuin Six Feet Under.
-</description><pubDate>Fri, 21 Feb 2014 15:09:05 +0000</pubDate></item><item><title>30 Rock [NEW]</title><link>http://fwwm.us/viihde/30rock.html</link><guid isPermaLink="false">20140206_1851</guid><description>
-Uuden polven (nauruttomat) tilannekomedioista omaksi suosikikseni on
-muodostunut Tina Feyn luoma 30 Rock. Lämpenin sarjalle hitaasti, mutta
-toisen tuotantokauden myötä kaikki odotukset ja lupaukset on
-lunastettu. Ainut murhe on se, että bluray-julkaisuja ei nähdä ihan
-heti ja että kausia pyöriteltiin vain 7.
-</description><pubDate>Thu, 06 Feb 2014 16:51:26 +0000</pubDate></item></channel></rss>
+</description><pubDate>Fri, 21 Feb 2014 15:09:05 +0000</pubDate></item></channel></rss>
