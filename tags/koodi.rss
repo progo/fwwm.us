@@ -1,4 +1,11 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Illuminatukseni [UPDATE]</title><link>http://fwwm.us/miete/illuminatukseni.html</link><guid isPermaLink="false">20141130_1926</guid><description>
+Haaveita saa miehellä olla. Suuriakin. Kuten aika moni muukin
+pelailija aikojen saatossa, olen pelaillessani mietiskellyt monesti,
+minkälaisin elementein sitä tekisi oman unelmapelinsä, oman
+illuminatuksensa. Tässä postauksessa esitän joitakin artikuloituja
+pointteja, joita on kumuloitunut vuosien saatossa, ja jotka ovat vielä
+olleet kirjoitushetkellä muistissa.
+</description><pubDate>Sun, 30 Nov 2014 17:27:13 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
 Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
 olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
 Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla

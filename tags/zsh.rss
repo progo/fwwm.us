@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures]</title><link>http://fwwm.us/</link><description></description><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
 Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
 olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
 Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla

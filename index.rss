@@ -1,9 +1,16 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foobarly adventures</title><link>http://fwwm.us/</link><description></description><item><title>Idylli, realiteetit ja Sätös [NEW]</title><link>http://fwwm.us/miete/idylli-realiteetit-satos.html</link><guid isPermaLink="false">20140809_2124</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Illuminatukseni [UPDATE]</title><link>http://fwwm.us/miete/illuminatukseni.html</link><guid isPermaLink="false">20141130_1926</guid><description>
+Haaveita saa miehellä olla. Suuriakin. Kuten aika moni muukin
+pelailija aikojen saatossa, olen pelaillessani mietiskellyt monesti,
+minkälaisin elementein sitä tekisi oman unelmapelinsä, oman
+illuminatuksensa. Tässä postauksessa esitän joitakin artikuloituja
+pointteja, joita on kumuloitunut vuosien saatossa, ja jotka ovat vielä
+olleet kirjoitushetkellä muistissa.
+</description><pubDate>Sun, 30 Nov 2014 17:27:13 +0000</pubDate></item><item><title>Idylli, realiteetit ja Sätös [UPDATE]</title><link>http://fwwm.us/miete/idylli-realiteetit-satos.html</link><guid isPermaLink="false">20140809_2124</guid><description>
 Idyllinen paikka, eli kirjallisessa mielessä "ihanteellinen,
 tunnelmallinen, viehättävä tila tai paikka", on ehkä kansantajuisesti
 ajateltavissa paikkana, missä sitä tahtoisi asua ja elää.
 Itse ainakin miellän asian näin.
-</description><pubDate>Sat, 09 Aug 2014 18:24:22 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
+</description><pubDate>Sun, 26 Oct 2014 16:35:48 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
 Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
 olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
 Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla
@@ -75,8 +82,4 @@ erinomaisen kohteen prokrastinointiin. Mutta nyt syntyi hyvä oivallus
 liittyen osittain [etä]työskentelymotivaatioon ja sen sellaiseen.
 Ehkäpä tämä kannettava on juuri se avain hyvään ja tehokkaaseen
 graduajankäyttöön.
-</description><pubDate>Tue, 25 Feb 2014 13:33:48 +0000</pubDate></item><item><title>Six Feet Under [NEW]</title><link>http://fwwm.us/viihde/sfu.html</link><guid isPermaLink="false">20140221_1706</guid><description>
-Alan Ballin luoma Six Feet Under on todellinen merkkiteos ja uniikisti
-eniten HBO:n tuotantoja karakterisoinut sarja. Mikään muu TV:ssä ei
-ole samanlaista kuin Six Feet Under.
-</description><pubDate>Fri, 21 Feb 2014 15:09:05 +0000</pubDate></item></channel></rss>
+</description><pubDate>Tue, 25 Feb 2014 13:33:48 +0000</pubDate></item></channel></rss>
