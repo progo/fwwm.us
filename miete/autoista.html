@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Autoista — fwwm.us</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">fwwm.us</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">08.03.2015</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">08.03.2015</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/main/miete/autoista.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/toyota.html" class="tag-name">toyota</a></li><li class="tag-0"><a href="/tags/mb.html" class="tag-name">mb</a></li><li class="tag-0"><a href="/tags/autot.html" class="tag-name">autot</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/progo.html" class="rp-url">
+        <span class="rp-title">Mikael 'progo' Puhakka, tiivistetty haastattelu</span>
+      </a>
+    </li><li>
+      <a href="/miete/canto.html" class="rp-url">
+        <span class="rp-title">Canto on uusi RSS-lukijani</span>
+      </a>
+    </li><li>
+      <a href="/miete/pelisavetukset-versiohallintaan.html" class="rp-url">
+        <span class="rp-title">Pelisavetukset versiohallintaan</span>
+      </a>
+    </li><li>
+      <a href="/miete/uusi-blogi-on-out.html" class="rp-url">
+        <span class="rp-title">Uusi blogi on nyt out live</span>
+      </a>
+    </li><li>
+      <a href="/miete/naytonsaastajaskriptit.html" class="rp-url">
+        <span class="rp-title">Näytönsäästäjäskriptit</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Autoista</h1>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+Maaseudulle muuttamisen yksi seuraus on, että auto on tarpeellinen
+väline. Koska työmatkaa minulle kertyy vajaat 100 kilometriä päivää
+kohden (90 prosenttia maantiellä) niin ajamisen taloudellisuus painoi
+vaakakupissa, samoin kuin hyvä maantiekelpoisuus. Kaikenmaailman
+Micrat ja Puntot sai jättää heti pois tämän ansiosta. Helposti on
+todennettavissa, että nykyisellä käyttövoimaverotuksella dieseliä
+polttava ajokki voittaa kevyesti bensiinillä käyvät veljensä. Ja
+dieseleiden kuningas on Mercedes Benz. Mutta olisiko sittenkin pitänyt
+ottaa melkein yhtä taloudellinen Toyota?
+</p>
+
+<p>
+Kirjoittelen vähän mietteitäni mersusta ja lopussa hieman
+suunnitelmistani päivittää tilannetta johonkin suuntaan.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Maantiemeno</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Mersua kaikki kehuvat mainioksi maantieautoksi. Suuntavakaus ja
+nopeuden ylläpito ja kaikki se. Mersun diesel on kyllä mainio pitämään
+vauhtia yllä kuin itsestään. Ja se kulkee uikuttamatta kaikkia
+maantievauhteja.
+</p>
+
+<p>
+Mutta suuntavakautta ja sivutuuliherkkyyttä en kykene
+allekirjoittamaan. Veli ei näe ajossa mitään ongelmia, mutta omien
+muistikuvieni mukaan lyhytikäinen ensiautoni, 1992 Carina II, oli
+paljon vakaampi menijä maanteillä. Sivutuuliherkkyyteen ei vetotapa
+taida vaikuttaa lainkaan, mutta mersussa kun pitäisi olla myös
+erinomainen ilmanvastuskerroin. Eikö sekään vaikuta mitään? Voi olla
+yksilökohtaista poikkeamaa – onhan meselläni jo ajeltu miehekkäät
+kilometrit sisään – vaikka veli ei mitään tunnusta huomaavansa. Ja
+voi olla, että Carinan kanssa ei tullut ensiautohuumissa kiinnitettyä
+huomiota asiaan.
+</p>
+
+<p>
+Vetotapa ei välttämättä vaikuta sivutuuleen, mutta uraherkkyyteen
+kylläkin. Ja epätasaisten jäiden keleillä etuvetoisen pitäisi kuulemma
+jäädä pahasti jälkeen ajettavuudessa. Carinalla ei tullut porhalleltua
+talvella lainkaan, joten tästä on paha sanoa. Kaikki maantieilmiöt
+voidaan paremman tiedon puutteessa laittaa kokemuksen puutteeseen. En
+tiedä huonommasta, joten miten tietäisin paremmasta?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Takavetoisuus</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Mersun takavetoisuus on kaksipiippuinen juttu. Teoreettisessa mielessä
+voimansiirto takarenkaista tiehen on elegantein tapa: eturenkaiden
+tehtäväksi jää pitää keulaa raapimasta tietä ja ohjata. Siihen ei
+vaikuta kamalasti ulkoiset voimat. Mersulla onkin varsin ketterä
+pujotella parkkipaikoilla.
+</p>
+
+<p>
+Vastavuoroisesti mersun kevyt perä ja käyttöikänsä lopussa olevat
+talvirenkaat luovat haasteita etenemiskyvylle. Tämä malli sai jo
+aikoinaan Tekniikan maailman talvitestistä surkeat arvosanat
+etenemiskyvystä. Ylämäen ei tarvitse olla lainkaan jyrkkä, kun siihen
+jo turha lähteä paikoiltaan kiihdyttelemään. Kevyttä perää kompensoi
+hyvin ylimääräisellä massalla, kuten hiekkasäkeillä. Se kaikki
+kuitenkin syö jousituksesta ja taloudellisuudesta siinä missä
+etuvetoiset (ja etumoottoriset) autot saavat riittävän massan
+vetoakselille ilmaiseksi. Takamoottorisia henkilöautoja ei enää
+harrasteta, niissä on omat ongelmansa.
+</p>
+
+<p>
+Oma kotipihani on verraten jyrkkä, johon auttaisi etupainoinen etuveto
+– miksei nelivetokin. Kevytperäisellä mersullani mäen ylös pääsee
+liukkailla keleillä vain hyvällä tuurilla tai kuluttamalla sepeliä
+kymmenien eurojen edestä. Toisaalta silloin kun on liukas, on lämmin
+ja auto voi hyvin levätä vieraspaikallanikin. Toki olisi aika hiton
+mukava, jos tietäisi aina pääsevänsä oman kotipihansa ylös jäistä
+riippumatta. No, ei edes etuvetoinen Punto siihen eräänä kertana
+kyennyt, joten mietinkö minä tässä väärää puuta.
+</p>
+
+<p>
+Kesäisin takavetoisuudesta ei ole haittaa. Ylimääräisestä
+voimansiirrosta syntyy toki ylimääräistä melua, mutta sitä on hankala
+arvioida.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Taloudellisuus</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Mersu on keskikokoinen auto, eli taloudellisista autoista puhuessa
+isonkokoinen. Olikohan omamassa 1300 kilon paikkeilla. Siinä on
+kuitenkin mahdottoman hyvä ja taloudellinen dieselkone. Omassa
+<i>vahvasti</i> maantiepainotteisessa keskikulutus jää tankkauspäiväkirjan
+perusteella 5,3–5,7 litraan per 100 kilometriä. Ei huonosti "isolta"
+autolta melkein 30 vuoden takaa!
+</p>
+
+<p>
+Dieseleitä siunaavat käyttövoimaverot ja nykyiset polttoaineiden
+hinnat huomioiden omassa vuosiajossani mersu voittaa 20-vuotiaat
+pikkujapsit usean sadan euron voimin. Jos taas katsotaan
+bensiinitoimisia autoja, joiden maantiekulutus menee 4,5 litraan
+sataselle, niin ne ovat niin uusia ja mahdollisesti pieniä kopperoita
+että ovat joko liian kalliita ostaa ja pitää, tai liian epämukavia
+maantiepainotteiseen ajeluun.
+</p>
+
+<p>
+Vanhoille autoille nimittäin saa pääsääntöisesti todella edullisia
+liikennevakuutuksia. Omani on ilman bonuksia 334 euroa vuoteen.
+Jokaisesta kahden vuoden nuorennuksesta If lätkäisee ylimääräiset 50
+euroa vuosimaksua, kun muut tekijät pysyvät ennallaan. Lisäksi huollot
+ovat edullisempia kuin nykyaikaisille tietokoneiden riivaamille
+koslille. Toki tämä vaihtelee yhtiöittäin, mutta riittävän vanhoja
+autoja valikoidessa ainakin tietää, että on ainakin yksi paikka, jossa
+saa aina hyvän tarjouksen.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Peruuttelusta</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Ohjauksessa on syystä tai toisesta tunnottomuutta keskialueella.
+Eteenpäin mentäessä en havaitse asiassa mitään ongelmia epäelenganssin
+lisäksi. Ongelma korostuu hieman tarkkaa peruuttamista tehtäessä.
+Renkaan asentoja on hankala lukea tunnottoman ratin kautta ja pieniä
+korjauksia mahdoton tehdä paikallaan ollessa. Tämä on aiheuttanut
+harmaita hiuksia niin kesällä kuin talvellakin. Carinan kanssa ei
+ollut peruuttelun kanssa mitään ongelmia!
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-5">
+<h3 id="sec-1-5">Mukavia pikkuseikkoja</h3>
+<div id="text-1-5" class="outline-text-3">
+<ul class="org-ul">
+<li>auton vakiokaiuttimet ovat selkeä-ääniset
+</li>
+<li>kojetaulu ja instrumentit ovat spartaaniset — ja todella hyvin
+suunnitellut
+</li>
+<li>mainio käynti niin kesällä kuin talvellakin
+</li>
+<li>aurinkolippa löytyy myös peruutuspeilin yläpuolelta
+</li>
+<li>MB on autobrändeistä ehdoton ykkönen.
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-6">
+<h3 id="sec-1-6">Huonoja pikkuseikkoja</h3>
+<div id="text-1-6" class="outline-text-3">
+<ul class="org-ul">
+<li>ei mukitelinettä
+</li>
+<li>ei sähköikkunoita
+</li>
+<li>vaikka moottori itse kävisi paukkupakkasillakin, niin polttoneste
+itsessään voi hyytyä kireillä pakkasilla
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-7">
+<h3 id="sec-1-7">The pros and cons: Mersu vastaan pieni japsi</h3>
+<div id="text-1-7" class="outline-text-3">
+<p>
+Oman yksilöni kyljet ovat ruosteiset, ja muutamat muut pikkuviat
+kiusaavat. Ruoste on onneksi pinnallista sellaista, ja korjattavissa
+hiomisella ja maalailulla. Maalailun jälkeen ulkonäkö tuskin näyttää
+enää mitenkään nätiltä, mutta miten kaunista se ruosteilukaan on.
+Ongelmana on tämän toimenpiteen teetättäminen ja sen hinta. Hionnan ja
+maalaamisen hinnalla pitkälti ostaisi jo sellaisen japanilaiskipon,
+jossa tulee kahdet hyvät renkaat mukaan ja ruostettakaan ei ole
+havaittavissa. Mersu kaipaisi siis uudet talvirenkaatkin tulevalle
+kaudelle. Carinan kanssa ei tullut ikinä mitään vikoja laitteiden
+kanssa eteen, eikä veli myöskään tunnusta lainkaan ongelmia Toyotojen
+kanssa. Se vain tarkoittaa, että sopivan viallista yksilöä ei ole
+tullut vastaan.
+</p>
+
+<p>
+Onko sitten miten ironista pohtia korvaavansa ruostumaan päin olevaa
+Länsisaksalaista laatuautoa erittäin ruosteherkiksi tunnetuilla
+90-luvun taitteen japseilla? Ruosteettoman yksilön voi aina löytää ja
+sillä voi varmasti sitten ajella monia ruosteettomia vuosia ja nauttia
+etuvetoisen talvietenemiskyvyistä. Ehkä myös sähköikkunoista ja oikein
+hyvässä tapauksessa mukitelineestä. Alunperin suunnittelin käyttäväni
+mukitelinettä aamukahviani varten, vaan pikemminkin olisi käyttöä
+kesän kuumilla vesipullolle.
+</p>
+
+<p>
+Lisäksi painoa on harkintaan antamassa se seikka, että mersun radiota
+en ole saanut uusittua puolessa vuodessa. Pioneer soitaa radiota ja
+kasetteja hyvin, mutta AUX IN ja BluTooth loistavat poissaolollaan.
+Johdotukset pitäisi leikata ja juottaa uusiksi nykystandardeille,
+jotta yksikön voisi vaihtaa. Johtosuma oikenisi varmaan helposti
+omissakin käsissä, mutta toisaalta seuraavassa autossa kaikki voisi
+olla jo valmiina kunnossa…
+</p>
+
+<p>
+Carinasta jäi mieleen fantastinen moottori (sitkeä pirulainen) ja
+<b>loistava</b> laatikko. Oli kuin automaattinen minun käsissäni. Mersulla
+vastaavasti on jäykempi laatikko, johon tietysti tottuu samalla
+tavalla. Ei käy silti sanoman, etteikö japanilaisilla ole yleisesti
+mahtavat laatikot. Moottori jaksaa mennä vähällä mehulla ja kiihtyy
+maantienopeuksiin mainiosti – asia, johon mersun laiska diesel ei
+vain kykene. Kohteliaisuussyistä koitan joskus vältellä ramppeja
+satasen teille.
+</p>
+
+<p>
+Mietinnän alla olisi joku 90-luvun alun pieni sedan. Päällimmäisenä
+joko Corolla tai Sunny, koska ovat keveitä autoja ja kulutus on
+seitsemän litran luokkaa sataselle. Bensan hintojen ja vakuutusten
+kanssa se olisi noin 250 euroa vuodessa enemmän juokseviin kuluihin
+kuin mersulla. Vastineeksi saisi makoisaa kiihtyvyyttä
+maantienopeuksiin ja peräti pientä ohituskykyäkin. Japanilainen
+sähköosaaminen on maankuulua, ja siinä jää Boschikin toiseksi. Ja
+ainakin toistaiseksi näyttää siltä, että mersu hyvinkin kerää 250
+eurolla vuotta kohti enemmän korjauskuluja sun muita sellaisia, mitä
+japanilaisilla ei yksinkertaisesti vain ole.
+</p>
+
+<p>
+Mutta sepä se: mikä varmuus minulla on siihen, että ostaisin sellaisen
+ajokin, jolla vikoja ei synny. Carina oli poikkeuksellinen ja neljän
+tonnin ajon aikana vain yksi etuvalo paloi pois. Minulla tai
+veljelläni ei ole pahaa sanottavaa Toyotoista, mutta muilla ihmisillä
+on. Toisaalta mersulla on 25 tonnin aikana ehtinyt mennä jos
+jonkinlaista osaa uusiksi, osa sattumia ja osa tavallista kulumista.
+Rooli on helposti keikautettu käänteiseksi, jos japanilaisessani
+olisikin syntynyt joku ruostelöytö paikassa, jota ei ostotilanteessa
+osannut bongata.
+</p>
+
+<p>
+Eli kysymys jatkaa poltteluaan: pitäisikö jatkaa mersun kanssa ja
+viritellä se radio kuntoon, opetella peruuttamista, ostaa suosiolla
+sille ne talvirenkaat ja teettää keväämmällä ruosteremppaa pajalla.
+Vai pitäisikö nyt alkaa miettiä japanilaista perheenjäsentä taloon ja
+kaupitella mese pois polkuhintaan. Todennäköisesti taloudellisesti
+järkevää olisi vaihtaa auto, mutta miten käy mersun hyvien
+ominaisuuksien kanssa. Ei mitään vastausta.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20150308_2051';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
