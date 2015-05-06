@@ -172,19 +172,19 @@ tilin uuden saldon.
 
 <div class="org-src-container">
 
-<pre class="src src-clojure">user=&gt; (<span class="code-keyword">def</span> <span class="code-function-name">V</span> 1e6)
-#'user/V
-user=&gt; (<span class="code-keyword">def</span> <span class="code-function-name">interest</span> 1.02)
-#'user/interest
-user=&gt; (<span class="code-keyword">def</span> <span class="code-function-name">monthly</span> 2500)
-#'user/monthly
-user=&gt; (<span class="code-keyword">defn</span> <span class="code-function-name">+year</span> [v] (<span class="code-builtin">*</span> (<span class="code-builtin">-</span> v (<span class="code-builtin">*</span> 12 monthly)) interest))
-#'user/+year
-user=&gt; (+year V)
+<pre class="src src-clojure">user=&gt; (<span class="code-keyword">def</span> <span class="code-variable-name">V</span> 1e6)
+#'<span class="code-type">user</span>/<span class="code-constant">V</span>
+user=&gt; (<span class="code-keyword">def</span> <span class="code-variable-name">interest</span> 1.02)
+#'<span class="code-type">user</span>/interest
+user=&gt; (<span class="code-keyword">def</span> <span class="code-variable-name">monthly</span> 2500)
+#'<span class="code-type">user</span>/monthly
+user=&gt; (<span class="code-keyword">defn</span> <span class="code-function-name">+year</span> [v] (* (- v (* 12 monthly)) interest))
+#'<span class="code-type">user</span>/+year
+user=&gt; (+year <span class="code-constant">V</span>)
 989400.0
-user=&gt; (<span class="code-builtin">take-while</span> pos? (<span class="code-builtin">iterate</span> +year V))
+user=&gt; (take-while pos? (iterate +year <span class="code-constant">V</span>))
 (1000000.0 989400.0 978588.0 ...snip... 45826.06171246591 16142.582946715229)
-user=&gt; (<span class="code-builtin">count</span> *1)
+user=&gt; (count <span class="code-builtin">*1</span>)
 54
 </pre>
 </div>

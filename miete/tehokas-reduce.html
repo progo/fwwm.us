@@ -149,17 +149,17 @@ tapaan.
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">map</span> [fun coll]
-  (<span class="code-keyword">loop</span> [fun fun, coll (<span class="code-builtin">seq</span> coll), acc ()]
-    (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+  (<span class="code-keyword">loop</span> [fun fun, coll (seq coll), acc ()]
+    (<span class="code-keyword">if-let</span> [x (first coll)]
       (<span class="code-keyword">recur</span> fun
-             (<span class="code-builtin">rest</span> coll)
-             (<span class="code-builtin">concat</span> acc (<span class="code-builtin">list</span> (fun x))))
+             (rest coll)
+             (concat acc (list (fun x))))
       acc)))
 
 (<span class="code-keyword">defn</span> <span class="code-function-name">map</span>' [fun coll]
-  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
-    (<span class="code-builtin">cons</span> (fun x)
-          (<span class="code-builtin">map</span>' fun (<span class="code-builtin">rest</span> coll)))))
+  (<span class="code-keyword">if-let</span> [x (first coll)]
+    (cons (fun x)
+          (map' fun (rest coll)))))
 </pre>
 </div>
 
@@ -217,17 +217,17 @@ haetaan sitten loput filtteröidyt alkiot uuden kutsun voimin. Eri kätevää.
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filter</span> [pred coll]
   (<span class="code-keyword">loop</span> [pred pred, coll coll, acc ()]
-    (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+    (<span class="code-keyword">if-let</span> [x (first coll)]
       (<span class="code-keyword">if</span> (pred x)
-        (<span class="code-keyword">recur</span> pred (<span class="code-builtin">rest</span> coll) (<span class="code-builtin">concat</span> acc (<span class="code-builtin">list</span> x)))
-        (<span class="code-keyword">recur</span> pred (<span class="code-builtin">rest</span> coll) acc))
+        (<span class="code-keyword">recur</span> pred (rest coll) (concat acc (list x)))
+        (<span class="code-keyword">recur</span> pred (rest coll) acc))
       acc)))
 
 (<span class="code-keyword">defn</span> <span class="code-function-name">filter</span>' [pred coll]
-  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
+  (<span class="code-keyword">if-let</span> [x (first coll)]
     (<span class="code-keyword">if</span> (pred x)
-      (<span class="code-builtin">cons</span> x (<span class="code-builtin">filter</span>' pred (<span class="code-builtin">rest</span> coll)))
-      (<span class="code-builtin">filter</span>' pred (<span class="code-builtin">rest</span> coll)))))
+      (cons x (filter' pred (rest coll)))
+      (filter' pred (rest coll)))))
 </pre>
 </div>
 </div>
@@ -256,8 +256,8 @@ itse asiassa aikaan kaikkein sievintä koodia:
 <div class="org-src-container">
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">reduce</span> [fun x0 coll]
-  (<span class="code-keyword">if-let</span> [x (<span class="code-builtin">first</span> coll)]
-    (<span class="code-keyword">recur</span> fun (fun x0 x) (<span class="code-builtin">rest</span> coll))
+  (<span class="code-keyword">if-let</span> [x (first coll)]
+    (<span class="code-keyword">recur</span> fun (fun x0 x) (rest coll))
     x0))
 </pre>
 </div>
@@ -293,8 +293,8 @@ reduktio-funktiomme voisi olla tämännäköinen:
 
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">mapr</span> [fun coll]
   (<span class="code-keyword">let</span> [f (<span class="code-keyword">fn</span> [xs x]
-            (<span class="code-builtin">concat</span> xs (<span class="code-builtin">list</span> (fun x))))]
-    (<span class="code-builtin">reduce</span> f () coll)))
+            (concat xs (list (fun x))))]
+    (reduce f () coll)))
 </pre>
 </div>
 
@@ -318,9 +318,9 @@ Samalla menettelyllä kirjoitetaan <code>filter</code>.
 <pre class="src src-clojure">(<span class="code-keyword">defn</span> <span class="code-function-name">filterr</span> [pred coll]
   (<span class="code-keyword">let</span> [f (<span class="code-keyword">fn</span> [xs x]
             (<span class="code-keyword">if</span> (pred x)
-              (<span class="code-builtin">concat</span> xs (<span class="code-builtin">list</span> x))
+              (concat xs (list x))
               xs))]
-    (<span class="code-builtin">reduce</span> f () coll)))
+    (reduce f () coll)))
 </pre>
 </div>
 
