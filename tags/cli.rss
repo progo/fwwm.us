@@ -1,4 +1,8 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Kirjanpidosta: Ledger [NEW]</title><link>http://fwwm.us/miete/ledger.html</link><guid isPermaLink="false">20140205_1256</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Pythonin käsittämätön tehokkuus komentorivisovelluksissa [NEW]</title><link>http://fwwm.us/miete/pythonin-tehokkuus-komentorivilla.html</link><guid isPermaLink="false">20150926_1920</guid><description>
+Clojuren olen tuominnut Pythonia paremmaksi kieleksi, ja siitä
+ylöskirjoittamani mietteet näyttävät edelleen pitävän paikkansa. Miksi
+kuitenkin noita Python-ohjelmia tulee kirjoiteltua siitä huolimatta?!
+</description><pubDate>Sat, 26 Sep 2015 16:21:06 +0000</pubDate></item><item><title>Kirjanpidosta: Ledger [NEW]</title><link>http://fwwm.us/miete/ledger.html</link><guid isPermaLink="false">20140205_1256</guid><description>
 Ledger on John Wiegleyn visioima ja toteuttama kahdenkertainen
 talouskirjanpitosovellus komentoriviympäristöihin. Koska Ledger toimii
 kääntäjämallisesti pelkän puhtaan tekstin kanssa, voi sitä täydennellä
