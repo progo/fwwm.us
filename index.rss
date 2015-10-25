@@ -1,4 +1,10 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Pythonin käsittämätön tehokkuus komentorivisovelluksissa [NEW]</title><link>http://fwwm.us/miete/pythonin-tehokkuus-komentorivilla.html</link><guid isPermaLink="false">20150926_1920</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Nettiradioista [NEW]</title><link>http://fwwm.us/viihde/nettiradio.html</link><guid isPermaLink="false">20151025_2001</guid><description>
+Podcastit ovat teoriassa parasta matkaviihdettä mitä tiedän. Henkevät
+keskustelut vievät pahimman terän ajamisesta ja tuottavat usein fiksua
+ajateltavaa tunniksi kullekin päivälle. Suurin ongelma podcasteissa on
+ollut teknisesti ja sisällöllisesti laadukkaan materiaalin kaapiminen
+internetin syövereistä, ja tätä on tehtävä valitettavan usein.
+</description><pubDate>Sun, 25 Oct 2015 18:03:06 +0000</pubDate></item><item><title>Pythonin käsittämätön tehokkuus komentorivisovelluksissa [NEW]</title><link>http://fwwm.us/miete/pythonin-tehokkuus-komentorivilla.html</link><guid isPermaLink="false">20150926_1920</guid><description>
 Clojuren olen tuominnut Pythonia paremmaksi kieleksi, ja siitä
 ylöskirjoittamani mietteet näyttävät edelleen pitävän paikkansa. Miksi
 kuitenkin noita Python-ohjelmia tulee kirjoiteltua siitä huolimatta?!
@@ -78,10 +84,4 @@ irssiä enemmän irti. Kirjoitin tämän joskus. Oletettavasti vuonna 2009
 valmistui. Nauttikaa.
 </description><pubDate>Mon, 19 May 2014 14:19:12 +0000</pubDate></item><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
 Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
-</description><pubDate>Sat, 03 May 2014 11:32:40 +0000</pubDate></item><item><title>Motorola Moto G [UPDATE]</title><link>http://fwwm.us/miete/moto-g.html</link><guid isPermaLink="false">20140330_2010</guid><description>
-Taloudelliset lahjoitukset ja muut tekijät saivat sitten viimein
-ajamaan minutkin nykyaikaisten älypuhelinten tielle. Valintani on noin
-160 euroa maksanut Motorola Moto G, jonka isoveljestä olin jo
-aiemmin lukenut hyviä sanoja. Mitä sitten onkaan luvassa
-tyhmäpuhelinmiehelle, jää teille luettavaksi.
-</description><pubDate>Wed, 09 Apr 2014 14:38:28 +0000</pubDate></item></channel></rss>
+</description><pubDate>Sat, 03 May 2014 11:32:40 +0000</pubDate></item></channel></rss>

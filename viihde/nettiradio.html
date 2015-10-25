@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Nettiradioista — fwwm.us</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">fwwm.us</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">25.10.2015</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">25.10.2015</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/main/viihde/nettiradio.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/autot.html" class="tag-name">autot</a></li><li class="tag-0"><a href="/tags/nettiradio.html" class="tag-name">nettiradio</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/autoista.html" class="rp-url">
+        <span class="rp-title">Autoista</span>
+      </a>
+    </li><li>
+      <a href="/miete/carina-e.html" class="rp-url">
+        <span class="rp-title">Carina E 1992</span>
+      </a>
+    </li><li>
+      <a href="/viihde/podcast.html" class="rp-url">
+        <span class="rp-title">Podcasteista</span>
+      </a>
+    </li><li>
+      <a href="/progo.html" class="rp-url">
+        <span class="rp-title">Mikael 'progo' Puhakka, tiivistetty haastattelu</span>
+      </a>
+    </li><li>
+      <a href="/miete/canto.html" class="rp-url">
+        <span class="rp-title">Canto on uusi RSS-lukijani</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Nettiradioista</h1>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+<a href="./podcast.html">Podcastit ovat teoriassa</a> parasta matkaviihdettä mitä tiedän. Henkevät
+keskustelut vievät pahimman terän ajamisesta ja tuottavat usein fiksua
+ajateltavaa tunniksi kullekin päivälle. Suurin ongelma podcasteissa on
+ollut teknisesti ja sisällöllisesti laadukkaan materiaalin kaapiminen
+internetin syövereistä, ja tätä on tehtävä valitettavan usein.
+</p>
+
+<p>
+Podcasteihin liittyy kahdenlaisia haasteita: materiaalin pitää olla
+mieltä kutkuttavaa ja sellaista muutenkin, mitä jaksaa kuunnella. Moni
+harrastelija tekee mielenkiintoisesta aiheesta puhetta, mutta homma
+kariutuu lapsellisuuksiin tai liian poliittiseen puheeseen. Tai ei
+muuten vain kutita karvojani oikeaan suuntaan.
+</p>
+
+<p>
+Toisaalta podcast-materiaalin pitäisi olla teknisesti sen verran
+laadukasta, että siitä kuuluu jotain meluisalla autolla ajaessani.
+Selkeän puheäänen talteensaamisen luulisi olevan helppoa, mutta moni
+epäonnistuu pahasti tässä operaatiossa, ja selvää puheesta saisi
+lähinnä kuulokkeita käyttämällä.
+</p>
+
+<p>
+Musiikki on vastaavasti puheohjelmia epäpoliittisempaa, mutta autoni
+puutteiden takia soundia pitäisi käsitellä valitettavan paljon, ja
+tätä ei ole helppo automatisoida. Toisaalta passiivinen musiikki
+johtaa siihen, että ajatus hortoilee pois musiikista ja kohti tien
+yksityiskohtia; seikka, joka pidentää matkantekoon käytettävää aikaa,
+tai ainakin sen vaikutelmaa.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Digitally Imported</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Jostain tuli jokin aika sitten yhtäkkiä mieleen nettiradiot ja alansa
+konkari, Digitally Imported eli <a href="http://di.fm">di.fm</a>. DI on tuottanut ainakin jo 15
+vuoden ajan hienoja genrekohtaisia kanavia erilaisille teknogenreille.
+Innostuin sitten kokeilemaan vähän tätäkin meininkiä autoillessani,
+koska vaikka musiikki on musiikkia, ehkä jatkuvasti uuden musiikin
+kuluttaminen voisi olla ratkaisu tylsistymisongelmaan. Ja lisäksi
+jatkuva uuden musiikin siirtäminen puhelimeen jäisi pois. No, DI:n
+trancekanava toimitti mainiosti ja nautin kuulemastani.
+</p>
+
+<p>
+DI Radio on oma puhelinsovellus, joka onneksi toimii
+Blutooth-laitteiden kanssa samaan tapaan kuin Android/Googlen oma
+Google Play Music -softa: musiikki alkaa kun kuunteleva laite tulee
+linjoille ja musiikki lakkaa kun laite lähettää stop-pyynnön. Akkua
+tämä syö ahnaasti, mutta käyttöä vartenhan älypuhelimet ovat.
+</p>
+
+<p>
+Mutta ainakaan trancemusiikki ei kamalasti puhuttele ajomusiikkina.
+Tai puhuttelee liikaa, miten asian ottaa. Saattaa olla, että
+nopeatempoisella konemusiikilla on jonkinlainen vaikutus
+kaasujalkaani. Näitä tuuneja on mukava kuunnella, mutta jonkinlainen
+liikennetaju on hyvä pitää yllä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">JazzRadio.com brought to you by AudioAddict Network</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Onneksi huomasin sivuja tutkiessani, että Digitally Imported on
+nykyään laajentunut/ostettu osaksi isompaa kokonaisuutta, johon kuuluu
+nettiradiokokoelmia myös rockin ja <b>jazzin</b> rakkaista genreistä.
+Tavaraa on milteinpä jokaiselle nyt laadukkaiden ilmaiskanavien
+muodossa. Olin hiljan kuunnellut Miles Davisia työmatkamusiikkina, ja
+olin hyvin vaikuttunut siitä, miten hyvin rauhallinen jazz kuuluu
+meluisassa ympäristössä ja tarjoaa todella levollisen atmosfäärin
+matkantekoon.
+</p>
+
+<p>
+Kokeilin siis <a href="http://www.jazzradio.com/">JazzRadio.com</a>:n vaikuttavaa kanavavalikoimaa autossani,
+ja tulokset ovat olleet todella hyviä. Vaikka muutama herkullinen
+jazz-genre valitettavasti puuttuu valikoimista, löytyy verkosta
+kuunneltavaa aivan mielettömät määrät. Sekä kanavat <a href="http://www.jazzradio.com/trumpetjazz">Trumpet Jazz</a> että
+<a href="http://www.jazzradio.com/saxophonejazz">Saxophone Jazz</a> tarjoavat atmosfäärejä, joiden piirissä herkästi kokee
+ajavansa 50-luvun Buickilla neonvalaistujen kylttien loisteessa. Tämä
+on minun ajomusiikkiani.
+</p>
+
+<p>
+Ei silti haittaisi, jos seassa saisi kuunnella tasokkaita
+haastatteluja ja keskusteluja podcast-muodossa niin, että puhe
+kantaisi tiemelun ylitse. Äänittämisen ei pitäisi olla niin vaikeata:
+selvimmät podcastit ovat tulleet monologistilta, joka nauhoittaa
+tavaransa iPhonella ajaessaan autoa.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20151025_2001';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
