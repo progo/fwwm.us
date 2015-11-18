@@ -1,4 +1,6 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Nettiradioista [NEW]</title><link>http://fwwm.us/viihde/nettiradio.html</link><guid isPermaLink="false">20151025_2001</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>AKG K1000 [NEW]</title><link>http://fwwm.us/hifi/k1000.html</link><guid isPermaLink="false">20151118_2052</guid><description>
+Tuoreita ajatelmia AKG K1000:sta yli kuuden vuoden yhteiselon jälkeen.
+</description><pubDate>Wed, 18 Nov 2015 18:52:45 +0000</pubDate></item><item><title>Nettiradioista [NEW]</title><link>http://fwwm.us/viihde/nettiradio.html</link><guid isPermaLink="false">20151025_2001</guid><description>
 Podcastit ovat teoriassa parasta matkaviihdettä mitä tiedän. Henkevät
 keskustelut vievät pahimman terän ajamisesta ja tuottavat usein fiksua
 ajateltavaa tunniksi kullekin päivälle. Suurin ongelma podcasteissa on
@@ -82,6 +84,4 @@ parempaa viihdettä vasten.
 Unix-käytön perusteita ihmisille, jotka haluavat shell-yhteyksistään
 irssiä enemmän irti. Kirjoitin tämän joskus. Oletettavasti vuonna 2009
 valmistui. Nauttikaa.
-</description><pubDate>Mon, 19 May 2014 14:19:12 +0000</pubDate></item><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
-Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
-</description><pubDate>Sat, 03 May 2014 11:32:40 +0000</pubDate></item></channel></rss>
+</description><pubDate>Mon, 19 May 2014 14:19:12 +0000</pubDate></item></channel></rss>
