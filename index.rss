@@ -1,4 +1,11 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Fujifilm X100T [UPDATE]</title><link>http://fwwm.us/miete/x100t.html</link><guid isPermaLink="false">20160101_2042</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>The X-Files [UPDATE]</title><link>http://fwwm.us/viihde/xfiles.html</link><guid isPermaLink="false">20140301_1708</guid><description>
+Aloitin torstaina X-Filesin uudelleenkatsomisurakan. X-Files, tai
+suomalaisittain Mappi Ö, on tietysti tämä suurin 90-luvun
+instituutio TV-maailmassa, mitä on. Twin Peaks ensin 90-luvun alussa
+ja sitten X-Files koko loppuvuosikymmenen. Näemme Toivo Mulperia,
+Taina Kultsista ja Pertti Nahkalaa hamaan tulevaisuuteen asti. Alkava
+katsontakierros on minulle kolmas, ja edelliskerrasta on jo aikaa.
+</description><pubDate>Wed, 03 Feb 2016 16:36:46 +0000</pubDate></item><item><title>Fujifilm X100T [UPDATE]</title><link>http://fwwm.us/miete/x100t.html</link><guid isPermaLink="false">20160101_2042</guid><description>
 Päätin hemmotella itseäni ja ostaa Fujifilmin laatupokkarin X100S.
 Harmi vain, että se on vanhentunut malli, joten jouduin tyytymään
 uudistettuun versioon X100T. Mitenkäs kun minulla on tuo Canon 5D Mark
@@ -76,14 +83,4 @@ Idyllinen paikka, eli kirjallisessa mielessä "ihanteellinen,
 tunnelmallinen, viehättävä tila tai paikka", on ehkä kansantajuisesti
 ajateltavissa paikkana, missä sitä tahtoisi asua ja elää.
 Itse ainakin miellän asian näin.
-</description><pubDate>Sun, 26 Oct 2014 16:35:48 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
-Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
-olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
-Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla
-aliakset ja tekstieditoreissa käytetyt "lyhenteet" (abbreviations)
-saadaan vuorovaikutteisiksi. Snipetit toimivat pääsääntöisesti siten,
-että tietyn aktivointitekstin kirjoitettuaan painetaan pikanäppäintä
-– aika usein tabia – ja aktivoiva teksti käännetään laajennettuun
-muotoonsa. Emacsissa on esimerkiksi paketti nimeltä yasnippets ja
-vimille on ainakin SnipMate ja modernimpi UltiSnips.
-</description><pubDate>Tue, 22 Jul 2014 14:23:36 +0000</pubDate></item></channel></rss>
+</description><pubDate>Sun, 26 Oct 2014 16:35:48 +0000</pubDate></item></channel></rss>
