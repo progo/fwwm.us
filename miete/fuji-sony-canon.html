@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Fuji, Sony ja Canonin kohtalo — fwwm.us</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">fwwm.us</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">12.02.2016</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">12.02.2016</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/main/miete/fuji-sony-canon.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-0"><a href="/tags/kamera.html" class="tag-name">kamera</a></li><li class="tag-0"><a href="/tags/fujifilm.html" class="tag-name">fujifilm</a></li><li class="tag-0"><a href="/tags/canon.html" class="tag-name">canon</a></li><li class="tag-0"><a href="/tags/sony.html" class="tag-name">sony</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/x100t.html" class="rp-url">
+        <span class="rp-title">Fujifilm X100T</span>
+      </a>
+    </li><li>
+      <a href="/miete/zsh-zle.html" class="rp-url">
+        <span class="rp-title">Zsh ja ZLE</span>
+      </a>
+    </li><li>
+      <a href="/miete/idylli-realiteetit-satos.html" class="rp-url">
+        <span class="rp-title">Idylli, realiteetit ja Sätös</span>
+      </a>
+    </li><li>
+      <a href="/miete/xmonad.html" class="rp-url">
+        <span class="rp-title">Xmonad ja dynaamiset työpöydät</span>
+      </a>
+    </li><li>
+      <a href="/miete/rautapaivityksia-gentoo-uusiksi.html" class="rp-url">
+        <span class="rp-title">Rautapäivityksiä ja Gentoo uusiksi</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Fuji, Sony ja Canonin kohtalo</h1>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+GAS jatkuu, vaikka pokkarielämä onkin ollut makoisaa tähän asti.
+Uusista uutisista viisastuneena kuulin, miten hieno kamera uusi Sony
+a6300 on, ja tämä laukaisi uuden aallon miettimistä ja tutkiskelua.
+</p>
+</div>
+
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Sony a6300</h3>
+<div id="text-1-1" class="outline-text-3">
+<p>
+Sonyn uusi peilitön järjestelmäkamera a6300 lupaa vakaan päivityksen
+<img class="dvipng" alt="$\alpha$" src="ltxpng/fuji-sony-canon_c86821d79f4456aad75ca54a2bd59b73d0be152f.png" />-sarjaan. Isoin ja näkyvin päivitys on uusi ennätys
+tarkennuspisteiden lukumäärässä: 425 pistettä ruudun kauttaaltaan. Ja
+nämä ovat niitä valon vaihetta tunnistavia pisteitä; niitä hyviä
+pisteitä. Edellisessä mallissa, a6000:ssa niitä pisteitä taisi olla
+179, mikä on sekin tietysti erittäin kunnioitettava lukema ja pärjää
+lukumäärässä esimerkiksi Canonin huippumalleille. Pisteiden lukumäärä
+ei tietysti kerro koko totuutta, mutta ihmiset tuntuvat yleisesti
+ottaen olevan <i>hyvin</i> tyytyväisiä Sonyn suoritukseen ja että
+peilittömyys ei enää tahdo merkitä huonoa ja hidasta
+automaattitarkennusta. Uuden Sonyn 11 sekuntikuvan jatkuvatarkenteinen
+sarjatuli on kanssa asia, mikä kutkuttaa teknisellä tasolla hyvin
+kovasti.
+</p>
+
+<p>
+Sonyn E-mountille saa toki mainion pannukakunkin, ja pienen rungon
+kanssa kokonaisuus on todella pieni: iso plussa jälleen kerran. Olisi
+kokonaisuus, joka kulkisi paremmin ranteessa kuin tuo 5Dm2.
+</p>
+
+<p>
+Vaan nämä ovat teoreettisia plus-pointteja. Kuvaankohan oikeasti niin
+paljon liikkuvia kohteita, että tarkat ja nopeat autofokukset olisivat
+oikeasti tarpeellisia. No en varmasti kuvaa, jos harrastuksen
+nykymuoto on tämmöistä. Vertailun vuoksi Canonin AF-C -tarkennusta en
+ole vielä kertaakaan käyttänyt.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Fujifilm tällä hetkellä</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Fujifilmin autofokus tuntuu vertailussa nuhaiselta: ohiajavasta
+autosta saattaa saadakin tarkennetun kuvan, mutta mihin sitten lie
+tarkentanut? Pitäisi kai kokeilla oikeasti, eikä pelätä pahinta.
+</p>
+
+<p>
+Fujin kuvat tuntuvat hyviltä kyllä, mutta ei ne ihan niin tarkkoja ole
+kuin mitä osassa arvosteluissa luvattiin. Lisäksi muiden systeemien
+Fuji-dissaus tarttuu minuunkin. Otin aika nättejä kuvia Fujin
+keinotekoisella ISO 100:lla ja jalustalla, joten oikeissa olosuhteissa
+(riittävässä valossa) minulla ei itselläni ole mitään
+vastaansanottavaa kuvista. Talvella saa otettua lähinnä huonoja ja
+huonompia kuvia muutenkin.
+</p>
+
+<p>
+Fujilla on todellakin kiinnostava elementti hihassaan. Fujin
+filmiemulaatiot on asetettu kamerassa korotetulle jalustalle ja niiden
+luontainen "epärealistisuus" saa pohtimaan valokuvien ottamisen
+luonnetta: kaappaammeko kohtaamistamme tilanteista talteen kuvia vai
+tunnelmia?
+</p>
+
+<p>
+Riippuen tarpeistani, olisikohan Fujin uunituore X70 välttänyt
+paremminkin omaan käyttööni. Etsintä siinä ei ole, mutta kokonaisuus
+on niin slimmi kuin voi olla, ja kannustaa ottamaan kuvia siinä missä
+X100T. Kuvanlaadussa ei X70 häviä mitenkään, mutta optiikan
+maksimiaukko on pykälää pienempi, 1/2.8. Optiikka on 28-millinen
+kinovastaavuudeltaan, joka on kenties juuri piirun verran parempi
+kaupunkikuvailuun.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">GAS kuumottelee</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Kaiken muun lisäksi tuo Leican lasisarja, etenkin Noctilux 50/.95
+kuumottelisi. Leican laseissa piilee kaikki taika, mutta tuskinpa minä
+saisin kuin tuhrua aikaan. Pidän Leican modernien digikameroiden ja
+lasien manuaalikuvaamista painottavista asiosita aika paljon. Seuraava
+lottovoittokamera voisi olla tuo Leica Q.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Canonin kohtalo</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Canonin rooli tässä kaikessa pohdinnassa on vähenemään päin.
+Tulevaisuus on varmaan pitkälti peilitöntä. 5D ei ole itsekään nopein
+tarkentaja, joten täyden koon kenno on bokeh-leikkeineen rungon
+valttikortti. Lisäksi peilikameroiden mainio akkukesto on kutkuttava.
+Mutta akkuja voi (pitää) ostaa talteen ja pitää rutiinin kautta huolta
+siitä, että mukana kulkee useampi latingissa oleva akku.
+Bokeh-pelleily on lisäksi juuri pelkkää pelleilyä. Kun taustat pitää
+saada pehmennettyä, ei pannukakkulasilla kamalasti saa aikaan.
+</p>
+
+<p>
+Tajusin kuitenkin kaikesta tästä Sony-innostuneisuudesta sen, että
+Canonin aikakausi on päätöksessään. Isot rungot eivät enää houkuttele,
+olipa merkki mikä tahansa. Sony A7 ei kiinnosta, Canon 1D ei
+kiinnosta, 5Dm2 osoittautuu tämmöiseksi kanssa. Laitoin Canonin
+raskain tunnoin myyntiin.
+</p>
+
+<p>
+Fujia tuli kuvattua jalustan ja minimaalisen ISO-herkkyyden kanssa.
+Myyntikuvista tuli oikein miellyttäviä. Canonille olisikin pitänyt
+ostaa rungon painon takia kallis kolmijalka; fujille riittää tuo 13
+euron jalusta.
+</p>
+
+<p>
+Sonyä tullee taloon siinä tapauksessa, kun edullisia käytettyjä
+a5100/6000 -runkoja alkaa liikkua käytettyjen markkinoilla. Sonyjen
+nopea julkaisutahti voi olla ostajan markkinoiden eduksi tässä
+mielessä.
+</p>
+</div>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20160212_1958';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
