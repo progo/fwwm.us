@@ -1,4 +1,6 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Sätös vol. 2 [NEW]</title><link>http://fwwm.us/miete/satos-vol-2.html</link><guid isPermaLink="false">20160825_2016</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Lisp-kirjoja [UPDATE]</title><link>http://fwwm.us/miete/lisp-kirjat.html</link><guid isPermaLink="false">20140421_1228</guid><description>
+Listataanpa lukemiani Lisp-aiheisia kirjoja koosteeksi.
+</description><pubDate>Wed, 31 Aug 2016 17:25:08 +0000</pubDate></item><item><title>Sätös vol. 2 [NEW]</title><link>http://fwwm.us/miete/satos-vol-2.html</link><guid isPermaLink="false">20160825_2016</guid><description>
 Sätöksessä tulee kaksi vuotta täyteen. Mukavia vuosia, mutta nyt on
 tullut T-risteys eteen matkalleni.
 </description><pubDate>Thu, 25 Aug 2016 17:16:35 +0000</pubDate></item><item><title>The Shield [NEW]</title><link>http://fwwm.us/viihde/shield.html</link><guid isPermaLink="false">20160822_1928</guid><description>
@@ -66,8 +68,4 @@ internetin syövereistä, ja tätä on tehtävä valitettavan usein.
 Clojuren olen tuominnut Pythonia paremmaksi kieleksi, ja siitä
 ylöskirjoittamani mietteet näyttävät edelleen pitävän paikkansa. Miksi
 kuitenkin noita Python-ohjelmia tulee kirjoiteltua siitä huolimatta?!
-</description><pubDate>Sat, 26 Sep 2015 16:21:06 +0000</pubDate></item><item><title>Parks &amp; Recreation [UPDATE]</title><link>http://fwwm.us/viihde/parks-n-rec.html</link><guid isPermaLink="false">20140417_1754</guid><description>
-Pienen indianalaiskaupungin kunnallinen puisto-osasto suunnittelee
-yhtä jos toista virkaintoisen Leslie Knopen johdolla. Tämä sarja on
-päähenkilöidensä tapaan pirteä – mutta hyvällä tavalla.
-</description><pubDate>Mon, 14 Sep 2015 11:58:19 +0000</pubDate></item></channel></rss>
+</description><pubDate>Sat, 26 Sep 2015 16:21:06 +0000</pubDate></item></channel></rss>
