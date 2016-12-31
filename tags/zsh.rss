@@ -1,4 +1,11 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us]</title><link>http://fwwm.us/</link><description></description><item><title>Graafiset päivittäissovellukseni [NEW]</title><link>http://fwwm.us/miete/graafiset-ohjelmani.html</link><guid isPermaLink="false">20161231_2015</guid><description>
+Tajusin hiljan, että vaikka iso osa päivittäisistä ATK-askareistani
+tapahtuukin graafisten WIMP-käyttöliittymien parissa,
+lukumäärällisesti päivittäiskäytössä minulla on vain 2-3 sovellusta.
+Riippuu kyllä isosti laskentatavasta. Toisaalta kun mietin asiaa,
+tavallisella tallaajalla ei taida olla yhtään sen useampaa sovellusta
+käytössään myöskään!
+</description><pubDate>Sat, 31 Dec 2016 18:15:45 +0000</pubDate></item><item><title>Yksinkertainen snipettijärjestelmä ZSH:lle [NEW]</title><link>http://fwwm.us/miete/zsh-snipetit.html</link><guid isPermaLink="false">20140722_1723</guid><description>
 Tuli tuossa sunnuntaina yks-kaks mieleen, että ZLE:n ansiosta ZSH:lle
 olisi aika helppoa kirjoittaa kunnollinen snipettijärjestelmä.
 Snipetithän ovat TextMatesta kaikkialle kopioitu fiksu systeemi, jolla

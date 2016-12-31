@@ -1,4 +1,14 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>11 kuukautta Fujia [NEW]</title><link>http://fwwm.us/miete/x100t-vuosi.html</link><guid isPermaLink="false">20161205_2159</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fwwm.us</title><link>http://fwwm.us/</link><description></description><item><title>Graafiset päivittäissovellukseni [NEW]</title><link>http://fwwm.us/miete/graafiset-ohjelmani.html</link><guid isPermaLink="false">20161231_2015</guid><description>
+Tajusin hiljan, että vaikka iso osa päivittäisistä ATK-askareistani
+tapahtuukin graafisten WIMP-käyttöliittymien parissa,
+lukumäärällisesti päivittäiskäytössä minulla on vain 2-3 sovellusta.
+Riippuu kyllä isosti laskentatavasta. Toisaalta kun mietin asiaa,
+tavallisella tallaajalla ei taida olla yhtään sen useampaa sovellusta
+käytössään myöskään!
+</description><pubDate>Sat, 31 Dec 2016 18:15:45 +0000</pubDate></item><item><title>Fujifilm X-T10 [NEW]</title><link>http://fwwm.us/miete/xt10.html</link><guid isPermaLink="false">20160329_2048</guid><description>
+X100T on upea kamera, mutta mahtaisikohan melkein samaan rahaan saada
+vähän parempaa pakettia? Kiikarissa vaihto Fujin X-järjestelmään.
+</description><pubDate>Sat, 31 Dec 2016 17:49:23 +0000</pubDate></item><item><title>11 kuukautta Fujia [NEW]</title><link>http://fwwm.us/miete/x100t-vuosi.html</link><guid isPermaLink="false">20161205_2159</guid><description>
 Tammikuun puolivälissä upea Fujifilm X100T (myöhemmin Fuji) saapui
 kotiovelleni ja hieman epävarmin askelin minä sitten saavuin siihen
 tulokseen, että kyllä, tämä on oiva kamera minulle. Fujin puutteet
@@ -39,10 +49,7 @@ Pakko hieman avautua Pythonin puutteista ja miksi Clojure sitten
 voittaa kädenväännössä lopulta. Nämä asiat ovat osittain
 objektiivisia totuuksia, mutta lopputulema on luonnollisesti
 subjektiivinen, oma näkemykseni näiden faktojen kasaantumisesta.
-</description><pubDate>Mon, 16 May 2016 16:39:21 +0000</pubDate></item><item><title>Fujifilm X-T10 [UPDATE]</title><link>http://fwwm.us/xt10.html</link><guid isPermaLink="false">20160329_2048</guid><description>
-X100T on upea kamera, mutta mahtaisikohan melkein samaan rahaan saada
-vähän parempaa pakettia? Kiikarissa vaihto Fujin X-järjestelmään.
-</description><pubDate>Wed, 30 Mar 2016 14:53:26 +0000</pubDate></item><item><title>Fuji, Sony ja Canonin kohtalo [NEW]</title><link>http://fwwm.us/miete/fuji-sony-canon.html</link><guid isPermaLink="false">20160212_1958</guid><description>
+</description><pubDate>Mon, 16 May 2016 16:39:21 +0000</pubDate></item><item><title>Fuji, Sony ja Canonin kohtalo [NEW]</title><link>http://fwwm.us/miete/fuji-sony-canon.html</link><guid isPermaLink="false">20160212_1958</guid><description>
 GAS jatkuu, vaikka pokkarielämä onkin ollut makoisaa tähän asti.
 Uusista uutisista viisastuneena kuulin, miten hieno kamera uusi Sony
 a6300 on, ja tämä laukaisi uuden aallon miettimistä ja tutkiskelua.
@@ -68,6 +75,4 @@ hyvältä se tuntuu: luotan siihen, mitä Lynchiltä on tulossa. En
 haluaisi hypettää mitään kaukana tulevaisuudessa julkistettavista
 projekteista, mutta olen aika luottavainen syntyvään laatuun, pienin
 huolin.
-</description><pubDate>Sun, 13 Dec 2015 19:43:48 +0000</pubDate></item><item><title>AKG K1000 [NEW]</title><link>http://fwwm.us/hifi/k1000.html</link><guid isPermaLink="false">20151118_2052</guid><description>
-Tuoreita ajatelmia AKG K1000:sta yli kuuden vuoden yhteiselon jälkeen.
-</description><pubDate>Wed, 18 Nov 2015 18:52:45 +0000</pubDate></item></channel></rss>
+</description><pubDate>Sun, 13 Dec 2015 19:43:48 +0000</pubDate></item></channel></rss>
