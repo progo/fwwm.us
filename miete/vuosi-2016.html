@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <script type="text/x-mathjax-config">
+        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
+          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
+          */
+        MathJax.Extension.myImg2jax = {
+            version: "1.0",
+            PreProcess: function (element) {
+                var images = element.getElementsByTagName("img");
+                for (var i = images.length - 1; i >= 0; i--) {
+                    var img = images[i];
+                    if (img.className === "dvipng") {
+                        var script = document.createElement("script");
+                        script.type = "math/tex";
+                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
+                        if (match[1] === "$$") {script.type += ";mode=display"}
+                        MathJax.HTML.setScript(script,match[2]);
+                        img.parentNode.replaceChild(script,img);
+                    }
+                }
+            }
+        };
+        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+    </script>
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Vuoden 2016 kertausta — fwwm.us</title>
+  <link />
+</head>
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">fwwm.us</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">10.01.2017</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">10.01.2017</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/main/miete/vuosi-2016.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-1"><a href="/tags/fujifilm.html" class="tag-name">fujifilm</a></li><li class="tag-0"><a href="/tags/retrospektiivi.html" class="tag-name">retrospektiivi</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/fuji-sony-canon.html" class="rp-url">
+        <span class="rp-title">Fuji, Sony ja Canonin kohtalo</span>
+      </a>
+    </li><li>
+      <a href="/miete/matka-2016.html" class="rp-url">
+        <span class="rp-title">Amerikan Yhdysvallat kesällä 2016</span>
+      </a>
+    </li><li>
+      <a href="/miete/x100t-vuosi.html" class="rp-url">
+        <span class="rp-title">11 kuukautta Fujia</span>
+      </a>
+    </li><li>
+      <a href="/miete/moary-vuoden.html" class="rp-url">
+        <span class="rp-title">Moary täyttää vuoden</span>
+      </a>
+    </li><li>
+      <a href="/miete/xt10.html" class="rp-url">
+        <span class="rp-title">Fujifilm X-T10</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
+<h1 class="title">Vuoden 2016 kertausta</h1>
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
+<p>
+Vuosi vaihtui hyvin rauhallisissa merkeissä ja – toisin kuin vuosi
+sitten tammikuussa – miellyttävän lämpimissä oloissa. Mitähän kivaa
+voisi 2017 tuoda meille? Mitä tapahtui viime vuonna?! Ja mitähän
+ihmettä sitä lupaisi itselleen vuodeksi 2017?
+</p>
+
+<p>
+Lyhyesti summattuna tuntuu, että 2016 meni vauhdikkaasti läpi. Auto ei
+temppuillut, töissä oli tavanomaista (jokseenkin ehkä enemmän hitaita
+kausia kuin aiemmin). Toisaalta huhtikuussa 2016 sain luvan tehdä
+töitä kotoa käsin, ja tämä on piristänyt monella tavalla. Lisäksi toki
+myin talon, joka tuntuu vieläkin ihan hyvältä jutulta.
+</p>
+
+<p>
+Harrastusten puolesta 2016 oli aika kehno. Omia koodiprojekteja en ole
+vienyt mainittavasti eteenpäin, koska töissä saa käyttää
+aivonystyröitään ihan tarpeeksi. Alkuvuosi meni Fujifilmin kanssa ja
+GAS-ongelmien kanssa painiessa; keväällä huomioni siirtyi kokonaan
+yhdysvaltain politiikan seuraamiseen ja GAS väistyi iloisesti. Nyt se
+mokoma on taas tullut pinnalle. Jotain oikeata tekemistä pitäisi
+varmaan keksiä!
+</p>
+
+<p>
+Uudenvuodenlupaus vuodelle 2016 oli aloittaa entistä säännöllisempi
+liikkuminen ja liikunta. Se on toiminut, olen ollut kuntopyörän
+selässä ja muissa fyysisissä askareissa hyvin säännöllisesti. Voisin
+kai luvata itselleni, että tänä vuonna sama meno jatkuu, mutta
+isommalla rasituksella. En varmaan kyllä laiskuuttani mene sellaista
+lupailemaan. 
+</p>
+
+<p>
+Sen sijaan voisin varmaan harkita syöväni aiempaa terveellisemmin.
+Yhdessä säännöllisen liikunnan kanssa se voisi johtaa hallittuun
+painonpudotukseen. Tämän projektin aloitin itse asiassa jo alustavasti
+ennen joulua, mutta ymmärrettävästi joulunpyhiksi aina loppiaiseen
+asti ylimääräisiä herkkuja on pyörinyt nurkissa ihan riittoisasti.
+</p>
+
+<p>
+Vaihtoehtoisesti voisin luvata itselleni viettää enemmän aikaa ulkona
+kameran kanssa. Mitä hyötyä on himoita uutta kameraromua, jos olen jo
+maksimoinut omasta pihasta otetut kuvat. Kävin ulkoiluttamassa Fujia
+harmittavan harvoin viime vuonna. Yksi keikka Kuopiossa, muutama pieni
+Joensuussa ja yksi ulkomaanmatka. Entäpä jos tavoite olisikin käydä
+yksi kuvausmatka viikossa? Joensuussa töiden jälkeen olisi aika
+otollista tehdä näin.
+</p>
+</div>
+</div>
+</div>
+  <hr />
+  <div id="comments"><div id="disqus">
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript">
+        var disqus_shortname = 'progim';
+        var disqus_identifier = '20170110_1716';
+
+        (function() {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] ||
+            document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+        <a href="http://disqus.com/?ref_noscript">Disqus</a> vaatii JavaScript-tuen
+        toimiakseen.
+    </noscript> 
+    <a class="dsq-brlink" href="http://disqus.com">
+        comments powered by <span class="logo-disqus">Disqus</span>
+    </a>
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
+</html>
