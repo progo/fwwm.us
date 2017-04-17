@@ -3,31 +3,6 @@
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <script type="text/x-mathjax-config">
-        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
-          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
-          */
-        MathJax.Extension.myImg2jax = {
-            version: "1.0",
-            PreProcess: function (element) {
-                var images = element.getElementsByTagName("img");
-                for (var i = images.length - 1; i >= 0; i--) {
-                    var img = images[i];
-                    if (img.className === "dvipng") {
-                        var script = document.createElement("script");
-                        script.type = "math/tex";
-                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
-                        if (match[1] === "$$") {script.type += ";mode=display"}
-                        MathJax.HTML.setScript(script,match[2]);
-                        img.parentNode.replaceChild(script,img);
-                    }
-                }
-            }
-        };
-        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
-    </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
     <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
   
   <title>Xmonad ja dynaamiset työpöydät — fwwm.us</title>
@@ -178,7 +153,7 @@ toimiviksi; mapataan kokeeksi näppäin <code>Win-x</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-haskell">((modm<span class="code-haskell-operator">,</span>               xK_x)<span class="code-haskell-operator">,</span> defaultCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
+<pre class="src src-haskell">((modm,               xK_x), defaultCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
 </pre>
 </div>
 
@@ -197,11 +172,11 @@ vaihtavia komentoja ja niille merkkijonoja.
 
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span class="code-haskell-definition">viewWorkspaceCommands</span> <span class="code-haskell-operator">::</span> <span class="code-haskell-constructor">X</span> [(<span class="code-haskell-constructor">String</span><span class="code-haskell-operator">,</span> <span class="code-haskell-constructor">X</span> <span class="code-haskell-constructor">()</span>)]
+<pre class="src src-haskell"><span class="code-haskell-definition">viewWorkspaceCommands</span> <span class="code-haskell-operator">::</span> <span class="code-haskell-type">X</span> [(<span class="code-haskell-type">String</span>, <span class="code-haskell-type">X</span> <span class="code-haskell-constructor">()</span>)]
 <span class="code-haskell-definition">viewWorkspaceCommands</span> <span class="code-haskell-operator">=</span> asks (workspaces <span class="code-haskell-operator">.</span> config) <span class="code-haskell-operator">&gt;&gt;=</span> <span class="code-haskell-operator">\</span>spaces <span class="code-haskell-operator">-&gt;</span> return
-                            [((m <span class="code-haskell-operator">++</span> <span class="code-string">" "</span> <span class="code-haskell-operator">++</span> show i)<span class="code-haskell-operator">,</span> windows <span class="code-haskell-operator">$</span> f i)
+                            [((m <span class="code-haskell-operator">++</span> <span class="code-string">" "</span> <span class="code-haskell-operator">++</span> show i), windows <span class="code-haskell-operator">$</span> f i)
                                 <span class="code-haskell-operator">|</span> i <span class="code-haskell-operator">&lt;-</span> spaces
-                                <span class="code-haskell-operator">,</span> (f<span class="code-haskell-operator">,</span> m) <span class="code-haskell-operator">&lt;-</span> [(<span class="code-haskell-constructor">W</span><span class="code-haskell-operator">.</span>greedyView<span class="code-haskell-operator">,</span> <span class="code-string">"view"</span>)] ]
+                                , (f, m) <span class="code-haskell-operator">&lt;-</span> [(W.greedyView, <span class="code-string">"view"</span>)] ]
 </pre>
 </div>
 
@@ -213,8 +188,8 @@ funktio <code>W.greedyView</code> funktioksi <code>W.shift</code>. Ja nämä map
 
 <div class="org-src-container">
 
-<pre class="src src-haskell">((modm<span class="code-haskell-operator">,</span>               xK_f)<span class="code-haskell-operator">,</span> viewWorkspaceCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
-((modm <span class="code-haskell-operator">.|.</span> shiftMask<span class="code-haskell-operator">,</span> xK_f)<span class="code-haskell-operator">,</span> moveWorkspaceCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
+<pre class="src src-haskell">((modm,               xK_f), viewWorkspaceCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
+((modm <span class="code-haskell-operator">.|.</span> shiftMask, xK_f), moveWorkspaceCommands <span class="code-haskell-operator">&gt;&gt;=</span> runCommand)
 </pre>
 </div>
 
@@ -241,7 +216,7 @@ Luulisipa riittävän!
 
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span class="code-haskell-definition">myWorkspaces</span> <span class="code-haskell-operator">=</span> map show [1 <span class="code-haskell-operator">..</span> 99 <span class="code-haskell-operator">::</span> <span class="code-haskell-constructor">Int</span>]
+<pre class="src src-haskell"><span class="code-haskell-definition">myWorkspaces</span> <span class="code-haskell-operator">=</span> map show [1 <span class="code-haskell-operator">..</span> 99 <span class="code-haskell-operator">::</span> <span class="code-haskell-type">Int</span>]
 </pre>
 </div>
 
@@ -269,18 +244,18 @@ Kirjoitetaan aiemmin määritelty <code>viewWorkspaceCommands</code> uudestaan:
 
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span class="code-haskell-keyword">type</span> <span class="code-haskell-constructor">NamedAction</span> <span class="code-haskell-operator">=</span> <span class="code-haskell-constructor">String</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-constructor">WindowSet</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-constructor">WindowSet</span>
+<pre class="src src-haskell"><span class="code-haskell-keyword">type</span> <span class="code-haskell-type">NamedAction</span> <span class="code-haskell-operator">=</span> <span class="code-haskell-type">String</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-type">WindowSet</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-type">WindowSet</span>
 
-<span class="code-haskell-definition">doWSCommands</span> <span class="code-haskell-operator">::</span> <span class="code-haskell-constructor">NamedAction</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-constructor">String</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-constructor">X</span> [(<span class="code-haskell-constructor">String</span><span class="code-haskell-operator">,</span> <span class="code-haskell-constructor">X</span> <span class="code-haskell-constructor">()</span>)]
+<span class="code-haskell-definition">doWSCommands</span> <span class="code-haskell-operator">::</span> <span class="code-haskell-type">NamedAction</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-type">String</span> <span class="code-haskell-operator">-&gt;</span> <span class="code-haskell-type">X</span> [(<span class="code-haskell-type">String</span>, <span class="code-haskell-type">X</span> <span class="code-haskell-constructor">()</span>)]
 <span class="code-haskell-definition">doWSCommands</span> action string <span class="code-haskell-operator">=</span> <span class="code-haskell-keyword">do</span>
   spaces <span class="code-haskell-operator">&lt;-</span> asks (workspaces <span class="code-haskell-operator">.</span> config)
   wsNames <span class="code-haskell-operator">&lt;-</span> getWorkspaceNames                            <span class="code-comment-delimiter">-- </span><span class="code-comment">(1)</span>
-  return [((m <span class="code-haskell-operator">++</span> <span class="code-string">" "</span> <span class="code-haskell-operator">++</span> show (wsNames i))<span class="code-haskell-operator">,</span> windows <span class="code-haskell-operator">$</span> f i)
+  return [((m <span class="code-haskell-operator">++</span> <span class="code-string">" "</span> <span class="code-haskell-operator">++</span> show (wsNames i)), windows <span class="code-haskell-operator">$</span> f i)
          <span class="code-haskell-operator">|</span> i <span class="code-haskell-operator">&lt;-</span> spaces
-         <span class="code-haskell-operator">,</span> (f<span class="code-haskell-operator">,</span> m) <span class="code-haskell-operator">&lt;-</span> [(action<span class="code-haskell-operator">,</span> string)] ]
+         , (f, m) <span class="code-haskell-operator">&lt;-</span> [(action, string)] ]
 
-<span class="code-haskell-definition">viewWorkspaceCommands</span> <span class="code-haskell-operator">=</span> doWSCommands <span class="code-haskell-constructor">W</span><span class="code-haskell-operator">.</span>greedyView <span class="code-string">"view"</span>
-<span class="code-haskell-definition">moveWorkspaceCommands</span> <span class="code-haskell-operator">=</span> doWSCommands <span class="code-haskell-constructor">W</span><span class="code-haskell-operator">.</span>shift      <span class="code-string">"move"</span>
+<span class="code-haskell-definition">viewWorkspaceCommands</span> <span class="code-haskell-operator">=</span> doWSCommands W.greedyView <span class="code-string">"view"</span>
+<span class="code-haskell-definition">moveWorkspaceCommands</span> <span class="code-haskell-operator">=</span> doWSCommands W.shift      <span class="code-string">"move"</span>
 </pre>
 </div>
 

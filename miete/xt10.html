@@ -3,31 +3,6 @@
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-    <script type="text/x-mathjax-config">
-        /* Fix org-generated pictures to MathJX. Big thanks to Davide Cervone
-          on StackOverflow with this. http://stackoverflow.com/a/14631703/308668
-          */
-        MathJax.Extension.myImg2jax = {
-            version: "1.0",
-            PreProcess: function (element) {
-                var images = element.getElementsByTagName("img");
-                for (var i = images.length - 1; i >= 0; i--) {
-                    var img = images[i];
-                    if (img.className === "dvipng") {
-                        var script = document.createElement("script");
-                        script.type = "math/tex";
-                        var match = img.alt.match(/^(\$\$?)(.*)\1/);
-                        if (match[1] === "$$") {script.type += ";mode=display"}
-                        MathJax.HTML.setScript(script,match[2]);
-                        img.parentNode.replaceChild(script,img);
-                    }
-                }
-            }
-        };
-        MathJax.Hub.Register.PreProcessor(["PreProcess",MathJax.Extension.myImg2jax]);
-    </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
-    </script>
     <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
   
   <title>Fujifilm X-T10 — fwwm.us</title>
