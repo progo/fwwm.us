@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
 <head>
 <title>Valokuvien workflow'sta</title>
-<!-- 2017-05-05 Fri 20:19 -->
+<!-- 2017-06-03 Sat 21:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 </head>
@@ -15,20 +15,24 @@
 <h2 id="sec-1">Valokuvien workflow'sta&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fujifilm">fujifilm</span>&#xa0;<span class="kamera">kamera</span></span></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Vähän ottamieni valokuvien lajittelusta ja luokittelusta.
+Vähän ottamieni valokuvien lajittelusta ja luokittelusta. Kuvien
+elinkaari.
 </p>
 </div>
 
 <div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">Kuvat kamerasta</h3>
-<div class="outline-text-3" id="text-1-1">
+<h3 id="sec-1-1">Kuvien ottaminen</h3>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Kuvat kamerasta</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 Kuvat siirtyvät kameran muistikorteilta kortinlukijan ja oman skriptin
-voimin. Eräs vanhimpia edelleen käytössä olevia ohjelmiani,
-<code>grab_digiphotos.sh</code> mounttaa muistikortin sisään, etsii ja siirtää
-kuvat päivämäärän mukaan nimettyyn hakemistoon. Tuunaan skriptiä aina
-uuden kameran tullessa taloon, Fujifilmin kanssa olen lisännyt
-kaikenlaista valmista kokonaisuuteen:
+voimin. Eräs vanhimpia edelleen käytössä olevia ohjelmiani mounttaa
+muistikortin sisään, etsii ja siirtää kuvat päivämäärän mukaan
+nimettyyn hakemistoon. Tuunaan skriptiä aina uuden kameran tullessa
+taloon, Fujifilmin kanssa olen lisännyt kaikenlaista valmista
+kokonaisuuteen:
 </p>
 
 <ul class="org-ul">
@@ -37,129 +41,54 @@ filmiemuloinnin,
 </li>
 <li>siirtää raakakuvat pois jpeggien seasta omaan hakemistoonsa,
 </li>
-<li>kääntää kuvat exif-tietojen perusteella valmiiksi oikein päin.
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">Luokittelu ja valikointi</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-Pidemmän matkan tai vieraan kaupungin jälkeen kuvia voi olla iso määrä
-kelattavaksi. Koska Fujifilmin JPEG-kuvat ovat niin hyviä, käytän
-niitä oletuksena ja valikoin niistä esityskelpoiset. Käytän deleteä
-aika paljon duplikaateille, ehkä joskus liiankin liipaisinherkästi.
-Teen monesti linkit kaikista kuvista ennen kuin alan käydä kuvia
-läpi.
-</p>
-
-<p>
-Fujifilm tekee kamerassa paljon kuville: käytän valmista dynamic range
--toimintoa, joka antaa kameran alivalottaa yhden stopin verran kuvia
-ja siten valottaa ne niin, että kirkkaat valot eivät ylipala läheskään
-usein. Sama efekti on saavutettavissa ottamalla raakakuva ja
-käyttämällä käytetyn kehitystyökalun <i>shadow/highlight retrieval</i>
--toimintoja. En vain onnistu tekemään raakakuvista lainkaan yhtä
-miellyttäviä kuin Fujin jpeggejä, joten kosken raakakuviin vain
-silloin kun JPEG on alivalottunut pahasti.
-</p>
-
-<p>
-Kun kuvaan hankalassa valossa, tapanani on ottaa useita kuvia. Annan
-kameran vähän heilua ja se saattaa laskea minulle uuden valotuksen. En
-jälkikatsele kuvia kamerassa: elektronisella etsimellä näen jo
-kuvanottohetkellä, että valkotasapaino, valotus ja tarkennus on
-jotenkuten onnistunut. Tämä vähentää vähän tarvetta ottaa raakaversiot
-esiin.
-</p>
-
-<ul class="org-ul">
-<li>kroppailu ja sen merkkaaminen
-</li>
-<li>gqview on hyvä työkalu, mutta puutteita on
-<ul class="org-ul">
-<li>usean ikkunan tuki
-</li>
-<li>parempi unix-filosofinen integrointi 
-</li>
-<li>kuvien organisointi huono
-</li>
-<li>seuraava kuva renderöidään valmiiksi, mutta edellistä ei pidetä
-muistissa
-</li>
-<li>kuvasta toiseen siirryttäessä panorointi- ja zoomiasetuksia ei
-muisteta. Tämä olisi kiva kun vertailee kahta samasta kohdasta
-otettua kuvaa keskenään
-</li>
-<li>geeqie vastaavasti yrittää vastata joihinkin kysymyksiin, mutta on
-kokonaisuutena aika kamala (esimerkiksi käyttökelvoton
-exif-näkymä)
-</li>
-<li>kaikin puolin gqview on hyvä työkalu, vähän kun käyttää
-tiedostojärjestelmää apunaan
-</li>
-</ul>
-</li>
-<li>kuvien sisällön tagailu olisi kiva geneerisesti
-</li>
-<li>vain Lightroom olisi mielekäs työkalu: Fujifilmin tuella osaa tehdä
-väriemulointia (joskin RTR ei tule kaukana jäljessä)
+<li>ja kääntää kuvat exif-tietojen perusteella valmiiksi oikein päin.
 </li>
 </ul>
 </div>
 </div>
 <div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">RTR vs DT vs SilkyPix Raw Converter</h3>
+<h3 id="sec-1-3">Adoben tuotteet</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-Kaikissa on omat puolensa.
+Adobe on niin monella tasolla se luotettu teollisuusstandardi, ettei
+mitään tolkkua. Syy on kanssa selvä: käyttöliittymät osaavat mukailla
+toimivia workflow'ita niin, että asiat tapahtuvat luonnollisella
+tavalla paikoilleen loksahtaen. Nämä ihmiset käyttävät aikaa
+käyttöliittymiin, ja se näkyy.
 </p>
 
-<ul class="org-ul">
-<li>DT:lle voi opettaa sääntöpohjaisesti että mitä millekin kuvalle voi
-tehdä automaattisesti
-</li>
-<li>RTR:n flow sallii hyvin nopeasti kuvamassojen käsittelyn, vaikka
-vähän rasittaakin automaattinen valotuksenkorjaus joskus
-</li>
-<li>RTR:ssä toimii CLUT-pohjaiset värimuunnokset (eli käytännössä fujin
-filmiemuloinnit) siististi, DT:ssä ne tehdään hankalasti ja
-presettien pohjalta
-</li>
-<li>DT:lle löytyy Fujin lasien optiset säädöt, RTR:lle ne pitäisi
-metsästää jostain, ja sittenkin on epävarmaa että voiko ne laittaa
-oletuksena päälle&#x2026;
-</li>
-<li>mainitut optiset korjaukset eivät ole 1:1 kameran jpeggien kanssa
-</li>
-<li>SRC:ää joutuu tietty ajamaan virtuaalikoneessa, joten ei
-optimaalinen kokemus
-</li>
-<li>SRC:n kontrollit on nimetty vieraasti. Ei puhetta
-shadow/highlight-korjailuista vaan on jotain omia nimiä käytetty
-</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">Adoben tuotteet</h3>
-<div class="outline-text-3" id="text-1-4">
-<ul class="org-ul">
-<li>selvästi osaavat suunnitellat parhaat kälit
-</li>
-<li>Premiere Pro on paras nle
-</li>
-<li>Lightroom on organisoitu loogisesti
-</li>
-<li>Photoshop kuin myös ei suotta industry standard
-</li>
-</ul>
+<p>
+Esimerkiksi Premiere Pro on paras epälineaarinen videoeditori, (NLE)
+mitä olen käyttänyt. Avoimet eivät tule kaukana jäljessä, mutta
+Premiere on vakaa ja se sisältää kaiken kivassa paketissa. Photoshop
+kuin myös ei ole suotta alan käsite, vaikka toivoisin tietty, että
+ihmiset eivät kokisi tarpeelliseksi varetella koko pakettia lomakuvien
+suoristamiseksi.
+</p>
 
 <p>
-Hieman ehkä häpeillen myönnän, että sellainen lottovoittajan valinta
-näissä jutuissa olisi oma mediankäsittelylle dedikoitu kone,
-luultavasti joku Windows-kokoonpano, jossa Lightroom.
+Ja sitten tullaan Lightroomiin (LR). LR on sekin loogisesti
+organisoitu ja se antaa hyvät pikasäädöt kuvien tuunaamiselle,
+tarjoten toki kaikkea myös huolellisemmalle säätämiselle. Nopeisiin
+korjailuihin tuunattu kloonityökalu on suorastaan petollisen toimiva
+väline. Sävysäädöt ovat hyvin hienovaraisia, mutta niitä saakin sitten
+käyttää reilulla kädellä ilman pelkoa siitä, että tiedoston rajat
+tulisivat vastaan.
+</p>
+
+<p>
+Myöskään en kyennyt todistamaan mitään ongelmia Fujifilmin raf-kuvien
+kanssa Lightroomissa, joskaan ihan läheltä en pikseleitä tiirannut.
+Fujin filmiemuloinnit näkyvät suoraan LR:ssä ja ne on sovellettu
+valmiiksi kuvaan, kuten toivoisi muissakin sovelluksissa. LR:n kanssa
+moni asia toimisi sellaisenaan!
+</p>
+
+<p>
+Kyllä sellainen lottovoittajan valinta näissä jutuissa olisi oma
+mediankäsittelylle dedikoitu kone, luultavasti joku 4k-näytöllinen
+Windows-kokoonpano, jossa olisi Lightroom. Ennen kuin näin käy,
+jatkanen jpeg-painotteisella tielläni.
 </p>
 </div>
 </div>
