@@ -1,98 +1,279 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
-<head>
-<title>Valokuvien workflow'sta</title>
-<!-- 2017-06-10 Sat 20:10 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <link href="/templates/main.css" media="screen" type="text/css" rel="stylesheet" />
+  
+  <title>Valokuvien workflow'sta — fwwm.us</title>
+  <link />
 </head>
-<body>
-<div id="content">
+  <body>
+    <div id="backgrounds">
+      <div id="header">
+        <h1 id="site-title">fwwm.us</h1>
+      </div>
+      <div id="sidebar">
+  <ul id="navigation" class="navi-list">
+    <li><a href="/">Ylös</a></li>
+    <li><a href="/all.html">Kaikki jutut</a></li>
+    <!-- <li><a href=".">RSS</a></li> -->
+  </ul>
+  <ul class="info-list">
+    <li>
+      <div>
+        <span class="value" id="post-created">17.06.2017</span>
+        <span class="key">Luotu</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <span class="value" id="post-modified">17.06.2017</span>
+        <span class="key">Päivitetty</span>
+      </div>
+    </li>
+    <li>
+      <a href="https://github.com/progo/fwwmus---org/commits/main/miete/kuvien-workflow.org" id="post-revs-url">
+        <span>Muutoshistoria</span>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Tagit</h2>
+  <ul id="tags" class="tag-list"><li class="tag-3"><a href="/tags/kamera.html" class="tag-name">kamera</a></li><li class="tag-3"><a href="/tags/fujifilm.html" class="tag-name">fujifilm</a></li></ul>
+
+  <h2 id="related-posts-title">Aiheen vierestä</h2>
+  <ul id="related-posts">
+    <li>
+      <a href="/miete/leica-q.html" class="rp-url">
+        <span class="rp-title">Leica Q: mietteitä</span>
+      </a>
+    </li><li>
+      <a href="/miete/xt1.html" class="rp-url">
+        <span class="rp-title">Fujifilm X-T1</span>
+      </a>
+    </li><li>
+      <a href="/miete/fuji-yksi-x100f.html" class="rp-url">
+        <span class="rp-title">Yksi ylitse kahden ja X100F</span>
+      </a>
+    </li><li>
+      <a href="/miete/fuji-sony-canon.html" class="rp-url">
+        <span class="rp-title">Fuji, Sony ja Canonin kohtalo</span>
+      </a>
+    </li><li>
+      <a href="/miete/x100t-vuosi.html" class="rp-url">
+        <span class="rp-title">11 kuukautta Fujia</span>
+      </a>
+    </li>
+  </ul>
+</div>
+      <div id="main">
+  <div id="content">
 <h1 class="title">Valokuvien workflow'sta</h1>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Valokuvien workflow'sta&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fujifilm">fujifilm</span>&#xa0;<span class="kamera">kamera</span></span></h2>
-<div class="outline-text-2" id="text-1">
+<div class="outline-2" id="outline-container-sec-1">
+
+<div id="text-1" class="outline-text-2">
+
 <p>
-Vähän ottamieni valokuvien lajittelusta ja luokittelusta. Kuvien
-elinkaari.
+Kuvien ottaminen kameralla on yksi ongelma, kuvien organisointi ja
+jälkikäsittely on toinen. Käyn läpi, minkälainen workflow minulla on
+nykyisin valokuvien käsittelylle ja valikoinnille ja sitten vähän
+tuumailen, mitä voisi tehdä paremmin.
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">Kuvien ottaminen</h3>
-</div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">Kuvat kamerasta</h3>
-<div class="outline-text-3" id="text-1-2">
+<div class="outline-3" id="outline-container-sec-1-1">
+<h3 id="sec-1-1">Nykyinen workflow</h3>
+<div id="text-1-1" class="outline-text-3">
 <p>
-Kuvat siirtyvät kameran muistikorteilta kortinlukijan ja oman skriptin
-voimin. Eräs vanhimpia edelleen käytössä olevia ohjelmiani mounttaa
-muistikortin sisään, etsii ja siirtää kuvat päivämäärän mukaan
-nimettyyn hakemistoon. Tuunaan skriptiä aina uuden kameran tullessa
-taloon, Fujifilmin kanssa olen lisännyt kaikenlaista valmista
-kokonaisuuteen:
+Tällä tavalla käsittelen valokuvia tällä hetkellä. Tekniikka ei ole
+täydellinen, mutta toimii kiitettävästi silloin kun kuvat otetaan
+jpeggeinä ja raakakuvia ei tarvitse käsitellä kovin usein.
 </p>
 
-<ul class="org-ul">
-<li>uudelleennimeää kuvat sisältämään kameran nimen ja käytetyn
-filmiemuloinnin,
+<ol class="org-ol">
+<li>Tuodaan kuvat kamerasta päivämäärän mukaan nimettyyn hakemistoon.
+(oma skripti hoitaa)
 </li>
-<li>siirtää raakakuvat pois jpeggien seasta omaan hakemistoonsa,
+<li>JPEGit käännetään tagien perusteella ja ne nimetään sopivasti, ja
+raakakuvat erotellaan omaan hakemistoonsa. (skripti hoitaa)
 </li>
-<li>ja kääntää kuvat exif-tietojen perusteella valmiiksi oikein päin.
+<li>Ennen valintaprosessia otan jpegeistä varmuuskopiot (kovat linkit).
 </li>
-</ul>
-</div>
-</div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3">Adoben tuotteet</h3>
-<div class="outline-text-3" id="text-1-3">
+<li>Käyn kuvat gqview'llä läpi ja poistan surutta kaikki, mitkä eivät
+ole valokuvina onnistuneita. Duplikaatteja vertailen joskus pitkään
+jotta paras valikoituu… joskus on vaikea valita kahdesta yhtä
+suosikkia. 
+</li>
+<li>Merkkaan ylös, mitkä kuvat kaipaisivat vähän käsittelyä,
+käytännössä käsittelyn tarve on kroppaaminen ja valotuksen korjaus.
+Fujifilmin kuville ei tarvitse yleisesti ottaen tehdä
+valkotasapainon korjaamista tai vastaavaa.
+
 <p>
-Adobe on niin monella tasolla se luotettu teollisuusstandardi, ettei
-mitään tolkkua. Syy on kanssa selvä: käyttöliittymät osaavat mukailla
-toimivia workflow'ita niin, että asiat tapahtuvat luonnollisella
-tavalla paikoilleen loksahtaen. Nämä ihmiset käyttävät aikaa
-käyttöliittymiin, ja se näkyy.
+Tämä muistilista näyttää suunnilleen oheiselta:
+</p>
+
+<pre class="example">
+crop:
+3216 
+3220 
+...
+3482 
+
+vaihda kuvat päittäin: 3246 &lt;-&gt; 3249
+
+valotus:
+3262
+3270
+3308
+</pre>
+</li>
+
+<li>Kroppaan jpegit jollain häviöttömällä työkalulla. Sopiva työkalu
+on tosin hakusessa.
+</li>
+<li>Muut jälkikäsittelyt, kuten valotus ja muut jutut sitten
+Darktablella. Käyn yhden käsittelyä kaipaavan kuvan kerrallaan
+DT:ssä läpi ja vien ne jpegeiksi.
+</li>
+</ol>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-2">
+<h3 id="sec-1-2">Puutteita workflow'ssa</h3>
+<div id="text-1-2" class="outline-text-3">
+<p>
+Tekniikka on kymmeniä vuosia vanha, ja sinänsä toimii, sinänsä olen
+tyytymätön joihinkin seikkoihin. Vahingossa poistetun kuvan
+palauttaminen onnistuu varmuuskopiosta, jos olen muistanut ottaa
+kopiot, ja sittenkin minun pitää vähän kaivella että mikä sen
+poistetun kuvan tiedostonimi olikaan.
 </p>
 
 <p>
-Esimerkiksi Premiere Pro on paras epälineaarinen videoeditori, (NLE)
-mitä olen käyttänyt. Avoimet eivät tule kaukana jäljessä, mutta
-Premiere on vakaa ja se sisältää kaiken kivassa paketissa. Photoshop
-kuin myös ei ole suotta alan käsite, vaikka toivoisin tietty, että
-ihmiset eivät kokisi tarpeelliseksi varetella koko pakettia lomakuvien
-suoristamiseksi.
+Häviötön kroppailu on uutta, jota olen alkanut harrastaa. Aiemmin jos
+kroppasin, niin kroppasin raakakuvissa. Suoraan Fujin laadukkaista
+jpegeistä kroppaaminen on tietty mielekästä kun muuta korjattavaa
+kuvassa ei ole. Harmikseni en ole löytänyt hyvin toimivaa työkalua,
+joka kroppaisi kuvia siististi. Joko EXIF-tiedot kadotetaan tai
+frontend on ihan muilta osin surkea. Lisäksi olisi luontevaa kropata
+kuvat suoraan valintaprosessin aikana.
 </p>
 
 <p>
-Ja sitten tullaan Lightroomiin (LR). LR on sekin loogisesti
-organisoitu ja se antaa hyvät pikasäädöt kuvien tuunaamiselle,
-tarjoten toki kaikkea myös huolellisemmalle säätämiselle. Nopeisiin
-korjailuihin tuunattu kloonityökalu on suorastaan petollisen toimiva
-väline. Sävysäädöt ovat hyvin hienovaraisia, mutta niitä saakin sitten
-käyttää reilulla kädellä ilman pelkoa siitä, että tiedoston rajat
-tulisivat vastaan.
+Systeemissä ei ole mitään toimivaa tapaa tagailla kuvia. Isoissa
+kuvaseteissä toteutin minimaalisen tagailuskriptin, joka lisää tagit
+tiedostonimeen.
 </p>
 
 <p>
-Myöskään en kyennyt todistamaan mitään ongelmia Fujifilmin raf-kuvien
-kanssa Lightroomissa, joskaan ihan läheltä en pikseleitä tiirannut.
-Fujin filmiemuloinnit näkyvät suoraan LR:ssä ja ne on sovellettu
-valmiiksi kuvaan, kuten toivoisi muissakin sovelluksissa. LR:n kanssa
-moni asia toimisi sellaisenaan!
+Vaikka oikeata jälkikäsittelyä vaativia kuvia syntyykin aika vähän
+(esimerkiksi nyt viimeisin lomakeikka Helsingissä tuotti noin 250
+kuvaa ja niistä kolme minä tuomitsin uudelleenmuotoiltavaksi
+raakakuvista) niin useampikin kuva kyllä nauttisi pienistä
+korjailuista.
 </p>
 
 <p>
-Kyllä sellainen lottovoittajan valinta näissä jutuissa olisi oma
-mediankäsittelylle dedikoitu kone, luultavasti joku 4k-näytöllinen
-Windows-kokoonpano, jossa olisi Lightroom. Ennen kuin näin käy,
-jatkanen jpeg-painotteisella tielläni.
+<i>Kynnys</i> ottaa raakakuva esiin Fuji-JPEG:n sijaan on aika korkea,
+koska Fuji tekee niin hyvälaatuiset filmiemulaatiot, korostusten ja
+varjojen pelastukset, ja kohinanpoistot, että niitä on <i>vaikea</i> saada
+toistettua Darktablessa yhtä esteettisesti. 
+</p>
+
+<p>
+Kohina on yksi valitettava probleema. Isoilla herkkyyksillä kuvissa on
+kromaattista kohinaa, joka on puhdistettu kameran jpegeissä kauniisti,
+mutta Darktablella ei ole löytynyt optimaalisia työkaluja tähän.
+Johtuen joistakin tekijöistä saan myös rumia värivirheitä pistemäisiin
+valonlähteisiin ja heijastuksiin Darktablella, mutta tätä esiintyy
+fuji-raakakuvien lisäksi muilla raakakuvilla. Myös menetän mahdollisen
+filmiemulaation ja palaudun oletusväreihin.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-3">
+<h3 id="sec-1-3">Lightroom</h3>
+<div id="text-1-3" class="outline-text-3">
+<p>
+Ymmärtääkseni Lightroom mukailee Fujifilmin kameran tekemiä
+prosessointeja monella tasolla (väriemulaatiot ovat saatavilla,
+käsittääkseni kohinanvaimennusprofiili on myös). 
+</p>
+
+<p>
+<b>Ironisesti Fujifilm saattaa olla enemmän riippuvainen Lightroomista
+kuin vaikkapa Leica Q.</b> Olettaen, että kummallekin kameralle saisi
+hyvät kohinaprofiilit Darktablessa, niin silti vain LR tukisi Fujin
+komeita värejä laatikkosuorasti. Q:n kanssa Darktable voi hyvinkin
+olla riittävä työkalu ja Lightroom + VSCO vain mukava optio.
+Harmittavan vähän tosin löytää netistä vertaistukea kummallekaan
+kameralle Darktable-asetuksien etsimisessä. 
+</p>
+
+<p>
+Molemmille työkaluille saa filmiemulaatioita, mutta Lightroomille on
+valtava valikoima kolmansien osapuolten maksullisia ja laadukkaita
+plugineita. Neat Image, VSCO ja Perfectly Clear esimerkkeinä.
+Darktablelle saa myös hyvännäköisiä valmistyylejä, mutta ne eivät
+oletettavasti voi pärjätä jokaisessa aspektissa.
+</p>
+
+<p>
+Kaikin puolin Darktable on avoimeksi työkaluksi erittäin hyvä,
+joiltain osin Lightroomia parempi työkalu. Ja joiltain osin huonompi.
+Suunnittelufilosofia on hieman erilainen kummassakin, joten
+1:1-suhdetta ei koskaan tulla saavuttamaan.
+</p>
+
+<p>
+Lyhyesti kuitenkin jos alustariippuvuudet unohdetaan tarkastelusta,
+juuri tällä hetkellä Lightroom sallii nopeammat workflow't
+kohinanpoiston ja värikäsittelyn päälle, mutta Darktable ei tule
+kaukana jäljessä: riittäisi vain käyttää sitä jonkin aikaa kuvien
+kehittämiseen ja antaa toimivien valmispresettien kertyä.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-sec-1-4">
+<h3 id="sec-1-4">Rauta</h3>
+<div id="text-1-4" class="outline-text-3">
+<p>
+Lottovoittokone pelkkään kuvien käsittelyyn olisi ehkä tällä hetkellä
+uusi täysillä spekseillä varustettu Surface Pro (12 tuuman tabletti,
+hyvät värit, täysi Windows-yhteensopivuus) tai peräti Surface Studio
+(isolla kosketusnäytöllä varustettu all-in-one). Siinä ajaisin sitten
+Lightroomia kaikilla hienoilla plugineilla.
+</p>
+
+<p>
+Lottovoittoa odotellessa olen alkanut lämmetä kokeilemaan
+virtualisointiratkaisuja uudelleen. Ja vaikka Intel i5 2500k on
+kohtuuvanhana prosessorina huippuhyvä, käytännössä täydellinen
+koodailuun ja kevyeen pelailuun, kuvankäsittelyssä on valitettavia
+viipeitä. Ja opin vasta hiljan, että uusissa Inteleissä
+kerroinlukottomat k-mallit sisältävät VT-d-tukea, joten tämä on omiaan
+ruokkimaan kokeiluhaluja.
+</p>
+
+<p>
+Jos hommat toimivat oikein, sellaisella raudalla voisin ajaa linuxia
+edelleenkin isäntänä ja rautakiihdytettyä Windowsia orjana käytännössä
+natiivinopeuksilla. Lightroomin lisäksi voisin lopettaa wine-pelleilyt.
 </p>
 </div>
 </div>
 </div>
 </div>
-</body>
+  <hr />
+  <div id="comments"><div style="padding-top: 2em; padding-bottom:2em;" id="disqus">
+  Kommentit, kehitysehdotukset ja keskustelunavaukset ovat
+  tervetulleita <a href="mailto:mike@fwwm.us">sähköpostitse</a>.
+</div></div>
+</div>
+      <div id="footer"></div>
+    </div>
+  </body>
+
 </html>
